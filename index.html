@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMC Botoșani - Community Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #e63946;
+            --bg: #0f0f0f;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            line-height: 1.6;
+        }
+        header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+        }
+        .logo { font-family: 'Oswald', sans-serif; font-size: 1.5rem; }
+        .logo span { color: var(--accent); }
+
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(rgba(15,15,15,0.7), rgba(15,15,15,0.7)), url('https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero h1 { font-family: 'Oswald', sans-serif; font-size: 3.5rem; text-transform: uppercase; margin-bottom: 15px; }
+        .hero p { max-width: 700px; font-size: 1.2rem; color: #ccc; margin-bottom: 30px; }
+
+        .btn-fight {
+            padding: 15px 40px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-size: 1.2rem;
+        }
+        .btn-fight:hover { background: white; color: var(--accent); }
+
+        .about-box {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent);
+        }
+        .about-box h2 { font-family: 'Oswald', sans-serif; margin-bottom: 20px; font-size: 2rem; }
+        .about-box p { margin-bottom: 15px; font-size: 1.1rem; color: #ddd; }
+        .highlight { color: var(--accent); font-weight: bold; }
+
+        footer { text-align: center; padding: 30px; color: #555; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">RMC <span>BOTOȘANI</span></div>
+    <img src="logo.jpeg" alt="Logo" style="height: 40px;">
+</header>
+
+<section class="hero">
+    <h1>ROMANIA MARTIAL COMBAT</h1>
+    <p>Antrenament. Disciplină. Respect. O inițiativă locală din Botoșani pentru cei care vor să evolueze prin sport.</p>
+    <a href="inscrie.html" class="btn-fight">Vreau să lupt</a>
+</section>
+
+<section class="about-box">
+    <h2>Despre Proiectul Nostru</h2>
+    <p>Acesta este un proiect început de <span class="highlight">niște băieți din Botoșani</span> care vor să promoveze sportul de contact într-un cadru organizat.</p>
+    
+    <p><strong>Important:</strong> Momentan, în cadrul RMC Botoșani <span class="highlight">nu avem antrenori formali</span>. Suntem un grup de tineri cu vârste cuprinse între <span class="highlight">18 și 27 de ani</span> care ne antrenăm împreună, învățăm unii de la alții și ne testăm limitele prin respect reciproc.</p>
+
+    <p>Nu încurajăm violența de stradă. Tot ce facem se bazează pe regulile sportului de contact (MMA/Kickboxing). Dacă ești major, ai spirit de echipă și vrei să te antrenezi serios alături de noi, ești binevenit.</p>
+</section>
+
+<footer>
+    <p>RMC Botoșani &copy; 2024 | Proiect Independent de Tineret</p>
+</footer>
+
+</body>
+</html>
