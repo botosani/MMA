@@ -3,98 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RMC Botoșani - Community Project</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <title>RMC Botoșani - Community Training</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         :root {
             --accent: #e63946;
-            --bg: #0f0f0f;
+            --bg: #0d0d0d;
+            --card: #1a1a1a;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg);
             color: white;
             line-height: 1.6;
         }
+
         header {
-            padding: 20px;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #222;
+            background: rgba(0,0,0,0.8);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .logo { font-family: 'Oswald', sans-serif; font-size: 1.5rem; }
-        .logo span { color: var(--accent); }
 
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 45px; border-radius: 5px; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.4rem; letter-spacing: 1px; }
+        .logo-text span { color: var(--accent); }
+
+        /* HERO SECTION */
         .hero {
-            height: 80vh;
+            height: 70vh;
+            background: linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.8)), 
+                        url('https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 20px;
-            background: linear-gradient(rgba(15,15,15,0.7), rgba(15,15,15,0.7)), url('https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
         }
-        .hero h1 { font-family: 'Oswald', sans-serif; font-size: 3.5rem; text-transform: uppercase; margin-bottom: 15px; }
-        .hero p { max-width: 700px; font-size: 1.2rem; color: #ccc; margin-bottom: 30px; }
 
-        .btn-fight {
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .btn-main {
             padding: 15px 40px;
             background: var(--accent);
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 900;
             text-transform: uppercase;
-            border-radius: 5px;
+            border-radius: 4px;
             transition: 0.3s;
-            font-size: 1.2rem;
+            letter-spacing: 1px;
         }
-        .btn-fight:hover { background: white; color: var(--accent); }
 
-        .about-box {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 40px;
-            background: #1a1a1a;
-            border-radius: 10px;
-            border-left: 5px solid var(--accent);
+        .btn-main:hover {
+            background: white;
+            color: var(--accent);
+            transform: scale(1.05);
         }
-        .about-box h2 { font-family: 'Oswald', sans-serif; margin-bottom: 20px; font-size: 2rem; }
-        .about-box p { margin-bottom: 15px; font-size: 1.1rem; color: #ddd; }
-        .highlight { color: var(--accent); font-weight: bold; }
 
-        footer { text-align: center; padding: 30px; color: #555; font-size: 0.8rem; }
+        /* ABOUT PROJECT */
+        .project-details {
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .details-text h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        .details-text p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: #bbb;
+        }
+
+        .highlight { color: white; font-weight: 700; }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            background: var(--card);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .instagram-link:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(220, 39, 67, 0.4); }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #555;
+            border-top: 1px solid #222;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .project-details { grid-template-columns: 1fr; text-align: center; }
+            .details-text h2 { padding-left: 0; border-left: none; border-bottom: 3px solid var(--accent); display: inline-block; }
+            .hero h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">RMC <span>BOTOȘANI</span></div>
-    <img src="logo.jpeg" alt="Logo" style="height: 40px;">
-</header>
+    <header>
+        <div class="logo-container">
+            <img src="logo.jpeg" alt="RMC Logo" class="logo-img">
+            <div class="logo-text">RMC <span>BOTOȘANI</span></div>
+        </div>
+    </header>
 
-<section class="hero">
-    <h1>ROMANIA MARTIAL COMBAT</h1>
-    <p>Antrenament. Disciplină. Respect. O inițiativă locală din Botoșani pentru cei care vor să evolueze prin sport.</p>
-    <a href="inscrie.html" class="btn-fight">Vreau să lupt</a>
-</section>
+    <section class="hero">
+        <h1>EVOLUĂM ÎMPREUNĂ</h1>
+        <p>Nu suntem o academie oficială, ci o comunitate de tineri din Botoșani pasionați de artele marțiale. Ne antrenăm pentru disciplină și sănătate.</p>
+        <a href="inscrie.html" class="btn-main">Vreau să mă alătur</a>
+    </section>
 
-<section class="about-box">
-    <h2>Despre Proiectul Nostru</h2>
-    <p>Acesta este un proiect început de <span class="highlight">niște băieți din Botoșani</span> care vor să promoveze sportul de contact într-un cadru organizat.</p>
-    
-    <p><strong>Important:</strong> Momentan, în cadrul RMC Botoșani <span class="highlight">nu avem antrenori formali</span>. Suntem un grup de tineri cu vârste cuprinse între <span class="highlight">18 și 27 de ani</span> care ne antrenăm împreună, învățăm unii de la alții și ne testăm limitele prin respect reciproc.</p>
+    <section class="project-details">
+        <div class="details-text">
+            <h2>DESPRE PROIECT</h2>
+            <p>
+                <span class="highlight">Romania Martial Combat (RMC) Botoșani</span> este o inițiativă independentă creată de un grup de băieți cu vârste între <span class="highlight">18 și 27 de ani</span>. 
+            </p>
+            <p>
+                Este important de menționat: <span class="highlight">nu avem antrenori profesioniști</span> sau personal calificat. Suntem pur și simplu tineri majori care aleg să își petreacă timpul liber antrenându-se și învățând unii de la alții.
+            </p>
+            <p>
+                Totul se desfășoară într-un <span class="highlight">spațiu controlat</span>, unde respectul reciproc este lege. Nu promovăm bătaia, ci tehnica, condiția fizică și controlul emoțiilor. Orice formă de violență nejustificată este strict interzisă în grupul nostru.
+            </p>
+        </div>
+        <div style="text-align: center;">
+            <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=500&auto=format&fit=crop" alt="Training" style="width: 100%; border-radius: 10px; filter: grayscale(50%);">
+        </div>
+    </section>
 
-    <p>Nu încurajăm violența de stradă. Tot ce facem se bazează pe regulile sportului de contact (MMA/Kickboxing). Dacă ești major, ai spirit de echipă și vrei să te antrenezi serios alături de noi, ești binevenit.</p>
-</section>
+    <section class="contact-section">
+        <h2>CONTACT US</h2>
+        <p style="margin-bottom: 20px; color: #aaa;">Urmărește-ne activitatea sau trimite-ne un mesaj pe Instagram:</p>
+        <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="instagram-link">
+            <i class="fab fa-instagram"></i> @mma.botosani
+        </a>
+    </section>
 
-<footer>
-    <p>RMC Botoșani &copy; 2024 | Proiect Independent de Tineret</p>
-</footer>
+    <footer>
+        <p>&copy; 2024 RMC Botoșani - Proiect Independent de Tineret (18-27 ani).</p>
+        <p>Antrenamente în mediu controlat. Respectă sportul.</p>
+    </footer>
 
 </body>
 </html>
