@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Înscriere - RMC Botoșani</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --accent: #e63946;
+            --bg: #0d0d0d;
+            --card: #1a1a1a;
+            --input-bg: #252525;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.9);
+            border-bottom: 1px solid #222;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 20px; text-decoration: none; color: white; }
+        .logo-img { height: 50px; border-radius: 5px; } 
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.4rem; }
+        .logo-text span { color: var(--accent); }
+
+        .form-section {
+            flex: 1;
+            padding: 40px 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-top: 4px solid var(--accent);
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #bbb;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #eee;
+            text-transform: uppercase;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: var(--input-bg);
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 20px;
+            background: rgba(230, 57, 70, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px dashed #444;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-top: 5px;
+        }
+
+        .checkbox-group label {
+            font-size: 0.8rem;
+            font-weight: 400;
+            line-height: 1.4;
+            text-transform: none;
+            color: #bbb;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: 0.3s;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+
+        .btn-submit:hover {
+            background: white;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #444;
+            border-top: 1px solid #222;
+        }
+
+        @media (max-width: 600px) {
+            .form-section { padding: 20px 5%; }
+            .form-container { padding: 30px 20px; }
+            .grid-mobile { grid-template-columns: 1fr !cols !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo.jpeg" alt="RMC Logo" class="logo-img">
+            <div class="logo-text">RMC <span>BOTOȘANI</span></div>
+        </a>
+    </header>
+
+    <section class="form-section">
+        <div class="form-container">
+            <h1>Formular Înscriere</h1>
+            <p class="subtitle">Completează datele de mai jos și te vom contacta în cel mai scurt timp.</p>
+
+            <form action="https://formsubmit.co/botosanimma@gmail.com" method="POST">
+                
+                <input type="hidden" name="_next" value="https://site-ul-tau.ro/succes.html">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-group">
+                    <label for="nume">Nume și Prenume</label>
+                    <input type="text" name="Nume complet" id="nume" placeholder="Numele tău" required>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;" class="grid-mobile">
+                    <div class="form-group">
+                        <label for="varsta">Vârstă (Minim 14)</label>
+                        <input type="number" name="Varsta" id="varsta" min="14" placeholder="Ex: 16" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="experienta">Experiență</label>
+                        <select name="Experienta" id="experienta">
+                            <option value="Incepator">Începător</option>
+                            <option value="Mediu">Am mai făcut</option>
+                            <option value="Avansat">Avansat</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Adresă Email</label>
+                    <input type="email" name="Email" id="email" placeholder="email@exemplu.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefon">Număr Telefon</label>
+                    <input type="tel" name="Telefon" id="telefon" placeholder="07xx xxx xxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mesaj">Mesaj (Opțional)</label>
+                    <textarea name="Mesaj" id="mesaj" rows="2" placeholder="Vreau să vin la antrenamente deoarece..."></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="termeni" name="Acord" required>
+                    <label for="termeni">
+                        Sunt conștient că acest proiect este o inițiativă independentă de tineret, antrenamentele se desfășoară pe propria răspundere și mă angajez să respect regulile de disciplină și respect ale grupului RMC.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit">Trimite Cererea</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 RMC Botoșani - Comunitatea sportivilor independenți.</p>
+    </footer>
+
+</body>
+</html>
