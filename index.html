@@ -26,13 +26,13 @@
             overflow-x: hidden;
         }
 
-        /* HEADER OPTIMIZAT */
+        /* HEADER CU NAVIGARE */
         header {
-            padding: 15px 5%;
+            padding: 10px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(13, 13, 13, 0.95);
+            background: rgba(13, 13, 13, 0.98);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
@@ -40,23 +40,45 @@
             border-bottom: 2px solid var(--accent);
         }
 
-        .logo-container { display: flex; align-items: center; gap: 20px; }
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
         
-        /* LOGO MULT MAI MARE */
         .logo-img { 
-            height: 90px; /* Mărit de la 75px */
+            height: 70px; 
             width: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+            border-radius: 8px;
+            transition: 0.3s;
         }
-        .logo-img:hover { transform: scale(1.05); }
 
-        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.8rem; letter-spacing: 2px; font-weight: 700; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; }
         .logo-text span { color: var(--accent); }
 
-        /* HERO SECTION - REGLAT PENTRU PC/TEL */
+        /* BUTOANE NAVIGARE SUS */
+        nav { display: flex; gap: 15px; }
+
+        .nav-btn {
+            text-decoration: none;
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-reguli { border-color: #444; }
+        .btn-reguli:hover { background: white; color: black; }
+
+        .btn-inscrie { background: var(--accent); font-weight: 700; }
+        .btn-inscrie:hover { background: white; color: var(--accent); }
+
+        /* HERO SECTION */
         .hero {
-            min-height: 60vh;
+            min-height: 70vh;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), 
                         url('https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
@@ -71,7 +93,7 @@
 
         .hero h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem); /* Scalare automată text */
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             text-transform: uppercase;
             margin-bottom: 15px;
             line-height: 1.1;
@@ -81,10 +103,10 @@
             max-width: 800px;
             font-size: clamp(1rem, 4vw, 1.3rem);
             color: #efefef;
-            font-weight: 400;
+            margin-bottom: 30px;
         }
 
-        /* ABOUT SECTION - GRID RESPONSIV */
+        /* ABOUT SECTION */
         .project-details {
             padding: 80px 5%;
             max-width: 1400px;
@@ -100,7 +122,6 @@
             font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 25px;
             position: relative;
-            display: inline-block;
         }
 
         .details-text h2::after {
@@ -113,15 +134,9 @@
             background: var(--accent);
         }
 
-        .details-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: var(--text-gray);
-        }
-
+        .details-text p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-gray); }
         .highlight { color: var(--accent); font-weight: 700; }
 
-        /* INFO CARDS - DESIGN MODERN */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -141,26 +156,6 @@
         .info-item i { color: var(--accent); font-size: 2rem; margin-bottom: 15px; }
         .info-item h4 { font-family: 'Oswald', sans-serif; margin-bottom: 10px; font-size: 1.3rem; }
 
-        .btn-main {
-            display: inline-block;
-            padding: 18px 40px;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            border-radius: 50px;
-            transition: 0.4s;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
-        }
-
-        .btn-main:hover {
-            background: white;
-            color: var(--accent);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
-        }
-
         .side-logo-container { text-align: center; }
         .side-logo {
             width: 100%;
@@ -171,8 +166,8 @@
 
         /* CONTACT SECTION */
         .contact-section {
-            background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
-            padding: 100px 5%;
+            background: #0a0a0a;
+            padding: 80px 5%;
             text-align: center;
         }
 
@@ -192,15 +187,13 @@
             color: white;
             text-decoration: none;
             border-radius: 12px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: 0.3s;
             background: #222;
-            border: 1px solid #333;
+            transition: 0.3s;
+            font-weight: 700;
         }
 
-        .insta-btn { background: linear-gradient(45deg, #f09433, #bc1888); border: none; }
-        .contact-link:hover { transform: scale(1.05); filter: brightness(1.2); }
+        .insta-btn { background: linear-gradient(45deg, #f09433, #bc1888); }
+        .contact-link:hover { transform: scale(1.05); }
 
         footer {
             padding: 50px 5%;
@@ -208,76 +201,77 @@
             background: #050505;
             color: #555;
             font-size: 0.9rem;
+            border-top: 1px solid #111;
         }
 
-        /* RESPONSIVE AJUSTĂRI */
+        /* RESPONSIVE */
         @media (max-width: 992px) {
             .project-details { grid-template-columns: 1fr; text-align: center; }
             .details-text h2::after { left: 50%; transform: translateX(-50%); }
-            .side-logo { max-width: 400px; margin-top: 40px; }
-            .logo-img { height: 75px; }
         }
 
         @media (max-width: 600px) {
-            header { flex-direction: column; gap: 10px; text-align: center; }
-            .logo-img { height: 65px; }
-            .contact-link { width: 100%; justify-content: center; }
-            .hero { padding-top: 80px; }
+            header { flex-direction: column; gap: 15px; padding: 20px; }
+            nav { width: 100%; justify-content: center; }
+            .nav-btn { font-size: 0.8rem; padding: 8px 12px; }
+            .logo-text { font-size: 1.2rem; }
+            .hero { padding-top: 40px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
+        <a href="index.html" class="logo-container">
             <img src="logo.jpeg" alt="RMC Logo" class="logo-img">
             <div class="logo-text">RMC <span>BOTOȘANI</span></div>
-        </div>
+        </a>
+        
+        <nav>
+            <a href="p.html" class="nav-btn btn-reguli">
+                <i class="fas fa-gavel"></i> Regulament
+            </a>
+            <a href="inscrie.html" class="nav-btn btn-inscrie">
+                <i class="fas fa-user-plus"></i> Înscrie-te
+            </a>
+        </nav>
     </header>
 
     <section class="hero">
         <h1>MAI MULT DECÂT UN CLUB</h1>
-        <p>O comunitate locală unită, unde disciplina întâlnește prietenia. Ne antrenăm dur, ne respectăm și evoluăm împreună în fiecare zi.</p>
+        <p>Comunitatea unde disciplina întâlnește respectul. Antrenamente gratuite pentru tinerii din Botoșani.</p>
+        <a href="inscrie.html" class="btn-inscrie nav-btn" style="font-size: 1.1rem; padding: 15px 40px; border-radius: 50px;">Începe Acum</a>
     </section>
 
     <section class="project-details">
         <div class="details-text">
-            <h2>DESPRE NOI</h2>
+            <h2>DESPRE PROIECT</h2>
             <p>
-                <span style="color:white; font-weight:700">Romania Martial Combat (RMC) Botoșani</span> este un proiect de suflet creat pentru tinerii din orașul nostru. Suntem o comunitate independentă, unde ajutorul reciproc este fundamentul fiecărei întâlniri.
+                <span style="color:white; font-weight:700">RMC Botoșani</span> este o inițiativă independentă dedicată sportului de contact și dezvoltării personale. Ne concentrăm pe MMA, Box, K1 și Calisthenics.
             </p>
             <p>
-                Aici, <span class="highlight">ANTRENAMENTELE SUNT GRATUITE</span>. Nu percepem taxe pentru că scopul nostru este să oferim o alternativă sănătoasă și disciplinată tinerilor, într-un mediu sigur și controlat.
+                Suntem mândri să oferim <span class="highlight">ANTRENAMENTE GRATUITE</span>. Credem că educația prin sport ar trebui să fie accesibilă oricărui tânăr dornic de evoluție.
             </p>
 
             <div class="info-grid">
                 <div class="info-item">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <h4>Cost Zero</h4>
-                    <p>Fără abonamente sau taxe. Singura ta investiție este efortul.</p>
+                    <i class="fas fa-bolt"></i>
+                    <h4>Disciplină</h4>
+                    <p>Antrenamentele noastre construiesc un caracter puternic și autocontrol.</p>
                 </div>
                 <div class="info-item">
-                    <i class="fas fa-user-clock"></i>
-                    <h4>Vârsta 14+</h4>
-                    <p>Deschis tinerilor de minim 14 ani, dornici de mișcare și disciplină.</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-heartbeat"></i>
-                    <h4>Mediu Sigur</h4>
-                    <p>Spațiu controlat unde respectul este lege. Zero toleranță pentru violență.</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Siguranță</h4>
+                    <p>Respectul reciproc este obligatoriu. Nu tolerăm violența gratuită.</p>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-users"></i>
-                    <h4>Comunitate</h4>
-                    <p>Nu suntem doar colegi de antrenament, suntem o echipă unită.</p>
+                    <h4>Unitate</h4>
+                    <p>Suntem o echipă care se ajută reciproc să treacă peste limite.</p>
                 </div>
             </div>
 
-            <p>
-                Deși nu avem personal calificat profesional, experiența noastră colectivă și dorința de a învăța unii de la alții ne fac să progresăm constant. Totul se bazează pe <span class="highlight">respect pentru sport</span> și autocontrol.
-            </p>
-
-            <a href="inscrie.html" class="btn-main">Vreau să fac parte din echipă</a>
+            <p>Dacă ai minim 14 ani și vrei să înveți arte marțiale într-un mediu prietenos, te așteptăm la antrenamente!</p>
         </div>
         
         <div class="side-logo-container">
@@ -286,22 +280,20 @@
     </section>
 
     <section class="contact-section">
-        <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.5rem;">Social media</h2>
-        <p style="color: #aaa; margin-top: 10px;">Fii la curent cu ultimele antrenamente și evenimente.</p>
+        <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase;">Urmărește-ne</h2>
         <div class="contact-container">
             <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="contact-link insta-btn">
-                <i class="fab fa-instagram"></i> @mma.botosani
+                <i class="fab fa-instagram"></i> Instagram
             </a>
-            
             <a href="mailto:botosanimma@gmail.com" class="contact-link">
-                <i class="fas fa-envelope"></i> botosanimma@gmail.com
+                <i class="fas fa-envelope"></i> Email Contact
             </a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 RMC Botoșani - Comunitate Independentă de Arte Marțiale.</p>
-        <p style="margin-top: 10px;">Antrenamente Gratuite | Vârstă Minimă 14 Ani | Respect & Disciplină</p>
+        <p>&copy; 2024 RMC Botoșani - Comunitate de Arte Marțiale.</p>
+        <p style="margin-top: 10px; opacity: 0.6;">Respect • Disciplină • Onoare</p>
     </footer>
 
 </body>
