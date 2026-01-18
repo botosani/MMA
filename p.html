@@ -1,1 +1,253 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulament & Consecințe - RMC Botoșani</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <style>
+        :root {
+            --accent: #e63946;
+            --bg: #0a0a0a;
+            --card: #121212;
+            --text: #ccc;
+            --warning: #ffcc00;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
+        .logo-img { height: 60px; border-radius: 8px; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; }
+        .logo-text span { color: var(--accent); }
+
+        .btn-home {
+            text-decoration: none;
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            padding: 8px 18px;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn-home:hover { background: var(--accent); }
+
+        .legal-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .policy-card {
+            background: var(--card);
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .policy-card h2 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .policy-card h2 i { color: var(--accent); }
+
+        .policy-card p, .policy-card li { color: var(--text); margin-bottom: 10px; }
+        
+        .policy-card ul { list-style: none; margin-left: 5px; }
+        .policy-card ul li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+        }
+
+        /* WARNING BOX */
+        .danger-zone {
+            background: rgba(230, 57, 70, 0.05);
+            border: 1px solid var(--accent);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .danger-zone h3 {
+            color: var(--accent);
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* SOCIAL MEDIA SECTION */
+        .social-box {
+            background: linear-gradient(45deg, #161616, #222);
+            padding: 40px;
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 60px;
+            border: 1px solid #333;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .social-item {
+            text-decoration: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            background: #2a2a2a;
+        }
+
+        .insta:hover { background: linear-gradient(45deg, #f09433, #bc1888); }
+        .mail:hover { background: var(--accent); }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #555;
+            font-size: 0.85rem;
+            border-top: 1px solid #111;
+        }
+
+        .legal-notice {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .logo-text { display: none; }
+            .policy-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo.jpeg" alt="RMC Logo" class="logo-img">
+            <div class="logo-text">RMC <span>BOTOȘANI</span></div>
+        </a>
+        <a href="index.html" class="btn-home">Acasa</a>
+    </header>
+
+    <div class="legal-container">
+        <h1>REGULAMENT INTERN</h1>
+
+        <div class="policy-card">
+            <h2><i class="fas fa-dumbbell"></i> 1. Program și Discipline</h2>
+            <p>RMC Botoșani oferă un sistem de antrenament hibrid, axat pe performanță și autoapărare:</p>
+            <ul>
+                <li><strong>Discipline:</strong> MMA, Box, K1, BJJ (Grappling).</li>
+                <li><strong>Condiție Fizică:</strong> Calisthenics și Sala de forță incluse în program.</li>
+                <li><strong>Locație variabilă:</strong> Antrenamentele pot avea loc în sală sau în aer liber, în funcție de programul stabilit pe grupul oficial.</li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2><i class="fas fa-shield-alt"></i> 2. Reguli Echipament</h2>
+            <p>Siguranța și igiena sunt prioritare în comunitatea noastră:</p>
+            <ul>
+                <li><strong>Suport de început:</strong> Membrii noi pot folosi echipamentul nostru (mănuși, protecții) timp de maxim <strong>4 zile de antrenament</strong>.</li>
+                <li><strong>Obligativitate:</strong> După această perioadă, este obligatoriu să deții propriul echipament personal (mănuși de box/mma, feșe, protecție dentară).</li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2><i class="fas fa-gavel"></i> 3. Conduită și Consecințe</h2>
+            <p>Aici nu este loc pentru "smardoială" sau agresivitate nejustificată. Suntem o echipă de sportivi.</p>
+            <ul>
+                <li><strong>Comportament:</strong> Sunt strict interzise înjurăturile, jignirile sau instigarea la conflicte.</li>
+                <li><strong>Violența în sală:</strong> Orice lovitură intenționată aplicată unui coleg în afara exercițiilor dictate de instructor duce la <strong>excluderea imediată</strong>.</li>
+            </ul>
+
+            <div class="danger-zone">
+                <h3><i class="fas fa-exclamation-triangle"></i> CONSECINȚE LEGALE</h3>
+                <p>Membrii RMC Botoșani trebuie să înțeleagă gravitatea acțiunilor lor:</p>
+                <ul>
+                    <li><strong>Răspundere Penală:</strong> Orice act de violență, vătămare corporală sau agresiune asupra unui coleg sau cetățean va fi raportat autorităților competente.</li>
+                    <li><strong>Legea 61/1991:</strong> Instigarea la bătaie sau participarea la scandaluri publice atrage sancțiuni legale contravenționale sau penale, conform legilor în vigoare din România.</li>
+                    <li><strong>Autoapărarea:</strong> Tehnicile învățate pot fi folosite <strong>DOAR</strong> în cazuri de legitimă apărare dovedită. Folosirea lor pentru a agresa pe cineva constituie circumstanță agravantă în fața legii.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="social-box">
+            <h2 style="font-family: 'Oswald', sans-serif; text-transform: uppercase;">Rămâi Conectat</h2>
+            <p>Urmărește-ne pentru anunțuri despre locație, orele de antrenament și noutăți.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="social-item insta">
+                    <i class="fab fa-instagram"></i> Instagram Oficial
+                </a>
+                <a href="mailto:botosanimma@gmail.com" class="social-item mail">
+                    <i class="fas fa-envelope"></i> Email Contact
+                </a>
+            </div>
+        </div>
+
+        <p class="legal-notice">
+            *RMC Botoșani este o inițiativă independentă. Participarea se face pe propria răspundere. Minorii au nevoie de acordul scris al părinților/tutorilor legali pentru a participa la sesiunile de antrenament.
+        </p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 RMC Botoșani.</p>
+    </footer>
+
+</body>
+</html>
