@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echipament & Info - RMC Botoșani</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --accent: #e63946;
+            --bg: #0d0d0d;
+            --card: #161616;
+            --text: #ececec;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #000;
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
+        .logo-img { height: 55px; border-radius: 5px; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; }
+        .logo-text span { color: var(--accent); }
+
+        .btn-back {
+            text-decoration: none;
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            padding: 8px 18px;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover { background: var(--accent); }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* CARDS */
+        .equip-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .equip-card h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .equip-card h2 i { color: var(--accent); }
+
+        .equip-card ul { list-style: none; }
+        .equip-card li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: #ccc;
+        }
+
+        .equip-card li::before {
+            content: "\f111";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 8px;
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: var(--accent);
+        }
+
+        /* INFO BOX */
+        .info-box {
+            background: #111;
+            border: 1px solid #333;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .info-box h3 {
+            font-family: 'Oswald', sans-serif;
+            color: #fff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .critical {
+            background: rgba(230, 57, 70, 0.15);
+            border: 1px solid var(--accent);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .critical strong { color: var(--accent); }
+
+        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo.jpeg" alt="RMC Logo" class="logo-img">
+            <div class="logo-text">RMC <span>BOTOȘANI</span></div>
+        </a>
+        <a href="index.html" class="btn-back">ACASĂ</a>
+    </header>
+
+    <div class="container">
+        <div class="section-header">
+            <h1>Ghidul tău de start</h1>
+        </div>
+
+        <div class="equip-card">
+            <h2><i class="fas fa-fist-raised"></i> Echipament Esențial</h2>
+            <ul>
+                <li><strong>Mănuși de Box:</strong> Sunt baza. Recomandăm mănuși de 12oz sau 14oz pentru a putea lucra tehnic și sigur cu partenerul.</li>
+                <li><strong>Proteza Dentară:</strong> Obligatorie dacă vrei să lucrezi mai intens. Protecția ta e pe primul loc.</li>
+                <li><strong>Mănuși MMA:</strong> Depinde doar de tine dacă vrei să îți iei. Ne adaptăm antrenamentul în funcție de ce avem.</li>
+            </ul>
+        </div>
+
+        <div class="equip-card">
+            <h2><i class="fas fa-map-marker-alt"></i> Locația & Sala</h2>
+            <ul>
+                <li><strong>Program Flexibil:</strong> Nu avem sală la dispoziție 24/7. Locația și ora se confirmă mereu pe grupul nostru înainte de antrenament.</li>
+                <li><strong>Respectă Spațiul:</strong> Indiferent unde ne antrenăm, lăsăm locul curat.</li>
+            </ul>
+        </div>
+
+        <div class="equip-card">
+            <h2><i class="fas fa-shining"></i> Igienă</h2>
+            <ul>
+                <li><strong>Haine Curate:</strong> Venim mereu cu tricou și pantaloni de sport spălați.</li>
+                <li><strong>Papuci:</strong> Obligatorii pentru a nu merge desculț prin afara spațiului de antrenament.</li>
+            </ul>
+        </div>
+
+        <div class="critical">
+            <h3><i class="fas fa-exclamation-triangle"></i> ATENȚIE LA ÎNTREȚINERE</h3>
+            <p><strong>NU băga mănușile la mașina de spălat!</strong> Se vor distruge imediat. După antrenament, scoate-le din geantă și lasă-le la aerisit. Este singura metodă prin care nu vor prinde miros urât.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 RMC Botoșani - Evoluăm împreună.</p>
+    </footer>
+
+</body>
+</html>
