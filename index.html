@@ -52,7 +52,6 @@
         .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; }
         .logo-text span { color: var(--accent); }
 
-        /* BUTOANE NAVIGARE SUS */
         nav { display: flex; gap: 15px; }
 
         .nav-btn {
@@ -136,6 +135,16 @@
 
         .details-text p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-gray); }
         .highlight { color: var(--accent); font-weight: 700; }
+
+        /* Caseta Disclaimer */
+        .disclaimer-box {
+            background: rgba(230, 57, 70, 0.1);
+            padding: 20px;
+            border-left: 4px solid var(--accent);
+            margin: 30px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .disclaimer-box p { margin: 0; font-size: 1rem; color: #eee; font-style: italic; }
 
         .info-grid {
             display: grid;
@@ -244,39 +253,47 @@
 
     <section class="hero">
         <h1>MAI MULT DECÂT UN CLUB</h1>
-        <p>Comunitatea unde disciplina întâlnește respectul. Antrenamente gratuite pentru tinerii din Botoșani.</p>
-        <a href="inscrie.html" class="btn-inscrie nav-btn" style="font-size: 1.1rem; padding: 15px 40px; border-radius: 50px;">Începe Acum</a>
+        <p>Proiect independent creat de tineri pentru tineri. Disciplină, sport și respect reciproc.</p>
+        <a href="inscrie.html" class="btn-inscrie nav-btn" style="font-size: 1.1rem; padding: 15px 40px; border-radius: 50px;">Vino la antrenament</a>
     </section>
 
     <section class="project-details">
         <div class="details-text">
-            <h2>DESPRE PROIECT</h2>
+            <h2>POVESTEA NOASTRĂ</h2>
             <p>
-                <span style="color:white; font-weight:700">RMC Botoșani</span> este o inițiativă independentă dedicată sportului de contact și dezvoltării personale. Ne concentrăm pe MMA, Box, K1 și Calisthenics.
+                RMC Botoșani a luat naștere din inițiativa a <span class="highlight">doi tineri din județul Botoșani</span>, de 17 și 18 ani, pasionați de artele marțiale mixte (MMA). 
             </p>
+            
+            <div class="disclaimer-box">
+                <p>
+                    <i class="fas fa-exclamation-triangle" style="color: var(--accent); margin-right: 10px;"></i>
+                    <strong>Transparență totală:</strong> Nu suntem antrenori calificați cu diplome. Suntem practicanți de MMA care vor să ofere tinerilor un cadru unde să muncească, să învețe și să se dezvolte împreună cu noi.
+                </p>
+            </div>
+
             <p>
-                Suntem mândri să oferim <span class="highlight">ANTRENAMENTE GRATUITE</span>. Credem că educația prin sport ar trebui să fie accesibilă oricărui tânăr dornic de evoluție.
+                Scopul nostru este simplu: să scoatem tineretul din fața ecranelor și să-i învățăm ce înseamnă <span class="highlight">autocontrolul</span>. Nu promovăm bătaia pe stradă, ci disciplina care te ajută să eviți conflictele inutile.
             </p>
 
             <div class="info-grid">
                 <div class="info-item">
-                    <i class="fas fa-bolt"></i>
-                    <h4>Disciplină</h4>
-                    <p>Antrenamentele noastre construiesc un caracter puternic și autocontrol.</p>
+                    <i class="fas fa-brain"></i>
+                    <h4>Mentalitate</h4>
+                    <p>Înveți să-ți stăpânești furia și să gândești limpede sub presiune.</p>
                 </div>
                 <div class="info-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>Siguranță</h4>
-                    <p>Respectul reciproc este obligatoriu. Nu tolerăm violența gratuită.</p>
+                    <i class="fas fa-handshake"></i>
+                    <h4>Respect</h4>
+                    <p>În sală toți suntem egali. Respectăm efortul fiecărui coleg.</p>
                 </div>
                 <div class="info-item">
-                    <i class="fas fa-users"></i>
-                    <h4>Unitate</h4>
-                    <p>Suntem o echipă care se ajută reciproc să treacă peste limite.</p>
+                    <i class="fas fa-ban"></i>
+                    <h4>Fără Stradă</h4>
+                    <p>Artele marțiale sunt pentru autoapărare și sport, nu pentru agresiune.</p>
                 </div>
             </div>
 
-            <p>Dacă ai minim 14 ani și vrei să înveți arte marțiale într-un mediu prietenos, te așteptăm la antrenamente!</p>
+            <p>Dacă vrei să te antrenezi gratuit, să-ți faci prieteni noi și să devii o versiune mai bună a ta, ușa noastră e deschisă (14 ani+).</p>
         </div>
         
         <div class="side-logo-container">
@@ -285,7 +302,7 @@
     </section>
 
     <section class="contact-section">
-        <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase;">Urmărește-ne</h2>
+        <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase;">Urmărește-ne parcursul</h2>
         <div class="contact-container">
             <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="contact-link insta-btn">
                 <i class="fab fa-instagram"></i> Instagram
@@ -297,8 +314,8 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 RMC Botoșani - Comunitate de Arte Marțiale.</p>
-        <p style="margin-top: 10px; opacity: 0.6;">Respect • Disciplină • Onoare</p>
+        <p>&copy; 2024 RMC Botoșani - Creat cu pasiune de tineri botoșăneni.</p>
+        <p style="margin-top: 10px; opacity: 0.6;">Evoluăm Împreună • Respect • Onoare</p>
     </footer>
 
 </body>
