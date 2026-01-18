@@ -3,23 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesaj Trimis - RMC Botoșani</title>
+    <title>Înscriere Trimisă - RMC Botoșani</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        body { background: #0d0d0d; color: white; font-family: 'Montserrat', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; margin: 0; }
-        .success-card { background: #161616; padding: 50px; border-radius: 20px; border-top: 5px solid #e63946; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        h1 { font-family: 'Oswald', sans-serif; font-size: 3rem; color: #e63946; margin-bottom: 20px; }
-        p { font-size: 1.2rem; color: #ccc; margin-bottom: 30px; }
-        .btn { text-decoration: none; background: white; color: black; padding: 15px 30px; border-radius: 5px; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        .btn:hover { background: #e63946; color: white; }
+        :root {
+            --accent: #e63946;
+            --bg: #0d0d0d;
+            --card: #161616;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .success-container {
+            background: var(--card);
+            padding: 50px 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            border-top: 5px solid var(--accent);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .icon-box {
+            font-size: 4rem;
+            color: #2ecc71; /* Verde pentru succes */
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #bbb;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn-home {
+            display: inline-block;
+            text-decoration: none;
+            background: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-home:hover {
+            background: white;
+            color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .social-hint {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #666;
+        }
     </style>
 </head>
 <body>
-    <div class="success-card">
+
+    <div class="success-container">
+        <div class="icon-box">
+            <i class="fas fa-check-circle"></i>
+        </div>
         <h1>CERERE TRIMISĂ!</h1>
-        <p>Mulțumim pentru interes! Un coleg te va contacta în cel mai scurt timp.</p>
-        <p>Până atunci, fii cu ochii pe Instagram-ul nostru.</p>
-        <a href="index.html" class="btn">Înapoi la Site</a>
+        <p>Salut! Am primit datele tale. Echipa RMC te va contacta pe <strong>Instagram</strong> sau <strong>Email</strong> în termen de <strong>24-48 ore</strong> pentru restul detaliilor.</p>
+        
+        <a href="index.html" class="btn-home">Înapoi la pagina principală</a>
+
+        <div class="social-hint">
+            Urmărește-ne pe Instagram: <br>
+            <strong>@mma.botosani</strong>
+        </div>
     </div>
+
 </body>
 </html>
