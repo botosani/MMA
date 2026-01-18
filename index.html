@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RMC Botoșani - Community Training</title>
+    <title>RMC Botoșani - Evoluăm Împreună</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
             --accent: #e63946;
             --bg: #0d0d0d;
-            --card: #1a1a1a;
+            --card: #161616;
+            --text-gray: #b0b0b0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,29 +23,42 @@
             background-color: var(--bg);
             color: white;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* HEADER OPTIMIZAT */
         header {
-            padding: 20px 5%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0,0,0,0.8);
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 2px solid var(--accent);
         }
 
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .logo-img { height: 45px; border-radius: 5px; }
-        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.4rem; letter-spacing: 1px; }
+        .logo-container { display: flex; align-items: center; gap: 20px; }
+        
+        /* LOGO MULT MAI MARE */
+        .logo-img { 
+            height: 90px; /* Mărit de la 75px */
+            width: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .logo-img:hover { transform: scale(1.05); }
+
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.8rem; letter-spacing: 2px; font-weight: 700; }
         .logo-text span { color: var(--accent); }
 
-        /* HERO SECTION */
+        /* HERO SECTION - REGLAT PENTRU PC/TEL */
         .hero {
-            height: 70vh;
-            background: linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.8)), 
-                        url('https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=1920&auto=format&fit=crop');
+            min-height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), 
+                        url('https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -52,108 +66,163 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .hero h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem); /* Scalare automată text */
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            line-height: 1.1;
         }
 
         .hero p {
-            max-width: 650px;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            color: #ddd;
+            max-width: 800px;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            color: #efefef;
+            font-weight: 400;
         }
 
-        .btn-main {
-            padding: 15px 40px;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            border-radius: 4px;
-            transition: 0.3s;
-            letter-spacing: 1px;
-        }
-
-        .btn-main:hover {
-            background: white;
-            color: var(--accent);
-            transform: scale(1.05);
-        }
-
-        /* ABOUT PROJECT */
+        /* ABOUT SECTION - GRID RESPONSIV */
         .project-details {
-            padding: 80px 10%;
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
             align-items: center;
         }
 
         .details-text h2 {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 25px;
-            border-left: 4px solid var(--accent);
-            padding-left: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .details-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
         }
 
         .details-text p {
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-            color: #bbb;
-        }
-
-        .highlight { color: white; font-weight: 700; }
-
-        /* CONTACT SECTION */
-        .contact-section {
-            background: var(--card);
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .contact-section h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
             margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-gray);
         }
 
-        .instagram-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 25px;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.1rem;
+        .highlight { color: var(--accent); font-weight: 700; }
+
+        /* INFO CARDS - DESIGN MODERN */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .info-item {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
             transition: 0.3s;
         }
 
-        .instagram-link:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(220, 39, 67, 0.4); }
+        .info-item:hover { transform: translateY(-5px); background: #222; }
+        .info-item i { color: var(--accent); font-size: 2rem; margin-bottom: 15px; }
+        .info-item h4 { font-family: 'Oswald', sans-serif; margin-bottom: 10px; font-size: 1.3rem; }
 
-        footer {
-            padding: 30px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #555;
-            border-top: 1px solid #222;
+        .btn-main {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: 0.4s;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
+        .btn-main:hover {
+            background: white;
+            color: var(--accent);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .side-logo-container { text-align: center; }
+        .side-logo {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(230, 57, 70, 0.2);
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 35px;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            background: #222;
+            border: 1px solid #333;
+        }
+
+        .insta-btn { background: linear-gradient(45deg, #f09433, #bc1888); border: none; }
+        .contact-link:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+        footer {
+            padding: 50px 5%;
+            text-align: center;
+            background: #050505;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE AJUSTĂRI */
+        @media (max-width: 992px) {
             .project-details { grid-template-columns: 1fr; text-align: center; }
-            .details-text h2 { padding-left: 0; border-left: none; border-bottom: 3px solid var(--accent); display: inline-block; }
-            .hero h1 { font-size: 2.2rem; }
+            .details-text h2::after { left: 50%; transform: translateX(-50%); }
+            .side-logo { max-width: 400px; margin-top: 40px; }
+            .logo-img { height: 75px; }
+        }
+
+        @media (max-width: 600px) {
+            header { flex-direction: column; gap: 10px; text-align: center; }
+            .logo-img { height: 65px; }
+            .contact-link { width: 100%; justify-content: center; }
+            .hero { padding-top: 80px; }
         }
     </style>
 </head>
@@ -167,40 +236,72 @@
     </header>
 
     <section class="hero">
-        <h1>EVOLUĂM ÎMPREUNĂ</h1>
-        <p>Nu suntem o academie oficială, ci o comunitate de tineri din Botoșani pasionați de artele marțiale. Ne antrenăm pentru disciplină și sănătate.</p>
-        <a href="inscrie.html" class="btn-main">Vreau să mă alătur</a>
+        <h1>MAI MULT DECÂT UN CLUB</h1>
+        <p>O comunitate locală unită, unde disciplina întâlnește prietenia. Ne antrenăm dur, ne respectăm și evoluăm împreună în fiecare zi.</p>
     </section>
 
     <section class="project-details">
         <div class="details-text">
-            <h2>DESPRE PROIECT</h2>
+            <h2>DESPRE NOI</h2>
             <p>
-                <span class="highlight">Romania Martial Combat (RMC) Botoșani</span> este o inițiativă independentă creată de un grup de băieți cu vârste între <span class="highlight">18 și 27 de ani</span>. 
+                <span style="color:white; font-weight:700">Romania Martial Combat (RMC) Botoșani</span> este un proiect de suflet creat pentru tinerii din orașul nostru. Suntem o comunitate independentă, unde ajutorul reciproc este fundamentul fiecărei întâlniri.
             </p>
             <p>
-                Este important de menționat: <span class="highlight">nu avem antrenori profesioniști</span> sau personal calificat. Suntem pur și simplu tineri majori care aleg să își petreacă timpul liber antrenându-se și învățând unii de la alții.
+                Aici, <span class="highlight">ANTRENAMENTELE SUNT GRATUITE</span>. Nu percepem taxe pentru că scopul nostru este să oferim o alternativă sănătoasă și disciplinată tinerilor, într-un mediu sigur și controlat.
             </p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h4>Cost Zero</h4>
+                    <p>Fără abonamente sau taxe. Singura ta investiție este efortul.</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-user-clock"></i>
+                    <h4>Vârsta 14+</h4>
+                    <p>Deschis tinerilor de minim 14 ani, dornici de mișcare și disciplină.</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <h4>Mediu Sigur</h4>
+                    <p>Spațiu controlat unde respectul este lege. Zero toleranță pentru violență.</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-users"></i>
+                    <h4>Comunitate</h4>
+                    <p>Nu suntem doar colegi de antrenament, suntem o echipă unită.</p>
+                </div>
+            </div>
+
             <p>
-                Totul se desfășoară într-un <span class="highlight">spațiu controlat</span>, unde respectul reciproc este lege. Nu promovăm bătaia, ci tehnica, condiția fizică și controlul emoțiilor. Orice formă de violență nejustificată este strict interzisă în grupul nostru.
+                Deși nu avem personal calificat profesional, experiența noastră colectivă și dorința de a învăța unii de la alții ne fac să progresăm constant. Totul se bazează pe <span class="highlight">respect pentru sport</span> și autocontrol.
             </p>
+
+            <a href="inscrie.html" class="btn-main">Vreau să fac parte din echipă</a>
         </div>
-        <div style="text-align: center;">
-            <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=500&auto=format&fit=crop" alt="Training" style="width: 100%; border-radius: 10px; filter: grayscale(50%);">
+        
+        <div class="side-logo-container">
+            <img src="logo.jpeg" alt="RMC Training" class="side-logo">
         </div>
     </section>
 
     <section class="contact-section">
-        <h2>CONTACT US</h2>
-        <p style="margin-bottom: 20px; color: #aaa;">Urmărește-ne activitatea sau trimite-ne un mesaj pe Instagram:</p>
-        <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="instagram-link">
-            <i class="fab fa-instagram"></i> @mma.botosani
-        </a>
+        <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.5rem;">Social media</h2>
+        <p style="color: #aaa; margin-top: 10px;">Follow us.</p>
+        <div class="contact-container">
+            <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="contact-link insta-btn">
+                <i class="fab fa-instagram"></i> @mma.botosani
+            </a>
+            
+            <a href="mailto:botosanimma@gmail.com" class="contact-link">
+                <i class="fas fa-envelope"></i> botosanimma@gmail.com
+            </a>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 RMC Botoșani - Proiect Independent de Tineret (18-27 ani).</p>
-        <p>Antrenamente în mediu controlat. Respectă sportul.</p>
+        <p>&copy; 2024 RMC Botoșani - Comunitate Independentă de Arte Marțiale.</p>
+        <p style="margin-top: 10px;">Antrenamente Gratuite | Vârstă Minimă 14 Ani | Respect & Disciplină</p>
     </footer>
 
 </body>
