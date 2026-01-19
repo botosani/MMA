@@ -32,7 +32,7 @@
             background-size: 100% 100%, 30px 30px, 30px 30px;
         }
 
-        /* --- HEADER OFICIAL (STILUL TĂU OPTIMIZAT) --- */
+        /* --- HEADER OFICIAL --- */
         header {
             padding: 10px 5%;
             display: flex;
@@ -131,13 +131,11 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
-            /* Imaginile raman alb-negru si usor intunecate */
-            filter: grayscale(100%) brightness(0.8);
+            /* AICI AM SCHIMBAT: grayscale este 0% (color) si brightness 1 (luminos) permanent */
+            filter: grayscale(0%) brightness(1);
             transition: 0.6s;
             z-index: 1;
         }
-
-        /* --- MODIFICARE: Blocul de hover pentru imagini a fost sters complet --- */
 
         .name-overlay {
             position: relative;
