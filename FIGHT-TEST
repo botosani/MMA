@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMC 2026 - Official Fight</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -421,7 +421,7 @@
             <img src="logo1.jpeg" alt="BMC Logo" class="logo-img">
             <div class="logo-text">BMC <span>BOTOȘANI</span></div>
         </a>
-        
+
         <nav>
             <a href="p.html" class="nav-btn btn-reguli"><i class="fas fa-gavel"></i> Regulament</a>
             <a href="ghid.html" class="nav-btn btn-reguli"><i class="fas fa-shirt"></i> Ghid</a>
@@ -431,7 +431,7 @@
     </header>
 
     <div class="broadcast-container">
-        
+
         <div class="event-meta">
             <div class="live-tag">BMC 2026</div>
             <h1 class="event-title">BMC 0</h1>
@@ -439,7 +439,7 @@
         </div>
 
         <div class="fight-card">
-            
+
             <div class="fighter-column">
                 <img src="logo1.jpeg" alt="Fighter 1" class="fighter-img">
                 <div class="name-overlay">
@@ -450,7 +450,7 @@
 
             <div class="stats-column">
                 <div class="vs-text">VS</div>
-                
+
                 <div class="stat-line">
                     <span class="stat-value">--</span> 
                     <span class="stat-label">VÂRSTĂ</span>
@@ -470,10 +470,7 @@
                 </div>
 
                 <div class="stat-line" style="border:none;">
-                    <span class="stat-value">0-0</span>
-                    <span class="stat-label">RECORD</span>
-                    <span class="stat-value">0-0</span>
-                </div>
+@@ -477,162 +477,162 @@
             </div>
 
             <div class="fighter-column">
@@ -488,7 +485,7 @@
 
         <div class="results-section">
             <h2 class="results-title">Istoric Meciuri</h2>
-            
+
             <div class="history-list">
 
                 <div class="history-item">
@@ -502,7 +499,7 @@
 
                     <div class="history-content">
                         <div class="history-details">
-                            
+
                             <div class="fighters-mini-view">
                                 <div class="mini-fighter">
                                     <img src="logo1.jpeg" alt="Fighter 1" class="mini-img">
@@ -540,7 +537,7 @@
 
                     <div class="history-content">
                         <div class="history-details">
-                            
+
                             <div class="fighters-mini-view">
                                 <div class="mini-fighter">
                                     <img src="logo1.jpeg" alt="Fighter 3" class="mini-img">
@@ -578,7 +575,7 @@
 
                     <div class="history-content">
                         <div class="history-details">
-                            
+
                             <div class="fighters-mini-view">
                                 <div class="mini-fighter">
                                     <img src="logo1.jpeg" alt="Fighter 5" class="mini-img">
@@ -618,7 +615,7 @@
         function toggleHistory(element) {
             const item = element.parentElement;
             const content = item.querySelector('.history-content');
-            
+
             if (item.classList.contains('active')) {
                 item.classList.remove('active');
                 content.style.maxHeight = null;
