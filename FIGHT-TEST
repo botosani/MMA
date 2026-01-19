@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMC 2026 - Official Fight</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --accent: #ff0000;
+            --bg: #050505;
+            --card-bg: rgba(15, 15, 15, 0.9);
+            --text-gray: #aaaaaa;
+            --neon-glow: 0 0 20px rgba(255, 0, 0, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(40, 0, 0, 0.2) 0%, transparent 80%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+        }
+
+        /* --- HEADER OFICIAL --- */
+        header {
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
+        .logo-img { height: 60px; width: auto; border-radius: 5px; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .logo-text span { color: var(--accent); }
+
+        nav { display: flex; gap: 10px; }
+        .nav-btn {
+            text-decoration: none; color: white; font-family: 'Oswald', sans-serif; font-size: 0.8rem;
+            text-transform: uppercase; padding: 8px 15px; border-radius: 4px; transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 6px;
+        }
+        .btn-reguli:hover { background: white; color: black; }
+        .btn-inscrie { background: var(--accent); border: none; font-weight: 700; }
+        .btn-inscrie:hover { background: white; color: var(--accent); box-shadow: var(--neon-glow); }
+
+        /* --- SECȚIUNE BROADCAST --- */
+        .broadcast-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .event-meta {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .live-tag {
+            background: var(--accent);
+            padding: 3px 12px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            display: inline-block;
+            margin-bottom: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        .event-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff 50%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .event-details {
+            font-weight: 800;
+            letter-spacing: 5px;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        /* --- FIGHT CARD MAIN --- */
+        .fight-card {
+            display: grid;
+            grid-template-columns: 1fr 300px 1fr;
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            overflow: hidden;
+        }
+
+        .fight-card::before { content: ''; position: absolute; top: 0; left: 0; width: 40px; height: 40px; border-top: 4px solid var(--accent); border-left: 4px solid var(--accent); z-index: 20; }
+        .fight-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 40px; height: 40px; border-bottom: 4px solid var(--accent); border-right: 4px solid var(--accent); z-index: 20; }
+
+        .fighter-column {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: #000;
+        }
+
+        .fighter-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; 
+            object-position: top center; 
+            filter: grayscale(0%) brightness(1);
+            z-index: 1;
+        }
+
+        .name-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,1) 20%, transparent 100%);
+            text-align: center;
+        }
+
+        .fighter-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .fighter-club {
+            font-weight: 800;
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        /* CENTRAL STATS */
+        .stats-column {
+            background: rgba(0,0,0,0.8);
+            border-left: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .vs-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 5rem;
+            text-align: center;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--accent);
+            font-style: italic;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 10px var(--accent));
+        }
+
+        .stat-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            font-weight: 900;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            width: 35%;
+            text-align: center;
+        }
+
+        /* --- STILURI NOI PENTRU ISTORIC (DROPDOWN) --- */
+        .results-section {
+            margin-top: 80px;
+            margin-bottom: 100px;
+        }
+
+        .results-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .results-title::after { content:''; height: 2px; flex-grow: 1; background: var(--accent); opacity: 0.3; }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .history-item {
+            background: #0f0f0f;
+            border: 1px solid #222;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .history-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+        }
+
+        /* Header-ul pe care dai click */
+        .history-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: linear-gradient(90deg, #0a0a0a 0%, #111 100%);
+        }
+
+        .match-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .match-cat {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 15px;
+        }
+
+        .dropdown-icon {
+            transition: transform 0.3s ease;
+            color: var(--accent);
+        }
+
+        .history-item.active .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Conținutul ascuns (Dropdown) */
+        .history-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: #050505;
+            border-top: 1px solid #222;
+        }
+
+        .history-details {
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        /* Zona cu luptătorii și winner */
+        .fighters-mini-view {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .mini-fighter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .mini-fighter.winner {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .mini-fighter.winner::after {
+            content: 'WINNER';
+            position: absolute;
+            top: -15px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.6rem;
+            padding: 2px 8px;
+            font-weight: 900;
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .mini-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #333;
+        }
+
+        .winner .mini-img {
+            border-color: var(--accent);
+        }
+
+        .mini-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .vs-mini {
+            font-style: italic;
+            font-weight: 900;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .win-method {
+            text-align: center;
+            color: #888;
+            font-size: 0.8rem;
+            border-bottom: 1px solid #222;
+            padding-bottom: 15px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .win-method span {
+            color: white;
+            font-weight: bold;
+        }
+
+        .yt-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border-radius: 4px;
+        }
+
+        .yt-btn:hover {
+            background: var(--accent);
+            box-shadow: 0 0 20px var(--accent);
+            color: black;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 950px) {
+            header { flex-direction: column; padding: 15px; gap: 15px; }
+            .fight-card { grid-template-columns: 1fr; }
+            .stats-column { order: 2; border: none; padding: 40px 20px; }
+            .fighter-column { height: 450px; }
+            .fighter-column:nth-child(1) { order: 1; }
+            .fighter-column:nth-child(3) { order: 3; }
+        }
+
+        @media (max-width: 600px) {
+            .fighters-mini-view { gap: 15px; }
+            .mini-img { width: 60px; height: 60px; }
+            .match-cat { display: block; margin-bottom: 5px; }
+            .history-header { align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo1.jpeg" alt="BMC Logo" class="logo-img">
+            <div class="logo-text">BMC <span>BOTOȘANI</span></div>
+        </a>
+        
+        <nav>
+            <a href="p.html" class="nav-btn btn-reguli"><i class="fas fa-gavel"></i> Regulament</a>
+            <a href="ghid.html" class="nav-btn btn-reguli"><i class="fas fa-shirt"></i> Ghid</a>
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Acasă</a>
+            <a href="inscrie.html" class="nav-btn btn-inscrie"><i class="fas fa-user-plus"></i> Înscrie-te</a>
+        </nav>
+    </header>
+
+    <div class="broadcast-container">
+        
+        <div class="event-meta">
+            <div class="live-tag">BMC 2026</div>
+            <h1 class="event-title">BMC 0</h1>
+            <p class="event-details">SEZONUL 0 • BOTOȘANI • ROMÂNIA</p>
+        </div>
+
+        <div class="fight-card">
+            
+            <div class="fighter-column">
+                <img src="logo1.jpeg" alt="Fighter 1" class="fighter-img">
+                <div class="name-overlay">
+                    <div class="fighter-name">LUPTĂTOR 1</div> 
+                    <div class="fighter-club">CLUB / ECHIPĂ</div>
+                </div>
+            </div>
+
+            <div class="stats-column">
+                <div class="vs-text">VS</div>
+                
+                <div class="stat-line">
+                    <span class="stat-value">--</span> 
+                    <span class="stat-label">VÂRSTĂ</span>
+                    <span class="stat-value">--</span> 
+                </div>
+
+                <div class="stat-line">
+                    <span class="stat-value">---</span>
+                    <span class="stat-label">ÎNĂLȚIME (CM)</span>
+                    <span class="stat-value">---</span>
+                </div>
+
+                <div class="stat-line">
+                    <span class="stat-value">---</span>
+                    <span class="stat-label">GREUTATE (KG)</span>
+                    <span class="stat-value">---</span>
+                </div>
+
+                <div class="stat-line" style="border:none;">
+                    <span class="stat-value">0-0</span>
+                    <span class="stat-label">RECORD</span>
+                    <span class="stat-value">0-0</span>
+                </div>
+            </div>
+
+            <div class="fighter-column">
+                <img src="logo1.jpeg" alt="Fighter 2" class="fighter-img">
+                <div class="name-overlay">
+                    <div class="fighter-name">LUPTĂTOR 2</div> 
+                    <div class="fighter-club">CLUB / ECHIPĂ</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="results-section">
+            <h2 class="results-title">Istoric Meciuri</h2>
+            
+            <div class="history-list">
+
+                <div class="history-item">
+                    <div class="history-header" onclick="toggleHistory(this)">
+                        <div>
+                            <span class="match-cat">CATEGORIE ---</span>
+                            <span class="match-title">LUPTĂTOR 1 vs LUPTĂTOR 2</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+
+                    <div class="history-content">
+                        <div class="history-details">
+                            
+                            <div class="fighters-mini-view">
+                                <div class="mini-fighter">
+                                    <img src="logo1.jpeg" alt="Fighter 1" class="mini-img">
+                                    <div class="mini-name">LUPTĂTOR 1</div>
+                                </div>
+
+                                <div class="vs-mini">VS</div>
+
+                                <div class="mini-fighter">
+                                    <img src="logo1.jpeg" alt="Fighter 2" class="mini-img">
+                                    <div class="mini-name">LUPTĂTOR 2</div>
+                                </div>
+                            </div>
+
+                            <div class="win-method">
+                                REZULTAT: <span>NONE</span> | METODĂ: <span>NONE</span>
+                            </div>
+
+                            <a href="#" class="yt-btn">
+                                <i class="fab fa-youtube"></i> Vezi Lupta
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="history-header" onclick="toggleHistory(this)">
+                        <div>
+                            <span class="match-cat">CATEGORIE ---</span>
+                            <span class="match-title">LUPTĂTOR 3 vs LUPTĂTOR 4</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+
+                    <div class="history-content">
+                        <div class="history-details">
+                            
+                            <div class="fighters-mini-view">
+                                <div class="mini-fighter">
+                                    <img src="logo1.jpeg" alt="Fighter 3" class="mini-img">
+                                    <div class="mini-name">LUPTĂTOR 3</div>
+                                </div>
+
+                                <div class="vs-mini">VS</div>
+
+                                <div class="mini-fighter">
+                                    <img src="logo1.jpeg" alt="Fighter 4" class="mini-img">
+                                    <div class="mini-name">LUPTĂTOR 4</div>
+                                </div>
+                            </div>
+
+                            <div class="win-method">
+                                REZULTAT: <span>NONE</span> | METODĂ: <span>NONE</span>
+                            </div>
+
+                            <a href="#" class="yt-btn">
+                                <i class="fab fa-youtube"></i> Vezi Lupta
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="history-header" onclick="toggleHistory(this)">
+                        <div>
+                            <span class="match-cat">CATEGORIE ---</span>
+                            <span class="match-title">LUPTĂTOR 5 vs LUPTĂTOR 6</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+
+                    <div class="history-content">
+                        <div class="history-details">
+                            
+                            <div class="fighters-mini-view">
+                                <div class="mini-fighter">
+                                    <img src="logo1.jpeg" alt="Fighter 5" class="mini-img">
+                                    <div class="mini-name">LUPTĂTOR 5</div>
+                                </div>
+
+                                <div class="vs-mini">VS</div>
+
+                                <div class="mini-fighter">
+                                    <img src="logo1.jpeg" alt="Fighter 6" class="mini-img">
+                                    <div class="mini-name">LUPTĂTOR 6</div>
+                                </div>
+                            </div>
+
+                            <div class="win-method">
+                                REZULTAT: <span>NONE</span> | METODĂ: <span>NONE</span>
+                            </div>
+
+                            <a href="#" class="yt-btn">
+                                <i class="fab fa-youtube"></i> Vezi Lupta
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer style="text-align:center; padding: 60px; color: #333; font-size: 0.7rem; letter-spacing: 3px; border-top: 1px solid #111;">
+        © 2026 BOTOȘANI MARTIAL COMBAT • BMC
+    </footer>
+
+    <script>
+        function toggleHistory(element) {
+            const item = element.parentElement;
+            const content = item.querySelector('.history-content');
+            
+            if (item.classList.contains('active')) {
+                item.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                document.querySelectorAll('.history-item').forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.history-content').style.maxHeight = null;
+                });
+
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+    </script>
+
+</body>
+</html>
