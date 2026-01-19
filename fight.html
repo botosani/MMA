@@ -24,7 +24,6 @@
             background-color: var(--bg);
             color: white;
             overflow-x: hidden;
-            /* Fundal cu rețea digitală discretă */
             background-image: 
                 radial-gradient(circle at 50% 50%, rgba(40, 0, 0, 0.2) 0%, transparent 80%),
                 linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
@@ -104,7 +103,7 @@
             text-transform: uppercase;
         }
 
-        /* --- FIGHT CARD (TALE OF THE TAPE) --- */
+        /* --- FIGHT CARD --- */
         .fight-card {
             display: grid;
             grid-template-columns: 1fr 300px 1fr;
@@ -112,28 +111,29 @@
             border: 1px solid rgba(255,255,255,0.05);
             position: relative;
             box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            overflow: hidden;
         }
 
-        /* Decorative HUD Corners */
-        .fight-card::before { content: ''; position: absolute; top: 0; left: 0; width: 40px; height: 40px; border-top: 4px solid var(--accent); border-left: 4px solid var(--accent); }
-        .fight-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 40px; height: 40px; border-bottom: 4px solid var(--accent); border-right: 4px solid var(--accent); }
+        .fight-card::before { content: ''; position: absolute; top: 0; left: 0; width: 40px; height: 40px; border-top: 4px solid var(--accent); border-left: 4px solid var(--accent); z-index: 20; }
+        .fight-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 40px; height: 40px; border-bottom: 4px solid var(--accent); border-right: 4px solid var(--accent); z-index: 20; }
 
         .fighter-column {
             position: relative;
-            height: 550px;
+            height: 600px; /* Am mărit puțin înălțimea pentru poze mari */
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            background: #000;
         }
 
         .fighter-img {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover;
-            /* AICI AM SCHIMBAT: grayscale este 0% (color) si brightness 1 (luminos) permanent */
-            filter: grayscale(0%) brightness(1);
-            transition: 0.6s;
+            /* 'cover' umple cadrul, 'top center' asigură că vedem capul/torso-ul */
+            object-fit: cover; 
+            object-position: top center; 
+            filter: grayscale(0%) brightness(1); /* Mereu colorat și luminos */
             z-index: 1;
         }
 
@@ -141,17 +141,16 @@
             position: relative;
             z-index: 2;
             padding: 30px;
-            background: linear-gradient(to top, #000 30%, transparent 100%);
+            background: linear-gradient(to top, rgba(0,0,0,1) 20%, transparent 100%);
             text-align: center;
         }
 
         .fighter-name {
             font-family: 'Oswald', sans-serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-transform: uppercase;
             line-height: 1;
             margin-bottom: 5px;
-            min-height: 1.1em;
         }
 
         .fighter-club {
@@ -163,7 +162,7 @@
 
         /* CENTRAL STATS */
         .stats-column {
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.8);
             border-left: 1px solid rgba(255,255,255,0.05);
             border-right: 1px solid rgba(255,255,255,0.05);
             display: flex;
@@ -252,7 +251,7 @@
 
     <header>
         <a href="index.html" class="logo-container">
-            <img src="logo1.jpeg" alt="RMC Logo" class="logo-img">
+            <img src="logo1.jpeg" alt="BMC Logo" class="logo-img">
             <div class="logo-text">BMC <span>BOTOȘANI</span></div>
         </a>
         
@@ -275,9 +274,10 @@
         <div class="fight-card">
             
             <div class="fighter-column">
-                <img src="logo1.jpeg" alt="Fighter 1" class="fighter-img">
+                <img src="EDONE.jpg" alt="Fighter 1" class="fighter-img">
                 <div class="name-overlay">
-                    <div class="fighter-name"></div> <div class="fighter-club">ECHIPA BMC</div>
+                    <div class="fighter-name">Luptător 1</div> 
+                    <div class="fighter-club">ECHIPA BMC</div>
                 </div>
             </div>
 
@@ -285,8 +285,10 @@
                 <div class="vs-text">VS</div>
                 
                 <div class="stat-line">
-                    <span class="stat-value">--</span> <span class="stat-label">VÂRSTĂ</span>
-                    <span class="stat-value">--</span> </div>
+                    <span class="stat-value">--</span> 
+                    <span class="stat-label">VÂRSTĂ</span>
+                    <span class="stat-value">--</span> 
+                </div>
 
                 <div class="stat-line">
                     <span class="stat-value">---</span>
@@ -308,9 +310,10 @@
             </div>
 
             <div class="fighter-column">
-                <img src="logo1.jpeg" alt="Fighter 2" class="fighter-img">
+                <img src="DDONE.jpg" alt="Fighter 2" class="fighter-img">
                 <div class="name-overlay">
-                    <div class="fighter-name"></div> <div class="fighter-club">ECHIPA BMC</div>
+                    <div class="fighter-name">Luptător 2</div> 
+                    <div class="fighter-club">ECHIPA BMC</div>
                 </div>
             </div>
 
