@@ -9,292 +9,308 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* 1. SETĂRI GENERALE */
         :root {
-            --red: #e63946;    /* Culoarea de accent */
-            --dark: #0a0a0a;   /* Fundal site */
-            --card: #141414;   /* Fundal carduri */
+            --red: #ff0015;    
+            --dark-bg: #020202;   
+            --card-bg: #0f0f0f;   
             --text: #ffffff;
-            --gray: #888888;
+            --gray: #666666;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark);
+            background: radial-gradient(circle at center, #1a1112 0%, var(--dark-bg) 100%);
             color: var(--text);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* 2. HEADER SIMPLU */
+        /* HEADER MODERN */
         header {
-            padding: 20px;
+            padding: 25px;
             text-align: center;
-            border-bottom: 2px solid var(--red);
-            background: #000;
+            border-bottom: 3px solid var(--red);
+            background: rgba(0,0,0,0.9);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
 
         .btn-back {
             color: white;
             text-decoration: none;
             font-family: 'Oswald', sans-serif;
-            border: 1px solid var(--red);
-            padding: 8px 20px;
-            border-radius: 4px;
+            border: 2px solid var(--red);
+            padding: 10px 25px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s;
         }
-        .btn-back:hover { background: var(--red); }
+        .btn-back:hover { background: var(--red); box-shadow: 0 0 20px var(--red); }
 
-        /* 3. ZONA PRINCIPALĂ (FIGHT CARD) */
         .container {
-            max-width: 1000px;
-            margin: 40px auto;
+            max-width: 1100px;
+            margin: 50px auto;
             padding: 0 20px;
         }
 
-        .event-title {
+        /* TITLU EVENIMENT */
+        .event-header {
             text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .main-event-badge {
+            background: var(--red);
+            padding: 4px 15px;
             font-family: 'Oswald', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            color: var(--red);
+            font-size: 0.8rem;
             letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .event-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 10px;
         }
 
         .event-date {
-            text-align: center;
             color: var(--gray);
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: 5px;
+            font-weight: bold;
         }
 
-        /* CARDUL DE LUPTĂ (GRID) */
+        /* FIGHT CARD PRO */
         .fight-card {
             display: grid;
-            grid-template-columns: 1fr 280px 1fr; /* Stânga - Centru - Dreapta */
+            grid-template-columns: 1fr 300px 1fr;
             gap: 20px;
-            background: var(--card);
-            border: 1px solid #333;
-            border-radius: 15px;
-            padding: 30px;
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 4px; /* Mai drept, aspect mai "industrial" */
+            padding: 50px 30px;
             align-items: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             position: relative;
-            overflow: hidden;
+            background-image: linear-gradient(45deg, rgba(255,0,0,0.02) 25%, transparent 25%, transparent 50%, rgba(255,0,0,0.02) 50%, rgba(255,0,0,0.02) 75%, transparent 75%, transparent);
+            background-size: 100px 100px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
         }
 
-        /* Linia decorativă de sus */
-        .fight-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--red);
-        }
-
-        /* Luptătorii (Stânga și Dreapta) */
         .fighter-box {
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            z-index: 2;
         }
 
-        .fighter-img-placeholder {
-            width: 150px;
-            height: 150px;
-            background: #222;
+        .fighter-img {
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #444;
-            border: 2px dashed #555;
-            margin-bottom: 15px;
+            object-fit: cover;
+            border: 4px solid var(--red);
+            margin-bottom: 25px;
+            box-shadow: 0 0 30px rgba(255, 0, 21, 0.3);
+            filter: grayscale(20%); /* Aspect dramatic */
         }
 
         .fighter-name {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             text-transform: uppercase;
-            margin-bottom: 5px;
+            color: #fff;
+            min-height: 1.2em; /* Păstrează spațiul chiar dacă e gol */
         }
 
         .fighter-club {
             color: var(--red);
-            font-weight: 700;
+            font-weight: bold;
             font-size: 0.9rem;
-            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
         }
 
-        /* Coloana din Mijloc (Statistici) */
+        /* STATS & VS */
         .stats-box {
-            background: #000;
-            border-radius: 10px;
-            padding: 20px;
-            border: 1px solid #222;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .vs-badge {
+            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: var(--red);
+            margin-bottom: 20px;
+            font-style: italic;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); text-shadow: 0 0 0px var(--red); }
+            50% { transform: scale(1.1); text-shadow: 0 0 20px var(--red); }
+            100% { transform: scale(1); text-shadow: 0 0 0px var(--red); }
         }
 
         .stat-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #222;
-            font-size: 0.9rem;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
-        .stat-row:last-child { border-bottom: none; }
 
         .stat-label {
             color: var(--gray);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            align-self: center;
+        }
+
+        .stat-val {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            width: 30%;
+            text-align: center;
+        }
+
+        /* ISTORIC */
+        .history-section { margin-top: 100px; }
+        
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            border-left: 6px solid var(--red);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .table-container {
+            background: var(--card-bg);
+            padding: 2px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th {
+            background: #050505;
+            color: var(--red);
+            text-align: left;
+            padding: 20px;
+            font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .stat-val { font-family: 'Oswald', sans-serif; font-weight: 700; }
-
-        .vs-badge {
-            text-align: center;
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
-            color: var(--red);
-            margin: 15px 0;
-            font-style: italic;
+        td {
+            padding: 20px;
+            border-bottom: 1px solid #1a1a1a;
+            font-size: 0.9rem;
         }
 
-        /* 4. ISTORIC LUPTE (TABEL) */
-        .history-section {
-            margin-top: 80px;
-        }
+        tr:hover td { background: rgba(255,0,0,0.02); }
 
-        .section-header {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--red);
-            padding-left: 15px;
-            text-transform: uppercase;
-        }
-
-        .history-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--card);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .history-table th, .history-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #222;
-        }
-
-        .history-table th {
-            background: #222;
-            color: var(--red);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            font-family: 'Oswald', sans-serif;
-        }
-
-        .empty-state {
-            text-align: center;
-            color: var(--gray);
-            padding: 30px;
-            font-style: italic;
-        }
-
-        /* RESPONSIVE (TELEFON) */
-        @media (max-width: 800px) {
-            .fight-card { grid-template-columns: 1fr; gap: 30px; }
-            .stats-box { order: 2; margin: 20px 0; } /* Pune stats la mijloc pe mobil */
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .fight-card { grid-template-columns: 1fr; padding: 40px 20px; }
+            .stats-box { order: 2; width: 100%; max-width: 400px; margin: 0 auto; }
             .fighter-box:nth-child(1) { order: 1; }
             .fighter-box:nth-child(3) { order: 3; }
+            .fighter-img { width: 150px; height: 150px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html" class="btn-back">Înapoi Acasă</a>
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Pagina Principală</a>
     </header>
 
     <div class="container">
         
-        <h1 class="event-title">BMC 0 FIGHT</h1>
-        <p class="event-date">DATA: URMEAZĂ SĂ FIE ANUNȚATĂ</p>
+        <div class="event-header">
+            <span class="main-event-badge">GALA OFICIALĂ</span>
+            <h1 class="event-title">BMC 0 FIGHT</h1>
+            <p class="event-date">DATA: ÎN CURÂND</p>
+        </div>
 
         <div class="fight-card">
             
             <div class="fighter-box">
-                <div class="fighter-img-placeholder"><i class="fas fa-user"></i></div>
-                <div class="fighter-name">NONE</div>
-                <div class="fighter-club">BMC BOTOȘANI</div>
+                <img src="logo1.jpeg" alt="Luptător" class="fighter-img">
+                <div class="fighter-name"></div> <div class="fighter-club">CLUB BMC</div>
             </div>
 
             <div class="stats-box">
                 <div class="vs-badge">VS</div>
                 
                 <div class="stat-row">
-                    <span class="stat-val">---</span>
-                    <span class="stat-label">Vârstă</span>
-                    <span class="stat-val">---</span>
-                </div>
+                    <span class="stat-val">--</span> <span class="stat-label">Vârstă</span>
+                    <span class="stat-val">--</span> </div>
+
                 <div class="stat-row">
                     <span class="stat-val">--- cm</span>
                     <span class="stat-label">Înălțime</span>
                     <span class="stat-val">--- cm</span>
                 </div>
+
                 <div class="stat-row">
                     <span class="stat-val">--- kg</span>
                     <span class="stat-label">Greutate</span>
                     <span class="stat-val">--- kg</span>
                 </div>
+
                 <div class="stat-row">
                     <span class="stat-val">0-0-0</span>
-                    <span class="stat-label">Palmares</span>
+                    <span class="stat-label">Record</span>
                     <span class="stat-val">0-0-0</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-val">---</span>
-                    <span class="stat-label">Stil</span>
-                    <span class="stat-val">---</span>
                 </div>
             </div>
 
             <div class="fighter-box">
-                <div class="fighter-img-placeholder"><i class="fas fa-user"></i></div>
-                <div class="fighter-name">NONE</div>
-                <div class="fighter-club">ADVERSAR / BMC</div>
+                <img src="logo1.jpeg" alt="Luptător" class="fighter-img">
+                <div class="fighter-name"></div> <div class="fighter-club">ADVERSAR</div>
             </div>
 
         </div>
 
         <div class="history-section">
-            <h2 class="section-header">Istoric & Rezultate Oficiale</h2>
-            
-            <table class="history-table">
-                <thead>
-                    <tr>
-                        <th>Eveniment / Data</th>
-                        <th>Meci (Cine vs Cine)</th>
-                        <th>Câștigător</th>
-                        <th>Metodă</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="4" class="empty-state">
-                            Nu există meciuri înregistrate în acest moment.
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2 class="section-title">Istoric Lupte RMC</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Eveniment</th>
+                            <th>Meci</th>
+                            <th>Rezultat</th>
+                            <th>Metodă</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" style="text-align:center; color:#444; padding: 50px;">
+                                <i class="fas fa-database" style="margin-bottom:10px; font-size: 2rem;"></i><br>
+                                Nu sunt date înregistrate pentru acest sezon.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
