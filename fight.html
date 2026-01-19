@@ -3,309 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fight Card - RMC Botoșani</title>
+    <title>BMC 0 FIGHT - Official Card</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
-            --red: #ff0015;    
-            --dark-bg: #020202;   
-            --card-bg: #0f0f0f;   
-            --text: #ffffff;
-            --gray: #666666;
-            --glass: rgba(255, 255, 255, 0.03);
+            --red: #ff0000;
+            --gold: #d4af37;
+            --dark: #020202;
+            --card-bg: rgba(15, 15, 15, 0.95);
+            --neon-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: radial-gradient(circle at center, #1a1112 0%, var(--dark-bg) 100%);
-            color: var(--text);
+            background-color: var(--dark);
+            color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
+            /* Fundal cu textură de tip "mesh" și gradient roșiatic */
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(60, 0, 0, 0.3) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
         }
 
-        /* HEADER MODERN */
+        /* TEXT DE FUNDAL GIGANT (DECORATIV) */
+        .bg-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20vw;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            z-index: -1;
+            text-transform: uppercase;
+            pointer-events: none;
+            letter-spacing: -10px;
+        }
+
         header {
-            padding: 25px;
-            text-align: center;
-            border-bottom: 3px solid var(--red);
-            background: rgba(0,0,0,0.9);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(to bottom, #000, transparent);
         }
 
         .btn-back {
-            color: white;
             text-decoration: none;
+            color: #fff;
             font-family: 'Oswald', sans-serif;
             border: 2px solid var(--red);
-            padding: 10px 25px;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: 0.3s;
+            padding: 10px 30px;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
         }
-        .btn-back:hover { background: var(--red); box-shadow: 0 0 20px var(--red); }
+        .btn-back:hover { background: var(--red); box-shadow: var(--neon-shadow); }
 
         .container {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        /* TITLU EVENIMENT */
+        /* EVENT HEADER */
         .event-header {
             text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .main-event-badge {
-            background: var(--red);
-            padding: 4px 15px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            display: inline-block;
+            margin-bottom: 80px;
         }
 
         .event-title {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
             text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 10px;
+            line-height: 0.9;
+            background: linear-gradient(to bottom, #fff 50%, #555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255,0,0,0.5));
         }
 
-        .event-date {
-            color: var(--gray);
-            letter-spacing: 5px;
+        .event-subtitle {
+            font-size: 1.2rem;
+            color: var(--red);
+            letter-spacing: 8px;
             font-weight: bold;
+            margin-top: 10px;
+            text-transform: uppercase;
         }
 
-        /* FIGHT CARD PRO */
+        /* FIGHT CARD - PREMIUM LOOK */
         .fight-card {
             display: grid;
             grid-template-columns: 1fr 300px 1fr;
-            gap: 20px;
+            gap: 0; /* Lipite pentru un aspect mai compact */
             background: var(--card-bg);
-            border: 1px solid #222;
-            border-radius: 4px; /* Mai drept, aspect mai "industrial" */
-            padding: 50px 30px;
-            align-items: center;
+            border: 1px solid rgba(255,255,255,0.1);
             position: relative;
-            background-image: linear-gradient(45deg, rgba(255,0,0,0.02) 25%, transparent 25%, transparent 50%, rgba(255,0,0,0.02) 50%, rgba(255,0,0,0.02) 75%, transparent 75%, transparent);
-            background-size: 100px 100px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+            box-shadow: 0 0 100px rgba(0,0,0,1);
+            border-radius: 4px;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fight-card:hover {
+            transform: scale(1.02);
+            border-color: var(--red);
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.2);
         }
 
         .fighter-box {
-            text-align: center;
-            z-index: 2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to bottom, transparent, rgba(255,0,0,0.05));
+        }
+
+        /* MODIFICARE: POZĂ PORTRET STIL POSTER */
+        .fighter-frame {
+            position: relative;
+            width: 250px;
+            height: 350px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+            /* Tăiere colțuri stil "octagon" */
+            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
         }
 
         .fighter-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border: 4px solid var(--red);
-            margin-bottom: 25px;
-            box-shadow: 0 0 30px rgba(255, 0, 21, 0.3);
-            filter: grayscale(20%); /* Aspect dramatic */
+            filter: contrast(1.2) brightness(0.8) grayscale(30%);
+            transition: 0.5s;
+        }
+
+        .fight-card:hover .fighter-img {
+            filter: contrast(1.1) brightness(1) grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        .fighter-name-area {
+            min-height: 80px;
+            text-align: center;
         }
 
         .fighter-name {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             text-transform: uppercase;
-            color: #fff;
-            min-height: 1.2em; /* Păstrează spațiul chiar dacă e gol */
+            line-height: 1;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
         }
 
         .fighter-club {
-            color: var(--red);
-            font-weight: bold;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            margin-top: 5px;
+            background: var(--red);
+            padding: 2px 10px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
         }
 
-        /* STATS & VS */
-        .stats-box {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 25px;
-            position: relative;
+        /* CENTRAL STATS */
+        .stats-center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            border-left: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            background: rgba(0,0,0,0.4);
         }
 
-        .vs-badge {
+        .vs-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 5rem;
             text-align: center;
-            font-family: 'Oswald', sans-serif;
-            font-size: 3.5rem;
-            color: var(--red);
+            color: transparent;
+            -webkit-text-stroke: 2px var(--red);
             margin-bottom: 20px;
+            position: relative;
             font-style: italic;
-            animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); text-shadow: 0 0 0px var(--red); }
-            50% { transform: scale(1.1); text-shadow: 0 0 20px var(--red); }
-            100% { transform: scale(1); text-shadow: 0 0 0px var(--red); }
+        .vs-logo::after {
+            content: 'VS';
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--red);
+            font-size: 4.5rem;
+            filter: blur(15px);
+            opacity: 0.5;
         }
 
-        .stat-row {
+        .stat-line {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
+            align-items: center;
+            padding: 15px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .stat-label {
-            color: var(--gray);
             font-size: 0.7rem;
+            font-weight: bold;
+            color: #666;
             text-transform: uppercase;
             letter-spacing: 2px;
-            align-self: center;
         }
 
-        .stat-val {
+        .stat-v {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
+            color: #fff;
             width: 30%;
             text-align: center;
         }
 
-        /* ISTORIC */
-        .history-section { margin-top: 100px; }
-        
-        .section-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
-            text-transform: uppercase;
-            border-left: 6px solid var(--red);
-            padding-left: 20px;
-            margin-bottom: 30px;
+        /* ISTORIC REZULTATE */
+        .history-section {
+            margin-top: 100px;
         }
 
-        .table-container {
-            background: var(--card-bg);
+        .section-tag {
+            color: var(--red);
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .table-box {
+            background: #080808;
+            border: 1px solid #1a1a1a;
             padding: 2px;
-            border-radius: 4px;
-            overflow-x: auto;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 600px;
         }
 
         th {
-            background: #050505;
-            color: var(--red);
             text-align: left;
             padding: 20px;
+            background: #000;
             font-family: 'Oswald', sans-serif;
+            color: var(--red);
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         td {
             padding: 20px;
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid #111;
             font-size: 0.9rem;
+            color: #888;
         }
 
-        tr:hover td { background: rgba(255,0,0,0.02); }
-
         /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .fight-card { grid-template-columns: 1fr; padding: 40px 20px; }
-            .stats-box { order: 2; width: 100%; max-width: 400px; margin: 0 auto; }
+        @media (max-width: 1000px) {
+            .fight-card { grid-template-columns: 1fr; }
+            .stats-center { order: 2; border: none; padding: 40px; }
             .fighter-box:nth-child(1) { order: 1; }
             .fighter-box:nth-child(3) { order: 3; }
-            .fighter-img { width: 150px; height: 150px; }
+            .bg-text { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-text">BATTLE</div>
+
     <header>
-        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Pagina Principală</a>
+        <a href="index.html" class="btn-back">INAPOI ACASA</a>
     </header>
 
     <div class="container">
         
         <div class="event-header">
-            <span class="main-event-badge">GALA OFICIALĂ</span>
-            <h1 class="event-title">BMC 0</h1>
-            <p class="event-date">DATA: ÎN CURÂND</p>
+            <h1 class="event-title">BMC 0 FIGHT</h1>
+            <div class="event-subtitle">Botoșani • Romania</div>
         </div>
 
         <div class="fight-card">
             
             <div class="fighter-box">
-                <img src="logo1.jpeg" alt="Luptător" class="fighter-img">
-                <div class="fighter-name"></div> <div class="fighter-club">CLUB BMC</div>
+                <div class="fighter-frame">
+                    <img src="logo1.jpeg" alt="Fighter" class="fighter-img">
+                </div>
+                <div class="fighter-name-area">
+                    <div class="fighter-name"></div> <span class="fighter-club">CLUB BMC</span>
+                </div>
             </div>
 
-            <div class="stats-box">
-                <div class="vs-badge">VS</div>
+            <div class="stats-center">
+                <div class="vs-logo">VS</div>
                 
-                <div class="stat-row">
-                    <span class="stat-val">--</span> <span class="stat-label">Vârstă</span>
-                    <span class="stat-val">--</span> </div>
+                <div class="stat-line">
+                    <span class="stat-v">--</span> <span class="stat-label">VARSTA</span>
+                    <span class="stat-v">--</span> </div>
 
-                <div class="stat-row">
-                    <span class="stat-val">--- cm</span>
-                    <span class="stat-label">Înălțime</span>
-                    <span class="stat-val">--- cm</span>
+                <div class="stat-line">
+                    <span class="stat-v">--- CM</span>
+                    <span class="stat-label">INALTIME</span>
+                    <span class="stat-v">--- CM</span>
                 </div>
 
-                <div class="stat-row">
-                    <span class="stat-val">--- kg</span>
-                    <span class="stat-label">Greutate</span>
-                    <span class="stat-val">--- kg</span>
+                <div class="stat-line">
+                    <span class="stat-v">--- KG</span>
+                    <span class="stat-label">GREUTATE</span>
+                    <span class="stat-v">--- KG</span>
                 </div>
 
-                <div class="stat-row">
-                    <span class="stat-val">0-0-0</span>
-                    <span class="stat-label">Record</span>
-                    <span class="stat-val">0-0-0</span>
+                <div class="stat-line">
+                    <span class="stat-v">0-0-0</span>
+                    <span class="stat-label">PALMARES</span>
+                    <span class="stat-v">0-0-0</span>
                 </div>
             </div>
 
             <div class="fighter-box">
-                <img src="logo1.jpeg" alt="Luptător" class="fighter-img">
-                <div class="fighter-name"></div> <div class="fighter-club">CLUB BMC</div>
+                <div class="fighter-frame">
+                    <img src="logo1.jpeg" alt="Fighter" class="fighter-img">
+                </div>
+                <div class="fighter-name-area">
+                    <div class="fighter-name"></div> <span class="fighter-club">CLUB BMC</span>
+                </div>
             </div>
 
         </div>
 
         <div class="history-section">
-            <h2 class="section-title">Istoric Lupte RMC</h2>
-            <div class="table-container">
+            <span class="section-tag">Arhivă</span>
+            <h2 style="font-family: 'Oswald'; font-size: 2.5rem; margin-bottom: 30px; text-transform: uppercase;">Rezultate Gală</h2>
+            
+            <div class="table-box">
                 <table>
                     <thead>
                         <tr>
-                            <th>Eveniment</th>
-                            <th>Meci</th>
-                            <th>Rezultat</th>
+                            <th>Meci / Categorie</th>
+                            <th>Câștigător</th>
                             <th>Metodă</th>
+                            <th>Runda</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="4" style="text-align:center; color:#444; padding: 50px;">
-                                <i class="fas fa-database" style="margin-bottom:10px; font-size: 2rem;"></i><br>
-                                Nu sunt date înregistrate pentru acest sezon.
+                            <td colspan="4" style="text-align: center; padding: 60px;">
+                                <i class="fas fa-hourglass-start" style="color: var(--red); font-size: 2rem; margin-bottom: 15px;"></i><br>
+                                EVENIMENTUL NU A ÎNCEPUT ÎNCĂ.
                             </td>
                         </tr>
                     </tbody>
@@ -314,6 +372,10 @@
         </div>
 
     </div>
+
+    <footer style="text-align: center; padding: 60px; color: #333; font-size: 0.8rem; letter-spacing: 2px;">
+        © 2026 BMC BOTOȘANI
+    </footer>
 
 </body>
 </html>
