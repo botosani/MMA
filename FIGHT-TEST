@@ -281,7 +281,7 @@
                 <img src="logo1.jpeg" alt="Fighter 1" class="fighter-img">
                 <div class="name-overlay">
                     <div class="fighter-name">LUPTĂTOR 1</div> 
-                    <div class="fighter-club">CLUB / ECHIPĂ</div>
+                    <div class="fighter-club">Scor 0-0</div>
                 </div>
             </div>
 
@@ -308,7 +308,7 @@
                 <img src="logo1.jpeg" alt="Fighter 2" class="fighter-img">
                 <div class="name-overlay">
                     <div class="fighter-name">LUPTĂTOR 2</div> 
-                    <div class="fighter-club">CLUB / ECHIPĂ</div>
+                    <div class="fighter-club">Scor 0-0</div>
                 </div>
             </div>
         </div>
