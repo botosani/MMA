@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Istoric Meciuri - BMC</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --accent: #ff0000;
+            --bg: #050505;
+            --card-bg: #0f0f0f;
+            --border: #222;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(255, 0, 0, 0.1) 0%, transparent 50%);
+            min-height: 100vh;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
+        .logo-img { height: 50px; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; }
+        .logo-text span { color: var(--accent); }
+
+        .back-btn {
+            text-decoration: none; color: white; font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem; text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+            transition: 0.3s;
+        }
+        .back-btn:hover { color: var(--accent); }
+
+        /* --- CONTENT --- */
+        .container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .page-header p {
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* --- HISTORY LIST --- */
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .history-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .history-item:hover { border-color: var(--accent); }
+
+        .history-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: linear-gradient(90deg, #0a0a0a 0%, #151515 100%);
+        }
+
+        .match-info .category {
+            display: block;
+            color: var(--accent);
+            font-size: 0.7rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .match-info .vs-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+        }
+
+        .dropdown-icon { color: var(--accent); transition: 0.3s; }
+        .history-item.active .dropdown-icon { transform: rotate(180deg); }
+
+        /* DROPDOWN CONTENT */
+        .history-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: #050505;
+        }
+
+        .history-details {
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .fighters-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .mini-f {
+            text-align: center;
+            width: 120px;
+            opacity: 0.4;
+        }
+
+        .mini-f.winner {
+            opacity: 1;
+            position: relative;
+        }
+
+        .mini-f.winner::after {
+            content: 'CÂȘTIGĂTOR';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            font-size: 0.6rem;
+            padding: 2px 8px;
+            font-weight: 900;
+            border-radius: 2px;
+        }
+
+        .mini-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #333;
+            margin-bottom: 10px;
+        }
+
+        .winner .mini-img { border-color: var(--accent); box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+
+        .mini-name { font-family: 'Oswald', sans-serif; font-size: 0.9rem; text-transform: uppercase; }
+
+        .vs-divider { font-style: italic; font-weight: 900; color: #222; font-size: 2rem; }
+
+        .result-box {
+            background: #111;
+            padding: 15px 30px;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .result-box span { color: var(--accent); font-weight: 900; }
+
+        .yt-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .yt-link:hover { background: white; color: var(--accent); box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+
+        @media (max-width: 600px) {
+            .fighters-row { gap: 15px; }
+            .mini-f { width: 90px; }
+            .mini-img { width: 70px; height: 70px; }
+            .vs-divider { font-size: 1.2rem; }
+            .page-header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo1.jpeg" alt="BMC Logo" class="logo-img">
+            <div class="logo-text">BMC <span>BOTOȘANI</span></div>
+        </a>
+        <a href="fight.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Înapoi la meci
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <p>ARHIVA LUPTELOR</p>
+            <h1>Istoric Meciuri</h1>
+        </div>
+
+        <div class="history-list">
+
+            <div class="history-item">
+                <div class="history-header" onclick="toggleMatch(this)">
+                    <div class="match-info">
+                        <span class="category">CATEGORIA 75KG • K1</span>
+                        <span class="vs-title">Luptător Exemplu 1 vs Luptător Exemplu 2</span>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+                <div class="history-content">
+                    <div class="history-details">
+                        <div class="fighters-row">
+                            <div class="mini-f winner">
+                                <img src="logo1.jpeg" class="mini-img">
+                                <div class="mini-name">Luptător 1</div>
+                            </div>
+                            <div class="vs-divider">VS</div>
+                            <div class="mini-f">
+                                <img src="logo1.jpeg" class="mini-img">
+                                <div class="mini-name">Luptător 2</div>
+                            </div>
+                        </div>
+                        <div class="result-box">
+                            Rezultat: <span>Câștigător Luptător 1</span> | Metodă: <span>KO (Runda 2)</span>
+                        </div>
+                        <a href="#" class="yt-link"><i class="fab fa-youtube"></i> Vezi video meci</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <div class="history-header" onclick="toggleMatch(this)">
+                    <div class="match-info">
+                        <span class="category">CATEGORIA 85KG • MMA</span>
+                        <span class="vs-title">Nume Luptător vs Nume Luptător</span>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+                <div class="history-content">
+                    <div class="history-details">
+                        <div class="fighters-row">
+                            <div class="mini-f">
+                                <img src="logo1.jpeg" class="mini-img">
+                                <div class="mini-name">Nume 1</div>
+                            </div>
+                            <div class="vs-divider">VS</div>
+                            <div class="mini-f winner">
+                                <img src="logo1.jpeg" class="mini-img">
+                                <div class="mini-name">Nume 2</div>
+                            </div>
+                        </div>
+                        <div class="result-box">
+                            Rezultat: <span>Decizie Unanimă</span> | Metodă: <span>Puncte</span>
+                        </div>
+                        <a href="#" class="yt-link"><i class="fab fa-youtube"></i> Vezi video meci</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer style="text-align:center; padding: 60px; color: #333; font-size: 0.7rem; letter-spacing: 3px; border-top: 1px solid #111;">
+        © 2026 BOTOȘANI MARTIAL COMBAT • BMC
+    </footer>
+
+    <script>
+        function toggleMatch(element) {
+            const item = element.parentElement;
+            const content = item.querySelector('.history-content');
+
+            if (item.classList.contains('active')) {
+                item.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                // Închide celelalte meciuri deschise (opțional)
+                document.querySelectorAll('.history-item').forEach(other => {
+                    other.classList.remove('active');
+                    other.querySelector('.history-content').style.maxHeight = null;
+                });
+
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+    </script>
+</body>
+</html>
