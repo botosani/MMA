@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMC 2026 - Official Fight</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --accent: #ff0000;
+            --bg: #050505;
+            --card-bg: rgba(15, 15, 15, 0.9);
+            --text-gray: #aaaaaa;
+            --neon-glow: 0 0 20px rgba(255, 0, 0, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(40, 0, 0, 0.2) 0%, transparent 80%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+        }
+
+        /* --- HEADER OFICIAL --- */
+        header {
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
+        .logo-img { height: 60px; width: auto; border-radius: 5px; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .logo-text span { color: var(--accent); }
+
+        nav { display: flex; gap: 10px; }
+        .nav-btn {
+            text-decoration: none; color: white; font-family: 'Oswald', sans-serif; font-size: 0.8rem;
+            text-transform: uppercase; padding: 8px 15px; border-radius: 4px; transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 6px;
+        }
+        .btn-reguli:hover { background: white; color: black; }
+        .btn-inscrie { background: var(--accent); border: none; font-weight: 700; }
+        .btn-inscrie:hover { background: white; color: var(--accent); box-shadow: var(--neon-glow); }
+
+        /* --- SECȚIUNE BROADCAST --- */
+        .broadcast-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .event-meta {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .live-tag {
+            background: var(--accent);
+            padding: 3px 12px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            display: inline-block;
+            margin-bottom: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        .event-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff 50%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .event-details {
+            font-weight: 800;
+            letter-spacing: 5px;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        /* --- FIGHT CARD MAIN --- */
+        .fight-card {
+            display: grid;
+            grid-template-columns: 1fr 300px 1fr;
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .fight-card::before { content: ''; position: absolute; top: 0; left: 0; width: 40px; height: 40px; border-top: 4px solid var(--accent); border-left: 4px solid var(--accent); z-index: 20; }
+        .fight-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 40px; height: 40px; border-bottom: 4px solid var(--accent); border-right: 4px solid var(--accent); z-index: 20; }
+
+        .fighter-column {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: #000;
+        }
+
+        .fighter-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; 
+            object-position: top center; 
+            z-index: 1;
+        }
+
+        .name-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,1) 20%, transparent 100%);
+            text-align: center;
+        }
+
+        .fighter-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .fighter-club {
+            font-weight: 800;
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        /* CENTRAL STATS */
+        .stats-column {
+            background: rgba(0,0,0,0.8);
+            border-left: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .vs-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 5rem;
+            text-align: center;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--accent);
+            font-style: italic;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 10px var(--accent));
+        }
+
+        .stat-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            font-weight: 900;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            width: 35%;
+            text-align: center;
+        }
+
+        /* --- BUTON ISTORIC NOU --- */
+        .history-link-container {
+            text-align: center;
+            margin: 40px 0 80px 0;
+        }
+
+        .btn-history-big {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: white;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-history-big:hover {
+            background: var(--accent);
+            box-shadow: var(--neon-glow);
+            transform: translateY(-3px);
+        }
+
+        .btn-history-big i {
+            font-size: 1rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 950px) {
+            header { flex-direction: column; padding: 15px; gap: 15px; }
+            .fight-card { grid-template-columns: 1fr; }
+            .stats-column { order: 2; border: none; padding: 40px 20px; }
+            .fighter-column { height: 450px; }
+            .fighter-column:nth-child(1) { order: 1; }
+            .fighter-column:nth-child(3) { order: 3; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo1.jpeg" alt="BMC Logo" class="logo-img">
+            <div class="logo-text">BMC <span>BOTOȘANI</span></div>
+        </a>
+
+        <nav>
+            <a href="p.html" class="nav-btn btn-reguli"><i class="fas fa-gavel"></i> Regulament</a>
+            <a href="ghid.html" class="nav-btn btn-reguli"><i class="fas fa-shirt"></i> Ghid</a>
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Acasă</a>
+            <a href="inscrie.html" class="nav-btn btn-inscrie"><i class="fas fa-user-plus"></i> Înscrie-te</a>
+        </nav>
+    </header>
+
+    <div class="broadcast-container">
+
+        <div class="event-meta">
+            <div class="live-tag">BMC 2026</div>
+            <h1 class="event-title">BMC 1</h1>
+            <p class="event-details">SEZONUL 1 • BOTOȘANI • ROMÂNIA</p>
+        </div>
+
+        <div class="fight-card">
+            <div class="fighter-column">
+                <img src="SSDONE.jpg" alt="Fighter 1" class="fighter-img">
+                <div class="name-overlay">
+                    <div class="fighter-name">Mișu</div> 
+                    <div class="fighter-club">CLUB BMC</div>
+                </div>
+            </div>
+
+            <div class="stats-column">
+                <div class="vs-text">VS</div>
+                <div class="stat-line">
+                    <span class="stat-value">15</span> 
+                    <span class="stat-label">VÂRSTĂ</span>
+                    <span class="stat-value">13</span> 
+                </div>
+                <div class="stat-line">
+                    <span class="stat-value">180</span>
+                    <span class="stat-label">ÎNĂLȚIME (CM)</span>
+                    <span class="stat-value">173</span>
+                </div>
+                <div class="stat-line">
+                    <span class="stat-value">70</span>
+                    <span class="stat-label">GREUTATE (KG)</span>
+                    <span class="stat-value">64</span>
+                </div>
+            </div>
+
+            <div class="fighter-column">
+                <img src="NDONE.jpg" alt="Fighter 2" class="fighter-img">
+                <div class="name-overlay">
+                    <div class="fighter-name">Nico</div> 
+                    <div class="fighter-club">CLUB BMC</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-link-container">
+            <a href="istoric.html" class="btn-history-big">
+                <i class="fas fa-history"></i> Vezi Istoric Meciuri
+            </a>
+        </div>
+
+    </div>
+
+    <footer style="text-align:center; padding: 60px; color: #333; font-size: 0.7rem; letter-spacing: 3px; border-top: 1px solid #111;">
+        © 2026 BOTOȘANI MARTIAL COMBAT • BMC
+    </footer>
+
+</body>
+</html>
