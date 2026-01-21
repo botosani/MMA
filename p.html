@@ -10,13 +10,14 @@
 
     <style>
         :root {
-            --accent: #e63946;
+            --accent: #e63946; /* Roșu pentru luptă/reguli */
+            --charity: #2ecc71; /* Verde pentru umanitar */
             --bg: #0a0a0a;
             --card: #121212;
             --text: #ccc;
-            --warning: #ffcc00;
             --yt-red: #FF0000;
             --neon-glow: 0 0 20px rgba(230, 57, 70, 0.4);
+            --green-glow: 0 0 25px rgba(46, 204, 113, 0.3);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -77,6 +78,7 @@
             letter-spacing: 2px;
         }
 
+        /* CARDURI STANDARD (Roșu) */
         .policy-card {
             background: var(--card);
             padding: 35px;
@@ -84,7 +86,10 @@
             margin-bottom: 30px;
             border-left: 5px solid var(--accent);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
         }
+
+        .policy-card:hover { transform: translateY(-5px); }
 
         .policy-card h2 {
             font-family: 'Oswald', sans-serif;
@@ -101,6 +106,17 @@
         .policy-card ul li::before { content: "•"; color: var(--accent); font-weight: bold; display: inline-block; width: 1em; }
         .policy-card strong { color: white; }
 
+        /* CARD UMANITAR (Verde) */
+        .policy-card.charity-card {
+            border-left: 5px solid var(--charity);
+            background: linear-gradient(145deg, #121212, #0f1c15);
+            box-shadow: var(--green-glow);
+        }
+
+        .policy-card.charity-card h2 i { color: var(--charity); }
+        .policy-card.charity-card ul li::before { color: var(--charity); }
+
+        /* ZONA PERICULOASA (Legal) */
         .danger-zone {
             background: rgba(230, 57, 70, 0.05);
             border: 1px solid var(--accent);
@@ -180,52 +196,58 @@
     </header>
 
     <div class="legal-container">
-        <h1>REGULAMENT & VALORI</h1>
+        <h1>CODUL DE ONOARE & REGULAMENT</h1>
 
         <div class="policy-card">
-            <h2><i class="fas fa-dumbbell"></i> 1. Program și Discipline</h2>
-            <p>Sistem de antrenament hibrid axat pe performanță:</p>
+            <h2><i class="fas fa-dumbbell"></i> 1. Antrenament și Disciplină</h2>
+            <p>La BMC Botoșani nu venim doar să facem mișcare, venim să evoluăm. Oferim un sistem hibrid complet:</p>
             <ul>
-                <li><strong>Discipline:</strong> MMA, Box, K1, BJJ (Grappling).</li>
-                <li><strong>Condiție Fizică:</strong> Calisthenics și Sala de forță.</li>
+                <li><strong>Discipline Combat:</strong> MMA, Box, Kickboxing, BJJ (Grappling).</li>
+                <li><strong>Pregătire Fizică:</strong> Calisthenics, Forță explozivă și condiționare cardio.</li>
             </ul>
         </div>
 
         <div class="policy-card">
-            <h2><i class="fas fa-shield-alt"></i> 2. Reguli Echipament</h2>
-            <p>Siguranța este prioritară. Membrii noi pot folosi echipamentul sălii maxim 4 zile. Ulterior, echipamentul personal (mănuși, protecție dentară) este obligatoriu.</p>
-        </div>
-
-        <div class="policy-card">
-            <h2><i class="fas fa-users"></i> 3. Comunitate și Respect</h2>
-            <p>BMC Botoșani nu este doar o sală, este o <strong>familie</strong>. Ne antrenăm împreună, ne respectăm și ne ajutăm reciproc să evoluăm.</p>
+            <h2><i class="fas fa-shield-alt"></i> 2. Echipament și Siguranță</h2>
+            <p>Respectăm partenerul de antrenament prin igienă și echipament adecvat.</p>
             <ul>
-                <li><strong>Toleranță ZERO:</strong> Nu acceptăm sub nicio formă înjurăturile, vulgaritatea, bullying-ul sau intimidarea.</li>
-                <li><strong>Conduită:</strong> Orice formă de lipsă de respect față de colegi sau antrenori atrage excluderea imediată.</li>
-                <li><strong>Fair-Play:</strong> Încurajăm spiritul de echipă. Cel mai puternic îl ajută pe cel la început de drum.</li>
+               <li>Membrii noi pot folosi echipamentul sălii pentru primele <strong>4 ședințe</strong>.</li>
+               <li>Ulterior, echipamentul personal (mănuși, proteze, tibiere) este <strong>obligatoriu</strong> pentru a preveni accidentările.</li>
             </ul>
         </div>
 
         <div class="policy-card">
-            <h2><i class="fas fa-hand-holding-heart"></i> 4. Scop Umanitar</h2>
-            <p>Luptăm pentru cauze nobile. Antrenăm caracterul, nu doar corpul.</p>
+            <h2><i class="fas fa-users"></i> 3. Comunitatea Noastră</h2>
+            <p><strong>Suntem o familie.</strong> Cine intră în sala BMC, lasă ego-ul la ușă. Aici, puterea se măsoară în caracter, nu doar în forța loviturii.</p>
             <ul>
-                <li><strong>Caritate:</strong> Fondurile strânse din activitățile noastre sunt donate către <strong>Asociații Caritabile</strong>.</li>
-                <li><strong>Impact Social:</strong> Contribuim activ la binele comunității din Botoșani prin sport și educație.</li>
+                <li><strong>Stop Bullying:</strong> Condamnăm ferm orice formă de bullying, intimidare sau agresivitate verbală. Sala noastră este un refugiu sigur pentru toți, indiferent de vârstă sau nivel de experiență.</li>
+                <li><strong>Respect Reciproc:</strong> Cei avansați au datoria morală să îi ghideze și să îi protejeze pe cei începători.</li>
+                <li><strong>Integritate:</strong> Nu tolerăm înjurăturile sau comportamentul suburban, nici în sală, nici în afara ei. Reprezinți BMC Botoșani oriunde te afli.</li>
+            </ul>
+        </div>
+
+        <div class="policy-card charity-card">
+            <h2><i class="fas fa-hand-holding-heart"></i> 4. Misiune Umanitară</h2>
+            <p>Credem că adevărata putere a unui luptător stă în capacitatea de a ridica pe altcineva de jos. La BMC Botoșani, <strong>transpirăm pentru o cauză</strong>.</p>
+            <p>Nu suntem doar un club sportiv, ci un pilon al comunității:</p>
+            <ul>
+                <li><strong>Luptăm pentru alții:</strong> O parte semnificativă din fondurile strânse (cotizații, evenimente) este direcționată direct către <strong>Asociații Caritabile</strong> partenere.</li>
+                <li><strong>Faptele vorbesc:</strong> Împreună ajutăm familii nevoiașe, copii defavorizați și cauze locale. Fiecare antrenament al tău contribuie la o viață mai bună pentru altcineva.</li>
+                <li><strong>Solidaritate:</strong> Ne mobilizăm ca echipă pentru a face bine. Dacă te antrenezi cu noi, ești deja un erou pentru cineva care are nevoie de ajutor.</li>
             </ul>
         </div>
 
         <div class="policy-card">
             <h2><i class="fas fa-gavel"></i> 5. Lege și Consecințe</h2>
-            <p>Arte marțiale înseamnă disciplină, nu violență stradală.</p>
+            <p>Artele marțiale sunt arme albe. Utilizarea lor necesită responsabilitate maximă.</p>
             <div class="danger-zone">
-                <h3><i class="fas fa-exclamation-triangle"></i> NOTĂ JURIDICĂ</h3>
-                <p><strong>Violența în afara sălii este strict interzisă.</strong> Folosirea tehnicilor învățate în scopuri agresive (în afara competițiilor oficiale sau a legitimei apărări) duce la excluderea permanentă și raportarea către autorități conform Legii 61/1991.</p>
+                <h3><i class="fas fa-exclamation-triangle"></i> ZERO TOLERANȚĂ LA VIOLENȚĂ</h3>
+                <p>Folosirea cunoștințelor dobândite în sală pentru a provoca scandaluri, a agresa persoane sau pentru "a demonstra cine e șeful" pe stradă duce la <strong>excluderea definitivă</strong> și denunțarea la Poliție. Antrenăm campioni în ring și cetățeni model pe stradă.</p>
             </div>
         </div>
 
         <div class="social-box">
-            <h2 style="font-family: 'Oswald', sans-serif; text-transform: uppercase;">Fii parte din familie</h2>
+            <h2 style="font-family: 'Oswald', sans-serif; text-transform: uppercase;">Fii parte din mișcare</h2>
             <div class="social-links">
                 <a href="https://www.youtube.com/@mma.botosani" target="_blank" class="social-item yt">
                     <i class="fab fa-youtube"></i> YouTube
@@ -240,12 +262,12 @@
         </div>
 
         <p class="legal-notice">
-            *Participarea la sesiunile de antrenament se face pe propria răspundere. Minorii necesită acordul scris al tutorilor.
+            *Participarea la sesiunile de antrenament se face pe propria răspundere. Minorii necesită acordul scris al tutorilor legal.
         </p>
     </div>
 
     <footer>
-        <p>&copy; 2026 BMC BOTOȘANI</p>
+        <p>&copy; 2026 BMC BOTOȘANI - More than a Gym, A Family.</p>
     </footer>
 
 </body>
