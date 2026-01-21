@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Istoric Meciuri - BMC</title>
+    <title>Istoric Evoluție - BMC</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,6 +11,7 @@
     <style>
         :root {
             --accent: #ff0000;
+            --warning: #f39c12;
             --bg: #050505;
             --card-bg: #0f0f0f;
             --border: #222;
@@ -45,7 +46,7 @@
         }
 
         .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
-        .logo-img { height: 50px; border-radius: 4px; }
+        .logo-img { height: 50px; border-radius: 4px; border: 1px solid var(--accent); }
         .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; }
         .logo-text span { color: var(--accent); }
 
@@ -65,7 +66,7 @@
 
         .page-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         .page-header h1 {
@@ -86,7 +87,19 @@
             margin-top: 5px;
         }
 
-        /* --- SINGLE DROPDOWN ITEM --- */
+        /* --- DISCLAIMER BOX --- */
+        .disclaimer-box {
+            background: rgba(243, 156, 18, 0.1);
+            border: 1px dashed var(--warning);
+            padding: 15px;
+            margin: 20px auto 40px auto;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .disclaimer-box strong { color: var(--warning); text-transform: uppercase; }
+
+        /* --- HISTORY LIST --- */
         .history-list {
             display: flex;
             flex-direction: column;
@@ -159,27 +172,26 @@
 
         .mini-f {
             text-align: center;
-            /* Lățime suficientă pentru a centra poza verticală */
             width: 150px; 
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* --- MODIFICAREA PENTRU POZE PORTRET --- */
         .mini-img {
-            width: 120px;          /* Lățime fixă */
-            height: 180px;         /* Înălțime mai mare pentru format portret */
-            border-radius: 8px;    /* Colțuri ușor rotunjite, nu cerc */
-            object-fit: cover;     /* Încadrează poza */
-            object-position: top center; /* Se asigură că se vede capul, nu picioarele */
+            width: 120px;
+            height: 180px;
+            border-radius: 8px;
+            object-fit: contain; /* Să se vadă logo-ul bine */
+            background: #000;
             border: 2px solid #222;
             margin-bottom: 15px;
             filter: grayscale(100%);
             transition: 0.3s;
+            padding: 10px;
         }
 
-        .mini-img:hover {
+        .mini-item:hover .mini-img {
             filter: grayscale(0%);
             border-color: var(--accent);
         }
@@ -207,6 +219,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #555;
+            text-align: center;
         }
 
         .result-box span { color: white; font-weight: 700; }
@@ -231,13 +244,7 @@
         @media (max-width: 600px) {
             .fighters-row { gap: 20px; }
             .mini-f { width: 100px; }
-            
-            /* Ajustare mobil pentru poze portret */
-            .mini-img { 
-                width: 80px; 
-                height: 120px; 
-            }
-            
+            .mini-img { width: 80px; height: 120px; }
             .vs-divider { font-size: 1.5rem; }
             .match-info .vs-title { font-size: 1.1rem; }
         }
@@ -257,8 +264,12 @@
 
     <div class="container">
         <div class="page-header">
-            <h1>Istoric Meciuri</h1>
-            <p>SEZONUL 1 • ARHIVĂ OFICIALĂ</p>
+            <h1>Istoric Evoluție</h1>
+            <p>ARHIVĂ TEHNICĂ • SEZONUL 1</p>
+        </div>
+
+        <div class="disclaimer-box">
+            <p><strong>IMPORTANT:</strong> Această arhivă conține sesiuni de <strong>SPARRING TEHNIC</strong>. Acestea nu sunt lupte de stradă sau agresiuni, ci exerciții de pregătire sportivă desfășurate în siguranță.</p>
         </div>
 
         <div class="history-list">
@@ -266,8 +277,8 @@
             <div class="history-item">
                 <div class="history-header" onclick="toggleMatch(this)">
                     <div class="match-info">
-                        <span class="category">STIL BOX</span>
-                        <span class="vs-title">Șerban vs Nico</span>
+                        <span class="category">SPARRING TEHNIC - BOX</span>
+                        <span class="vs-title">Membru 1 vs Membru 2</span>
                     </div>
                     <i class="fas fa-chevron-down dropdown-icon"></i>
                 </div>
@@ -277,24 +288,24 @@
                         
                         <div class="fighters-row">
                             <div class="mini-f">
-                                <img src="SSDONE.jpg" class="mini-img">
-                                <div class="mini-name">Șerban</div>
+                                <img src="logo1.jpeg" class="mini-img">
+                                <div class="mini-name">Membru 1</div>
                             </div>
 
                             <div class="vs-divider">VS</div>
 
                             <div class="mini-f">
-                                <img src="NDONE.jpg" class="mini-img">
-                                <div class="mini-name">Nico</div>
+                                <img src="logo1.jpeg" class="mini-img">
+                                <div class="mini-name">Membru 2</div>
                             </div>
                         </div>
 
                         <div class="result-box">
-                            Rezultat: <span>---</span> | Metodă: <span>---</span></span>
+                            Scop: <span>Evoluție Tehnică</span> | Contact: <span>Light (Ușor)</span>
                         </div>
 
                         <a href="#" class="yt-link">
-                            <i class="fab fa-youtube"></i> Vezi Lupta
+                            <i class="fab fa-youtube"></i> Vezi Sesiunea
                         </a>
 
                     </div>
