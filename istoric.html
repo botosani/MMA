@@ -1,614 +1,325 @@
 <!DOCTYPE html>
-
 <html lang="ro">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Istoric Meciuri - BMC</title>
 
-
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-
-
     <style>
-
         :root {
-
             --accent: #ff0000;
-
             --bg: #050505;
-
             --card-bg: #0f0f0f;
-
             --border: #222;
-
         }
-
-
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-
-
         body {
-
             font-family: 'Montserrat', sans-serif;
-
             background-color: var(--bg);
-
             color: white;
-
             background-image: 
-
                 radial-gradient(circle at 50% 0%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
-
                 linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-
                 linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-
             background-size: 100% 100%, 30px 30px, 30px 30px;
-
             min-height: 100vh;
-
         }
-
-
 
         /* --- HEADER --- */
-
         header {
-
             padding: 15px 5%;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
             background: rgba(0, 0, 0, 0.95);
-
             border-bottom: 2px solid var(--accent);
-
             position: sticky;
-
             top: 0;
-
             z-index: 1000;
-
             backdrop-filter: blur(10px);
-
         }
-
-
 
         .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
-
         .logo-img { height: 50px; border-radius: 4px; }
-
         .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; }
-
         .logo-text span { color: var(--accent); }
 
-
-
         .back-btn {
-
             text-decoration: none; color: white; font-family: 'Oswald', sans-serif;
-
             font-size: 0.9rem; text-transform: uppercase; display: flex; align-items: center; gap: 8px;
-
             padding: 8px 15px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; transition: 0.3s;
-
         }
-
         .back-btn:hover { background: white; color: black; }
 
-
-
         /* --- CONTENT --- */
-
         .container {
-
             max-width: 900px;
-
             margin: 60px auto;
-
             padding: 0 20px;
-
         }
-
-
 
         .page-header {
-
             text-align: center;
-
             margin-bottom: 50px;
-
         }
-
-
 
         .page-header h1 {
-
             font-family: 'Oswald', sans-serif;
-
             font-size: 3rem;
-
             text-transform: uppercase;
-
             letter-spacing: 2px;
-
             background: linear-gradient(to bottom, #fff 50%, #666 100%);
-
             -webkit-background-clip: text;
-
             -webkit-text-fill-color: transparent;
-
         }
-
-
 
         .page-header p {
-
             color: var(--accent);
-
             font-weight: 800;
-
             letter-spacing: 5px;
-
             font-size: 0.8rem;
-
             margin-top: 5px;
-
         }
-
-
 
         /* --- SINGLE DROPDOWN ITEM --- */
-
         .history-list {
-
             display: flex;
-
             flex-direction: column;
-
             gap: 20px;
-
         }
-
-
 
         .history-item {
-
             background: var(--card-bg);
-
             border: 1px solid var(--border);
-
             border-radius: 4px;
-
             overflow: hidden;
-
             transition: 0.3s;
-
         }
-
-
 
         .history-item:hover { border-color: var(--accent); }
 
-
-
         .history-header {
-
             padding: 25px;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
             cursor: pointer;
-
             background: linear-gradient(90deg, #0a0a0a 0%, #111 100%);
-
         }
-
-
 
         .match-info .category {
-
             display: block;
-
             color: var(--accent);
-
             font-size: 0.7rem;
-
             font-weight: 800;
-
             margin-bottom: 5px;
-
             text-transform: uppercase;
-
             letter-spacing: 2px;
-
         }
-
-
 
         .match-info .vs-title {
-
             font-family: 'Oswald', sans-serif;
-
             font-size: 1.4rem;
-
             text-transform: uppercase;
-
             letter-spacing: 1px;
-
         }
-
-
 
         .dropdown-icon { color: var(--accent); transition: 0.4s ease; }
-
         .history-item.active .dropdown-icon { transform: rotate(180deg); }
 
-
-
         /* DROPDOWN CONTENT */
-
         .history-content {
-
             max-height: 0;
-
             overflow: hidden;
-
             transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-
             background: #050505;
-
         }
-
-
 
         .history-details {
-
             padding: 50px 20px;
-
             display: flex;
-
             flex-direction: column;
-
             align-items: center;
-
             gap: 35px;
-
             border-top: 1px solid #1a1a1a;
-
         }
-
-
 
         .fighters-row {
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             gap: 50px;
-
             width: 100%;
-
         }
-
-
 
         .mini-f {
-
             text-align: center;
-
-            width: 150px;
-
+            /* Lățime suficientă pentru a centra poza verticală */
+            width: 150px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-
-
+        /* --- MODIFICAREA PENTRU POZE PORTRET --- */
         .mini-img {
-
-            width: 100px;
-
-            height: 100px;
-
-            border-radius: 50%;
-
-            object-fit: cover;
-
+            width: 120px;          /* Lățime fixă */
+            height: 180px;         /* Înălțime mai mare pentru format portret */
+            border-radius: 8px;    /* Colțuri ușor rotunjite, nu cerc */
+            object-fit: cover;     /* Încadrează poza */
+            object-position: top center; /* Se asigură că se vede capul, nu picioarele */
             border: 2px solid #222;
-
             margin-bottom: 15px;
-
-            filter: grayscale(100%); /* Efect vizual de NONE */
-
+            filter: grayscale(100%);
+            transition: 0.3s;
         }
 
-
+        .mini-img:hover {
+            filter: grayscale(0%);
+            border-color: var(--accent);
+        }
 
         .mini-name { 
-
             font-family: 'Oswald', sans-serif; 
-
             font-size: 1rem; 
-
             text-transform: uppercase; 
-
             color: #888;
-
         }
-
-
 
         .vs-divider { 
-
             font-style: italic; 
-
             font-weight: 900; 
-
             color: #1a1a1a; 
-
             font-size: 2.5rem; 
-
         }
-
-
 
         .result-box {
-
             background: #0a0a0a;
-
             padding: 15px 40px;
-
             border-radius: 2px;
-
             border: 1px solid #1a1a1a;
-
             font-size: 0.8rem;
-
             text-transform: uppercase;
-
             letter-spacing: 2px;
-
             color: #555;
-
         }
-
-
 
         .result-box span { color: white; font-weight: 700; }
 
-
-
         .yt-link {
-
             display: inline-flex;
-
             align-items: center;
-
             gap: 10px;
-
             border: 1px solid var(--accent);
-
             color: white;
-
             text-decoration: none;
-
             padding: 12px 30px;
-
             font-family: 'Oswald', sans-serif;
-
             font-size: 0.9rem;
-
             text-transform: uppercase;
-
             border-radius: 4px;
-
             transition: 0.3s;
-
         }
-
-
 
         .yt-link:hover { background: var(--accent); box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); color: black; }
 
-
-
         @media (max-width: 600px) {
-
             .fighters-row { gap: 20px; }
-
             .mini-f { width: 100px; }
-
-            .mini-img { width: 70px; height: 70px; }
-
+            
+            /* Ajustare mobil pentru poze portret */
+            .mini-img { 
+                width: 80px; 
+                height: 120px; 
+            }
+            
             .vs-divider { font-size: 1.5rem; }
-
             .match-info .vs-title { font-size: 1.1rem; }
-
         }
-
     </style>
-
 </head>
-
 <body>
 
-
-
     <header>
-
         <a href="index.html" class="logo-container">
-
             <img src="logo1.jpeg" alt="BMC Logo" class="logo-img">
-
             <div class="logo-text">BMC <span>BOTOȘANI</span></div>
-
         </a>
-
         <a href="fight.html" class="back-btn">
-
             <i class="fas fa-arrow-left"></i> Înapoi
-
         </a>
-
     </header>
 
-
-
     <div class="container">
-
         <div class="page-header">
-
             <h1>Istoric Meciuri</h1>
-
             <p>SEZONUL 1 • ARHIVĂ OFICIALĂ</p>
-
         </div>
-
-
 
         <div class="history-list">
 
-
-
             <div class="history-item">
-
                 <div class="history-header" onclick="toggleMatch(this)">
-
                     <div class="match-info">
-
                         <span class="category">STIL BOX</span>
-
                         <span class="vs-title">Șerban vs Nico</span>
-
                     </div>
-
                     <i class="fas fa-chevron-down dropdown-icon"></i>
-
                 </div>
-
                 
-
                 <div class="history-content">
-
                     <div class="history-details">
-
                         
-
                         <div class="fighters-row">
-
                             <div class="mini-f">
-
                                 <img src="SSDONE.jpg" class="mini-img">
-
                                 <div class="mini-name">Șerban</div>
-
                             </div>
-
-
 
                             <div class="vs-divider">VS</div>
 
-
-
                             <div class="mini-f">
-
                                 <img src="NDONE.jpg" class="mini-img">
-
                                 <div class="mini-name">Nico</div>
-
                             </div>
-
                         </div>
-
-
 
                         <div class="result-box">
-
                             Rezultat: <span>---</span> | Metodă: <span>---</span></span>
-
                         </div>
 
-
-
                         <a href="#" class="yt-link">
-
                             <i class="fab fa-youtube"></i> Vezi Lupta
-
                         </a>
 
-
-
                     </div>
-
                 </div>
-
             </div>
-
             </div>
-
     </div>
 
-
-
     <footer style="text-align:center; padding: 60px; color: #222; font-size: 0.7rem; letter-spacing: 3px; border-top: 1px solid #0a0a0a;">
-
         © 2026 BOTOȘANI MARTIAL COMBAT • BMC
-
     </footer>
 
-
-
     <script>
-
         function toggleMatch(element) {
-
             const item = element.parentElement;
-
             const content = item.querySelector('.history-content');
 
-
-
             if (item.classList.contains('active')) {
-
                 item.classList.remove('active');
-
                 content.style.maxHeight = null;
-
             } else {
-
                 item.classList.add('active');
-
                 content.style.maxHeight = content.scrollHeight + "px";
-
             }
-
         }
-
     </script>
-
 </body>
-
 </html>
-
