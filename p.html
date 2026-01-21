@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regulament & Valori - BMC Botoșani</title>
+    <title>Regulament & Termeni Legali - BMC Botoșani</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
-            --accent: #e63946; /* Roșu pentru luptă/reguli */
-            --charity: #2ecc71; /* Verde pentru umanitar */
+            --accent: #e63946; 
+            --charity: #2ecc71; 
             --bg: #0a0a0a;
             --card: #121212;
             --text: #ccc;
-            --yt-red: #FF0000;
-            --neon-glow: 0 0 20px rgba(230, 57, 70, 0.4);
-            --green-glow: 0 0 25px rgba(46, 204, 113, 0.3);
+            --warning: #f1c40f;
+            --legal: #3498db; /* Albastru pentru GDPR/Legal */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,7 +28,7 @@
             line-height: 1.6;
         }
 
-        /* --- HEADER OFICIAL --- */
+        /* --- HEADER --- */
         header {
             padding: 10px 5%;
             display: flex;
@@ -49,20 +48,15 @@
         .logo-text span { color: var(--accent); }
 
         nav { display: flex; gap: 10px; }
-        
         .nav-btn {
             text-decoration: none; color: white; font-family: 'Oswald', sans-serif; font-size: 0.8rem;
             text-transform: uppercase; padding: 8px 15px; border-radius: 4px; transition: 0.3s;
             border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 6px;
         }
-        
         .nav-btn:hover { background: rgba(255,255,255,0.1); }
-        .btn-reguli:hover { background: white; color: black; }
-
         .btn-inscrie { background: var(--accent); border: none; font-weight: 700; }
-        .btn-inscrie:hover { background: white; color: var(--accent); box-shadow: var(--neon-glow); }
 
-        /* --- CONTINUT REGULAMENT --- */
+        /* --- CONTINUT --- */
         .legal-container {
             max-width: 1000px;
             margin: 50px auto;
@@ -71,14 +65,14 @@
 
         h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-size: clamp(2rem, 6vw, 3.5rem);
             text-transform: uppercase;
             text-align: center;
             margin-bottom: 50px;
             letter-spacing: 2px;
         }
 
-        /* CARDURI STANDARD (Roșu) */
+        /* CARDURI */
         .policy-card {
             background: var(--card);
             padding: 35px;
@@ -86,10 +80,17 @@
             margin-bottom: 30px;
             border-left: 5px solid var(--accent);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
         }
 
-        .policy-card:hover { transform: translateY(-5px); }
+        /* Tipuri specifice de carduri */
+        .medical-card { border-left: 5px solid var(--warning); background: rgba(241, 196, 15, 0.05); }
+        .medical-card h2 i { color: var(--warning); }
+
+        .legal-card { border-left: 5px solid var(--legal); }
+        .legal-card h2 i { color: var(--legal); }
+
+        .charity-card { border-left: 5px solid var(--charity); }
+        .charity-card h2 i { color: var(--charity); }
 
         .policy-card h2 {
             font-family: 'Oswald', sans-serif;
@@ -102,78 +103,60 @@
 
         .policy-card h2 i { color: var(--accent); }
         .policy-card p, .policy-card li { color: var(--text); margin-bottom: 10px; }
+        
         .policy-card ul { list-style: none; margin-top: 15px; }
-        .policy-card ul li::before { content: "•"; color: var(--accent); font-weight: bold; display: inline-block; width: 1em; }
+        .policy-card ul li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+        .policy-card ul li::before { content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900; color: var(--accent); }
+        
+        .medical-card ul li::before { color: var(--warning); }
+        .legal-card ul li::before { color: var(--legal); }
+        .charity-card ul li::before { color: var(--charity); }
+
         .policy-card strong { color: white; }
 
-        /* CARD UMANITAR (Verde) */
-        .policy-card.charity-card {
-            border-left: 5px solid var(--charity);
-            background: linear-gradient(145deg, #121212, #0f1c15);
-            box-shadow: var(--green-glow);
-        }
-
-        .policy-card.charity-card h2 i { color: var(--charity); }
-        .policy-card.charity-card ul li::before { color: var(--charity); }
-
-        /* ZONA PERICULOASA (Legal) */
+        /* ZONA CRITICA */
         .danger-zone {
-            background: rgba(230, 57, 70, 0.05);
-            border: 1px solid var(--accent);
+            background: rgba(230, 57, 70, 0.1);
+            border: 2px dashed var(--accent);
             padding: 25px;
             border-radius: 10px;
             margin-top: 20px;
         }
 
-        .danger-zone h3 { color: var(--accent); font-family: 'Oswald', sans-serif; margin-bottom: 10px; }
+        /* DISCLAIMER FINAL */
+        .legal-disclaimer { 
+            background: #050505; 
+            padding: 30px; 
+            border: 1px solid #222; 
+            font-size: 0.8rem; 
+            color: #777; 
+            margin-top: 60px; 
+            text-align: justify;
+            border-radius: 10px;
+        }
 
-        /* --- SOCIAL BOX --- */
+        .legal-disclaimer strong { color: #aaa; text-transform: uppercase; }
+
         .social-box {
-            background: linear-gradient(45deg, #161616, #222);
+            background: #161616;
             padding: 40px;
             text-align: center;
             border-radius: 15px;
-            margin-top: 60px;
-            border: 1px solid #333;
+            margin-top: 40px;
         }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
-
         .social-item {
-            text-decoration: none;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-            background: #2a2a2a;
+            text-decoration: none; color: white; padding: 10px 20px; border-radius: 50px;
+            background: #2a2a2a; margin: 5px; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
         }
+        .social-item:hover { background: var(--accent); }
 
-        .insta:hover { background: linear-gradient(45deg, #f09433, #bc1888); }
-        .yt:hover { background: var(--yt-red); box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
-        .mail:hover { background: var(--accent); }
+        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; border-top: 1px solid #111; margin-top: 40px;}
 
-        footer { text-align: center; padding: 50px; color: #555; font-size: 0.85rem; border-top: 1px solid #111; }
-        .legal-notice { font-size: 0.75rem; color: #666; margin-top: 20px; font-style: italic; text-align: center; }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 950px) {
-            header { flex-direction: column; padding: 15px; gap: 15px; }
-            nav { flex-wrap: wrap; justify-content: center; }
-        }
-
+        /* Responsive */
         @media (max-width: 600px) {
             .logo-text { display: none; }
-            .policy-card { padding: 25px; }
+            h1 { font-size: 1.8rem; }
+            .policy-card { padding: 20px; }
         }
     </style>
 </head>
@@ -184,86 +167,95 @@
             <img src="logo.jpeg" alt="BMC Logo" class="logo-img">
             <div class="logo-text">BMC <span>BOTOȘANI</span></div>
         </a>
-
         <nav>
-            <a href="fight.html" class="nav-btn btn-reguli">
-                <i class="fas fa-fist-raised"></i> Fights
-            </a>
-            <a href="ghid.html" class="nav-btn btn-reguli"><i class="fas fa-shirt"></i> Ghid</a>
             <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Acasă</a>
-            <a href="inscrie.html" class="nav-btn btn-inscrie"><i class="fas fa-user-plus"></i> Înscrie-te</a>
+            <a href="inscrie.html" class="nav-btn btn-inscrie">Înscrie-te</a>
         </nav>
     </header>
 
     <div class="legal-container">
-        <h1>CODUL DE ONOARE & REGULAMENT</h1>
+        <h1>REGULAMENT & TERMENI LEGALI</h1>
 
-        <div class="policy-card">
-            <h2><i class="fas fa-dumbbell"></i> 1. Antrenament și Disciplină</h2>
-            <p>La BMC Botoșani nu venim doar să facem mișcare, venim să evoluăm. Oferim un sistem hibrid complet:</p>
+        <div class="policy-card medical-card">
+            <h2><i class="fas fa-heartbeat"></i> 1. Sănătate și Siguranță (Obligatoriu)</h2>
+            <p>Accesul la antrenamente este permis strict în următoarele condiții:</p>
             <ul>
-                <li><strong>Discipline Combat:</strong> MMA, Box, Kickboxing, BJJ (Grappling).</li>
-                <li><strong>Pregătire Fizică:</strong> Calisthenics, Forță explozivă și condiționare cardio.</li>
+                <li><strong>Adeverință Medicală:</strong> Document de la medicul de familie cu mențiunea "Apt pentru efort fizic intens / Sporturi de contact". Fără acest document, accesul este interzis.</li>
+                <li><strong>Asigurare Personală:</strong> Recomandăm ferm tuturor membrilor încheierea unei polițe de asigurare pentru accidente sportive.</li>
+                <li><strong>Vârsta:</strong> Minorii (sub 18 ani) necesită Acordul Parental semnat în original de ambii părinți sau de tutorele legal.</li>
             </ul>
         </div>
 
         <div class="policy-card">
-            <h2><i class="fas fa-shield-alt"></i> 2. Echipament și Siguranță</h2>
-            <p>Respectăm partenerul de antrenament prin igienă și echipament adecvat.</p>
+            <h2><i class="fas fa-users-cog"></i> 2. Natura Activității (Peer-to-Peer)</h2>
+            <p><strong>Important:</strong> BMC Botoșani funcționează ca un <strong>grup privat de practică</strong>.</p>
             <ul>
-               <li>Membrii noi pot folosi echipamentul sălii pentru primele <strong>4 ședințe</strong>.</li>
-               <li>Ulterior, echipamentul personal (mănuși, proteze, tibiere) este <strong>obligatoriu</strong> pentru a preveni accidentările.</li>
+                <li>Nu suntem o unitate de învățământ acreditată de Ministerul Educației sau Club Sportiv afiliat MTS.</li>
+                <li>Activitățile desfășurate sunt sesiuni de practică comună, bazate pe schimbul de experiență între membri (sistem peer-to-peer), desfășurate pe propria răspundere a participanților.</li>
             </ul>
         </div>
 
         <div class="policy-card">
-            <h2><i class="fas fa-users"></i> 3. Comunitatea Noastră</h2>
-            <p><strong>Suntem o familie.</strong> Cine intră în sala BMC, lasă ego-ul la ușă. Aici, puterea se măsoară în caracter, nu doar în forța loviturii.</p>
+            <h2><i class="fas fa-shield-alt"></i> 3. Regulament Sparring (Luptă)</h2>
+            <p>Sparring-ul este opțional și se supune regulilor stricte de siguranță:</p>
             <ul>
-                <li><strong>Stop Bullying:</strong> Condamnăm ferm orice formă de bullying, intimidare sau agresivitate verbală. Sala noastră este un refugiu sigur pentru toți, indiferent de vârstă sau nivel de experiență.</li>
-                <li><strong>Respect Reciproc:</strong> Cei avansați au datoria morală să îi ghideze și să îi protejeze pe cei începători.</li>
-                <li><strong>Integritate:</strong> Nu tolerăm înjurăturile sau comportamentul suburban, nici în sală, nici în afara ei. Reprezinți BMC Botoșani oriunde te afli.</li>
+                <li><strong>Echipament Obligatoriu:</strong> Proteză dentară, cască (pentru începători), tibiere hard, mănuși minimum 14oz.</li>
+                <li><strong>Fără "Hard Sparring":</strong> Loviturile la cap cu intensitate maximă sunt strict interzise. Scopul este învățarea, nu vătămarea.</li>
+                <li><strong>Supraveghere:</strong> Sparring-ul are loc doar în prezența coordonatorilor grupului.</li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2><i class="fas fa-ban"></i> 4. Interdicții Stricte (Toleranță Zero)</h2>
+            <p>Următoarele fapte duc la excluderea permanentă și, după caz, sesizarea autorităților:</p>
+            <ul>
+                <li>Prezența la antrenament sub influența <strong>alcoolului</strong> sau a <strong>substanțelor psihotrope</strong>.</li>
+                <li>Utilizarea sau comercializarea substanțelor dopante (steroizi) în incinta sălii.</li>
+                <li>Portul de arme albe (cuțite, bricege, bastoane) în incinta locației de antrenament.</li>
+            </ul>
+        </div>
+
+        <div class="policy-card legal-card">
+            <h2><i class="fas fa-camera"></i> 5. Media & Date Personale (GDPR)</h2>
+            <p>Prin participarea la activitățile BMC Botoșani:</p>
+            <ul>
+                <li><strong>Foto/Video:</strong> Vă exprimați acordul ca imaginile foto/video surprinse în timpul antrenamentelor să fie utilizate pe canalele noastre de social media (YouTube, Instagram) pentru promovarea sportului.</li>
+                <li><strong>Date Personale:</strong> Datele furnizate (Nume, Telefon, Istoric Medical) sunt folosite strict pentru organizarea internă și siguranță. Nu înstrăinăm datele către terți.</li>
+                <li>Dacă doriți ștergerea unei imagini cu dvs., ne puteți solicita acest lucru oricând.</li>
             </ul>
         </div>
 
         <div class="policy-card charity-card">
-            <h2><i class="fas fa-hand-holding-heart"></i> 4. Misiune Umanitară</h2>
-            <p>Credem că adevărata putere a unui luptător stă în capacitatea de a ridica pe altcineva de jos. La BMC Botoșani, <strong>transpirăm pentru o cauză</strong>.</p>
-            <p>Nu suntem doar un club sportiv, ci un pilon al comunității:</p>
+            <h2><i class="fas fa-hand-holding-heart"></i> 6. Misiune Umanitară</h2>
             <ul>
-                <li><strong>Luptăm pentru alții:</strong> O parte semnificativă din fondurile strânse (cotizații, evenimente) este direcționată direct către <strong>Asociații Caritabile</strong> partenere.</li>
-                <li><strong>Faptele vorbesc:</strong> Împreună ajutăm familii nevoiașe, copii defavorizați și cauze locale. Fiecare antrenament al tău contribuie la o viață mai bună pentru altcineva.</li>
-                <li><strong>Solidaritate:</strong> Ne mobilizăm ca echipă pentru a face bine. Dacă te antrenezi cu noi, ești deja un erou pentru cineva care are nevoie de ajutor.</li>
+                <li>Contribuțiile membrilor sunt voluntare și sunt direcționate către acoperirea costurilor logistice și susținerea cauzelor caritabile locale partenere.</li>
             </ul>
         </div>
 
         <div class="policy-card">
-            <h2><i class="fas fa-gavel"></i> 5. Lege și Consecințe</h2>
-            <p>Artele marțiale sunt arme albe. Utilizarea lor necesită responsabilitate maximă.</p>
+            <h2><i class="fas fa-gavel"></i> 7. Conduită în Afara Sălii</h2>
             <div class="danger-zone">
-                <h3><i class="fas fa-exclamation-triangle"></i> ZERO TOLERANȚĂ LA VIOLENȚĂ</h3>
-                <p>Folosirea cunoștințelor dobândite în sală pentru a provoca scandaluri, a agresa persoane sau pentru "a demonstra cine e șeful" pe stradă duce la <strong>excluderea definitivă</strong> și denunțarea la Poliție. Antrenăm campioni în ring și cetățeni model pe stradă.</p>
+                <h3><i class="fas fa-exclamation-triangle"></i> CLAUZĂ DE EXCLUDERE ȘI DENUNȚ</h3>
+                <p>Cunoștințele dobândite aici sunt strict pentru cadru sportiv organizat sau legitimă apărare (conform Art. 19 Cod Penal).</p>
+                <p>Utilizarea tehnicilor pentru a provoca scandaluri sau a agresa persoane atrage <strong>excluderea automată</strong> și colaborarea noastră totală cu Poliția pentru identificarea făptașului.</p>
             </div>
+        </div>
+
+        <div class="legal-disclaimer">
+            <strong>DISCLAIMER LEGAL (TERMENI ȘI CONDIȚII):</strong><br><br>
+            1. <strong>Asumarea Riscului:</strong> Prin prezența la antrenamente, participantul (sau tutorele legal) înțelege și acceptă că sporturile de contact (MMA, Box, BJJ) implică un risc inerent de accidentare, incluzând dar nelimitându-se la: contuzii, fracturi, leziuni articulare sau traumatisme craniene. Organizatorii nu pot fi trași la răspundere pentru accidentele survenite în timpul practicării voluntare.<br><br>
+            2. <strong>Limitarea Răspunderii:</strong> Coordonatorii BMC Botoșani nu sunt medici și nu oferă sfaturi medicale. Participarea se face exclusiv pe baza adeverinței medicale valide.<br><br>
+            3. <strong>Acord Final:</strong> Completarea formularului de înscriere și intrarea în sală reprezintă acceptarea necondiționată a prezentului regulament.
         </div>
 
         <div class="social-box">
-            <h2 style="font-family: 'Oswald', sans-serif; text-transform: uppercase;">Fii parte din mișcare</h2>
+            <h2 style="font-family: 'Oswald', sans-serif;">CONECTEAZĂ-TE CU NOI</h2>
             <div class="social-links">
-                <a href="https://www.youtube.com/@mma.botosani" target="_blank" class="social-item yt">
-                    <i class="fab fa-youtube"></i> YouTube
-                </a>
-                <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="social-item insta">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-                <a href="mailto:botosanimma@gmail.com" class="social-item mail">
-                    <i class="fas fa-envelope"></i> Email
-                </a>
+                <a href="#" class="social-item"><i class="fab fa-instagram"></i> @mma.botosani</a>
+                <a href="#" class="social-item"><i class="fab fa-youtube"></i> BMC Botoșani</a>
+                <a href="mailto:botosanimma@gmail.com" class="social-item"><i class="fas fa-envelope"></i> Contact</a>
             </div>
         </div>
-
-        <p class="legal-notice">
-            *Participarea la sesiunile de antrenament se face pe propria răspundere. Minorii necesită acordul scris al tutorilor legal.
-        </p>
     </div>
 
     <footer>
