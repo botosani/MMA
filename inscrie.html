@@ -67,6 +67,115 @@
             border-color: white;
         }
 
+        /* POPUP ÎMBUNĂTĂȚIT */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(12px);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .popup {
+            background: linear-gradient(145deg, #1a1a1a, #111);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            border: 1px solid rgba(230, 57, 70, 0.4);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(230, 57, 70, 0.1);
+            transform: scale(1);
+            animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { 
+            from { opacity: 0; transform: translateY(30px) scale(0.9); } 
+            to { opacity: 1; transform: translateY(0) scale(1); } 
+        }
+
+        .popup-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .popup h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .popup p {
+            margin-bottom: 30px;
+            color: #bbb;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .popup-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-reg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            padding: 14px;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 8px;
+            font-family: 'Oswald', sans-serif;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .btn-reg:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #555;
+        }
+
+        .btn-accept {
+            display: block;
+            background: var(--accent);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Oswald', sans-serif;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        .btn-accept:hover {
+            background: white;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
         /* FORM SECTION */
         .form-section {
             flex: 1;
@@ -133,85 +242,8 @@
             box-shadow: 0 0 10px rgba(230, 57, 70, 0.1);
         }
 
-        /* POPUP STYLES */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            backdrop-filter: blur(5px);
-        }
-
-        .popup {
-            background: var(--card);
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            border: 1px solid var(--accent);
-            box-shadow: 0 0 30px rgba(230, 57, 70, 0.2);
-        }
-
-        .popup h2 {
-            font-family: 'Oswald', sans-serif;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .popup p {
-            margin-bottom: 30px;
-            color: #ccc;
-        }
-
-        .btn-reg {
-            display: inline-block;
-            background: transparent;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border: 1px solid #555;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            font-family: 'Oswald', sans-serif;
-            transition: 0.3s;
-            width: 100%;
-        }
-
-        .btn-reg:hover {
-            background: #333;
-        }
-
-        .btn-accept {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            font-family: 'Oswald', sans-serif;
-            cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .btn-accept:hover {
-            background: white;
-            color: var(--accent);
-        }
-
-        /* OASCUNDEREA FORMULARULUI PÂNĂ LA ACCEPTARE (OPȚIONAL) */
         .hidden-scroll { overflow: hidden; }
 
-        /* CHECKBOX STYLE */
         .checkbox-group {
             display: flex;
             align-items: flex-start;
@@ -272,7 +304,6 @@
         }
 
         @media (max-width: 600px) {
-            header { padding: 15px 5%; }
             .logo-text { display: none; }
             .form-section { padding: 30px 5%; }
             .form-container { padding: 30px 20px; }
@@ -284,22 +315,25 @@
 
     <div class="overlay" id="popupOverlay">
         <div class="popup">
-            <h2>Înainte de a continua</h2>
-            <p>Pentru a te înscrie în comunitatea BMC, este necesar să citești și să accepți regulamentul nostru intern.</p>
+            <div class="popup-icon"><i class="fas fa-shield-halved"></i></div>
+            <h2>Bun venit în BMC</h2>
+            <p>Pentru a menține un standard ridicat de respect și siguranță, toți membrii trebuie să accepte regulamentul nostru înainte de înscriere.</p>
             
-            <a href="p.html" class="btn-reg" target="_blank">
-                <i class="fas fa-book-open"></i> Citește Regulamentul
-            </a>
-            
-            <button class="btn-accept" onclick="closePopup()">
-                Am citit și sunt de acord cu termenii
-            </button>
+            <div class="popup-actions">
+                <a href="p.html" class="btn-reg">
+                    <i class="fas fa-file-invoice"></i> Vezi Regulamentul
+                </a>
+                
+                <button class="btn-accept" onclick="closePopup()">
+                    Accept și continui
+                </button>
+            </div>
         </div>
     </div>
 
     <header>
         <a href="index.html" class="logo-container">
-            <img src="logo.jpeg" alt="RMC Logo" class="logo-img">
+            <img src="logo.jpeg" alt="BMC Logo" class="logo-img">
             <div class="logo-text">BMC <span>BOTOȘANI</span></div>
         </a>
         <a href="index.html" class="btn-back">
@@ -316,7 +350,7 @@
                 
                 <input type="hidden" name="_next" value="https://rmcbotosani.ro/s.html">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="Înscriere Nouă - RMC Botoșani!">
+                <input type="hidden" name="_subject" value="Înscriere Nouă - BMC Botoșani!">
 
                 <div class="form-group">
                     <label for="nume">Nume și Prenume</label>
@@ -356,7 +390,7 @@
                 <div class="checkbox-group">
                     <input type="checkbox" id="termeni" name="Acord_Regulament" required>
                     <label for="termeni">
-                        Confirm că am peste 14 ani și înțeleg că antrenamentele se desfășoară într-un spațiu controlat, pe propria răspundere, respectând codul de onoare al comunității BMC.
+                        Confirm că am peste 14 ani și înțeleg că antrenamentele se desfășoară pe propria răspundere, respectând codul de onoare BMC.
                     </label>
                 </div>
 
@@ -366,15 +400,21 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 BMC</p>
+        <p>&copy; 2026 BMC BOTOȘANI</p>
     </footer>
 
     <script>
         function closePopup() {
-            document.getElementById('popupOverlay').style.display = 'none';
-            document.body.classList.remove('hidden-scroll');
-            // Bifăm automat și căsuța din formular pentru a ușura experiența
-            document.getElementById('termeni').checked = true;
+            // Animăm dispariția înainte de a ascunde de tot elementul
+            const overlay = document.getElementById('popupOverlay');
+            overlay.style.opacity = '0';
+            overlay.style.transition = '0.3s';
+            
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.classList.remove('hidden-scroll');
+                document.getElementById('termeni').checked = true;
+            }, 300);
         }
     </script>
 
