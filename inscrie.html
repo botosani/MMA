@@ -133,6 +133,84 @@
             box-shadow: 0 0 10px rgba(230, 57, 70, 0.1);
         }
 
+        /* POPUP STYLES */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .popup {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.2);
+        }
+
+        .popup h2 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .popup p {
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .btn-reg {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border: 1px solid #555;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-family: 'Oswald', sans-serif;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .btn-reg:hover {
+            background: #333;
+        }
+
+        .btn-accept {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Oswald', sans-serif;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-accept:hover {
+            background: white;
+            color: var(--accent);
+        }
+
+        /* OASCUNDEREA FORMULARULUI PÂNĂ LA ACCEPTARE (OPȚIONAL) */
+        .hidden-scroll { overflow: hidden; }
+
         /* CHECKBOX STYLE */
         .checkbox-group {
             display: flex;
@@ -195,14 +273,29 @@
 
         @media (max-width: 600px) {
             header { padding: 15px 5%; }
-            .logo-text { display: none; } /* Ascunde textul logo pe ecrane mici pentru loc */
+            .logo-text { display: none; }
             .form-section { padding: 30px 5%; }
             .form-container { padding: 30px 20px; }
             .grid-mobile { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
-<body>
+<body class="hidden-scroll">
+
+    <div class="overlay" id="popupOverlay">
+        <div class="popup">
+            <h2>Înainte de a continua</h2>
+            <p>Pentru a te înscrie în comunitatea BMC, este necesar să citești și să accepți regulamentul nostru intern.</p>
+            
+            <a href="p.html" class="btn-reg" target="_blank">
+                <i class="fas fa-book-open"></i> Citește Regulamentul
+            </a>
+            
+            <button class="btn-accept" onclick="closePopup()">
+                Am citit și sunt de acord cu termenii
+            </button>
+        </div>
+    </div>
 
     <header>
         <a href="index.html" class="logo-container">
@@ -222,7 +315,6 @@
             <form action="https://formsubmit.co/botosanimma@gmail.com" method="POST">
                 
                 <input type="hidden" name="_next" value="https://rmcbotosani.ro/s.html">
-                
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_subject" value="Înscriere Nouă - RMC Botoșani!">
 
@@ -264,7 +356,7 @@
                 <div class="checkbox-group">
                     <input type="checkbox" id="termeni" name="Acord_Regulament" required>
                     <label for="termeni">
-                        Confirm că am peste 14 ani și înțeleg că antrenamentele se desfășoară într-un spațiu controlat, pe propria răspundere, respectând codul de onoare al comunității RMC.
+                        Confirm că am peste 14 ani și înțeleg că antrenamentele se desfășoară într-un spațiu controlat, pe propria răspundere, respectând codul de onoare al comunității BMC.
                     </label>
                 </div>
 
@@ -276,6 +368,15 @@
     <footer>
         <p>&copy; 2026 BMC</p>
     </footer>
+
+    <script>
+        function closePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
+            document.body.classList.remove('hidden-scroll');
+            // Bifăm automat și căsuța din formular pentru a ușura experiența
+            document.getElementById('termeni').checked = true;
+        }
+    </script>
 
 </body>
 </html>
