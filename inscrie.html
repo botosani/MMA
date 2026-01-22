@@ -67,7 +67,7 @@
             border-color: var(--accent);
         }
 
-        /* POPUP ÎMBUNĂTĂȚIT */
+        /* POPUP */
         .overlay {
             position: fixed;
             top: 0;
@@ -279,6 +279,17 @@
             transform: scale(1.02);
             filter: brightness(1.1);
         }
+        
+        /* Stil pentru buton cand se incarca */
+        .btn-submit.loading {
+            background-color: #555;
+            cursor: wait;
+        }
+        
+        .btn-submit.success {
+            background-color: #2ecc71;
+            pointer-events: none;
+        }
 
         footer {
             padding: 30px;
@@ -333,11 +344,11 @@
             <h1>Devino membru</h1>
             <p class="subtitle">Intră în echipa BMC Botoșani și începe antrenamentul.</p>
 
-            <form action="https://formsubmit.co/botosanimma@gmail.com" method="POST" target="_blank">
+            <form id="registrationForm">
                 
-                <input type="hidden" name="_next" value="https://rmcbotosani.ro/s.html">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_subject" value="Înscriere Nouă - BMC Botoșani!">
+                <input type="hidden" name="_template" value="table">
 
                 <div class="form-group">
                     <label for="nume">Nume și Prenume</label>
@@ -381,7 +392,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn-submit">Trimite Înscrierea</button>
+                <button type="submit" class="btn-submit" id="submitBtn">Trimite Înscrierea</button>
             </form>
         </div>
     </section>
@@ -402,6 +413,55 @@
                 document.getElementById('termeni').checked = true;
             }, 400);
         }
+
+        // ==========================================
+        // SCRIPTUL CARE FACE MAGIA CU TABURILE
+        // ==========================================
+        const form = document.getElementById("registrationForm");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // 1. Oprește refresh-ul paginii curente
+
+            // 2. Deschide IMEDIAT tab-ul nou cu s.html
+            // Facem asta la început pentru a nu fi blocat de browser (popup blocker)
+            window.open("s.html", "_blank");
+
+            // 3. Schimbă butonul din pagina curentă pentru feedback
+            submitBtn.innerText = "SE TRIMITE...";
+            submitBtn.classList.add("loading");
+            submitBtn.disabled = true;
+
+            // 4. Colectează datele
+            const formData = new FormData(form);
+
+            // 5. Trimite email-ul în fundal (prin AJAX) către FormSubmit
+            // Adresa trebuie să conțină /ajax/ pentru a funcționa corect în fundal
+            fetch("https://formsubmit.co/ajax/botosanimma@gmail.com", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Succes: Emailul a plecat din acest tab
+                console.log("Formular trimis cu succes!");
+                
+                // Opțional: Resetăm formularul și arătăm confirmare pe acest tab
+                form.reset();
+                submitBtn.innerText = "TRIMIS CU SUCCES ✔";
+                submitBtn.classList.remove("loading");
+                submitBtn.classList.add("success");
+            })
+            .catch(error => {
+                console.error("Eroare la trimitere:", error);
+                // Chiar dacă e eroare, utilizatorul a fost trimis pe s.html, 
+                // deci va crede că e ok. Putem reseta butonul.
+                submitBtn.innerText = "REÎNCEARCĂ";
+                submitBtn.classList.remove("loading");
+                submitBtn.disabled = false;
+                alert("A apărut o eroare la trimitere. Te rugăm să verifici conexiunea.");
+            });
+        });
     </script>
 
 </body>
