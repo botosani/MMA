@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regulament & Termeni Legali - BMC Botoșani</title>
-
+    <title>Înscriere - BMC Botoșani</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
-            --accent: #e63946;   /* Roșu */
-            --charity: #2ecc71;  /* Verde */
-            --gear: #3498db;     /* Albastru pentru echipament */
-            --legal: #9b59b6;    /* Violet pentru juridic */
+            --accent: #e63946;
             --bg: #0a0a0a;
-            --card: #121212;
-            --text: #ccc;
-            --warning: #f1c40f;  /* Galben */
+            --card: #141414;
+            --input-bg: #1f1f1f;
+            --text-gray: #bbb;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,276 +24,423 @@
             background-color: var(--bg);
             color: white;
             line-height: 1.6;
-            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* --- HEADER --- */
+        /* HEADER */
         header {
-            padding: 10px 5%; /* Padding putin mai mic pentru a acomoda logo-ul */
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(15px);
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--accent);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid var(--accent);
         }
 
-        .brand {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: white;
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
+        .logo-img { height: 60px; border-radius: 8px; } 
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; }
+        .logo-text span { color: var(--accent); }
+
+        .btn-back {
             text-decoration: none;
-            letter-spacing: 1px;
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
-            gap: 15px; /* Spatiu intre logo imagine si text */
+            gap: 8px;
+            padding: 10px 18px;
+            border: 1px solid #333;
+            border-radius: 30px;
+            transition: 0.3s;
+            text-transform: uppercase;
         }
-        
-        /* Stil specific pentru imaginea logo */
-        .brand img {
-            height: 50px; /* Dimensiune optima pentru meniu */
-            width: auto;
-            border-radius: 5px; /* Colturi usor rotunjite */
-            border: 1px solid var(--accent); /* Contur subtil rosu */
+
+        .btn-back:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* POPUP ÎMBUNĂTĂȚIT */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(15px);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .popup {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(230, 57, 70, 0.15);
+            animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { 
+            from { opacity: 0; transform: translateY(40px) scale(0.95); } 
+            to { opacity: 1; transform: translateY(0) scale(1); } 
+        }
+
+        .popup-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            margin-bottom: 20px;
             object-fit: cover;
+            box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
         }
 
-        .brand span { color: var(--accent); }
-
-        nav { display: flex; gap: 10px; }
-        .nav-btn {
-            text-decoration: none; color: white; font-family: 'Oswald', sans-serif; font-size: 0.8rem;
-            text-transform: uppercase; padding: 8px 15px; border-radius: 4px; transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 6px;
+        .popup h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .nav-btn:hover { background: rgba(255,255,255,0.1); }
-        .btn-inscrie { background: var(--accent); border: none; font-weight: 700; box-shadow: 0 0 10px rgba(230, 57, 70, 0.4); }
-        .btn-inscrie:hover { background: white; color: var(--accent); }
 
-        /* --- CONTINUT --- */
-        .legal-container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 0 20px;
+        .popup p {
+            margin-bottom: 30px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .popup-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-reg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            padding: 14px;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 12px;
+            font-family: 'Oswald', sans-serif;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .btn-reg:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #666;
+        }
+
+        .btn-accept {
+            display: block;
+            background: var(--accent);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Oswald', sans-serif;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+        }
+
+        .btn-accept:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(230, 57, 70, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* FORM SECTION */
+        .form-section {
+            flex: 1;
+            padding: 60px 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at top, #1a1a1a 0%, #050505 100%);
+        }
+
+        .form-container {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            border: 1px solid #222;
         }
 
         h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            text-transform: uppercase;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
             text-align: center;
-            margin-bottom: 50px;
-            letter-spacing: 2px;
-            background: -webkit-linear-gradient(#fff, #999);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* CARDURI */
-        .policy-card {
-            background: var(--card);
-            padding: 35px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border-left: 5px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.2s;
-        }
-        .policy-card:hover { transform: translateY(-3px); }
-
-        /* Variatiuni Carduri */
-        .medical-card { border-left: 5px solid var(--warning); background: linear-gradient(145deg, #121212, #1a1810); }
-        .medical-card h2 i { color: var(--warning); }
-        .medical-card ul li::before { color: var(--warning) !important; }
-
-        .gear-card { border-left: 5px solid var(--gear); background: linear-gradient(145deg, #121212, #0f151c); }
-        .gear-card h2 i { color: var(--gear); }
-        
-        .legal-card { border-left: 5px solid var(--legal); background: linear-gradient(145deg, #121212, #1a101f); }
-        .legal-card h2 i { color: var(--legal); }
-        .legal-card ul li::before { color: var(--legal) !important; }
-
-        /* Penal Code Specific */
-        .penal-card { border-left: 5px solid red; border-right: 5px solid red; background: #1a0505; }
-        .penal-card h2 i { color: red; }
-
-        .policy-card h2 {
-            font-family: 'Oswald', sans-serif;
-            margin-bottom: 20px;
-            display: flex; align-items: center; gap: 15px;
             text-transform: uppercase;
-            font-size: 1.5rem;
+            letter-spacing: 1px;
         }
-        .policy-card h2 i { color: var(--accent); }
-        .policy-card p, .policy-card li { color: var(--text); margin-bottom: 10px; font-size: 0.95rem; }
 
-        .policy-card ul { list-style: none; margin-top: 15px; }
-        .policy-card ul li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
-        .policy-card ul li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); margin-top: 4px;}
-
-        .policy-card strong { color: white; font-weight: 700; }
-
-        /* OFFER BOX */
-        .offer-box {
-            background: rgba(52, 152, 219, 0.1);
-            border: 1px dashed var(--gear);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            display: flex; gap: 20px; align-items: center;
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 0.9rem;
         }
-        .offer-icon { font-size: 2rem; color: var(--gear); }
-        .offer-text strong { color: var(--gear); display: block; font-size: 1.1rem; margin-bottom: 5px; }
 
-        /* ZONA CRITICA */
-        .danger-zone {
-            background: rgba(230, 57, 70, 0.1);
-            border: 2px dashed var(--accent);
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        .danger-zone h3 { font-family: 'Oswald', sans-serif; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .form-group { margin-bottom: 25px; }
 
-        /* DISCLAIMER FINAL */
-        .legal-disclaimer { 
-            background: #050505; 
-            padding: 30px; 
-            border: 1px solid #222; 
-            font-size: 0.85rem; 
-            color: #888; 
-            margin-top: 60px; 
-            text-align: justify;
-            border-radius: 10px;
-            border-top: 3px solid #333;
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
-        .legal-disclaimer h4 { color: white; margin-bottom: 15px; font-family: 'Oswald', sans-serif; text-transform: uppercase;}
-        .mandatory-text {
-            background: #222;
+
+        input, select, textarea {
+            width: 100%;
             padding: 15px;
-            border-left: 4px solid var(--accent);
+            background: var(--input-bg);
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
             color: white;
-            font-style: italic;
-            margin-top: 20px;
-            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            transition: 0.3s;
         }
 
-        /* Footer */
-        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; border-top: 1px solid #111; margin-top: 40px;}
+        input:focus, textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+        }
 
-        /* Responsive */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .checkbox-group input { width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent); }
+        .checkbox-group label { font-size: 0.8rem; font-weight: 400; text-transform: none; color: #999; cursor: pointer; line-height: 1.4; }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 20px;
+            font-weight: 900;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: 0.4s;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+        }
+        
+        .btn-submit:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #444;
+            letter-spacing: 1px;
+        }
+
+        .hidden-scroll { overflow: hidden; }
+
         @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .policy-card { padding: 20px; }
-            .offer-box { flex-direction: column; text-align: center; }
-            header { flex-direction: column; gap: 10px; }
-            .brand img { height: 40px; } /* Logo putin mai mic pe mobil */
+            .logo-text { display: none; }
+            .form-section { padding: 30px 5%; }
+            .grid-mobile { grid-template-columns: 1fr !important; }
+            .popup { padding: 30px 20px; }
         }
     </style>
 </head>
-<body>
+<body class="hidden-scroll">
 
-    <header>
-        <a href="index.html" class="brand">
-            <img src="logo1.jpeg" alt="Logo BMC Botosani">
-            BMC <span>BOTOȘANI</span>
-        </a>
-        <nav>
-            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Acasă</a>
-            <a href="inscrie.html" class="nav-btn btn-inscrie">Înscrie-te</a>
-        </nav>
-    </header>
-
-    <div class="legal-container">
-        <h1>CADRUL LEGAL & REGULAMENT</h1>
-
-        <div class="policy-card penal-card">
-            <h2><i class="fas fa-balance-scale"></i> 1. Codul Penal (Esențial)</h2>
-            <p>Aceasta este <strong>cea mai critică parte</strong> a pregătirii noastre. Membrii trebuie să discearnă clar între sport și agresiune.</p>
+    <div class="overlay" id="popupOverlay">
+        <div class="popup">
+            <img src="logo1.jpeg" alt="BMC Logo" class="popup-logo">
+            <h2>Bun venit în BMC</h2>
+            <p>Ești gata să îți depășești limitele? Pentru a menține un standard ridicat de respect, toți membrii acceptă codul nostru de onoare.</p>
             
-            <div class="danger-zone">
-                <h3><i class="fas fa-exclamation-circle"></i> Art. 19: Legitima Apărare</h3>
-                <p>Tehnicile învățate pot fi folosite în afara sălii <strong>DOAR</strong> pentru a respinge un atac material, direct, imediat și injust.</p>
-                <p><strong>Regula de Aur:</strong> Riposta trebuie să fie proporțională cu pericolul. Orice exces transformă victima în agresor.</p>
+            <div class="popup-actions">
+                <a href="p.html" class="btn-reg">
+                    <i class="fas fa-file-shield"></i> Citește Regulamentul
+                </a>
+                
+                <button class="btn-accept" onclick="closePopup()">
+                    Accept și continui
+                </button>
             </div>
-
-            <ul style="margin-top:20px;">
-                <li><strong>Art. 193 (Lovirea și violențe):</strong> Orice agresiune nejustificată în afara cadrului sportiv atrage răspunderea penală.</li>
-                <li><strong>Consimțământul (în sală):</strong> Vătămările accidentale din timpul antrenamentului sunt acoperite de "asumarea riscului sportiv", atâta timp cât se respectă regulamentul.</li>
-                <li><strong>Hard Sparring Neautorizat:</strong> Violența intenționată sau excesivă în sparring iese din sfera sportivă și poate atrage răspunderea penală chiar și în sală.</li>
-            </ul>
-        </div>
-
-        <div class="policy-card medical-card">
-            <h2><i class="fas fa-heartbeat"></i> 2. Legea Sportului (Legea 69/2000)</h2>
-            <p>Conform legislației în vigoare, siguranța medicală este prioritară înainte de orice efort fizic.</p>
-            <ul>
-                <li><strong>Control Medical Obligatoriu:</strong> Accesul la antrenamente este permis doar persoanelor declarate "Apte pentru efort fizic" de către un medic. Aceasta este o cerință legală care exonerează organizatorii în cazul unor incidente medicale imprevizibile (ex: afecțiuni cardiace ascunse).</li>
-                <li><strong>Protecția Minorilor (Legea 272/2004):</strong> Pentru membrii sub 18 ani, acordul scris al părinților este mandatoriu. Minorii nu pot decide singuri participarea la activități cu risc de vătămare.</li>
-                <li><strong>Responsabilitatea Organizatorului:</strong> Ne angajăm să asigurăm un mediu sigur, suprafață de luptă adecvată și echipament de protecție conform standardelor.</li>
-            </ul>
-        </div>
-
-        <div class="policy-card legal-card">
-            <h2><i class="fas fa-user-shield"></i> 3. GDPR & Dreptul la Imagine</h2>
-            <p>Colectăm date și materiale media conform Regulamentului European 679/2016 și Codului Civil.</p>
-            <ul>
-                <li><strong>Dreptul la Imagine (Art. 73 Cod Civil):</strong> Pentru a posta videoclipuri în secțiunea "Fights" sau pe Social Media, este necesar acordul participanților.</li>
-                <li><strong>Confidențialitate:</strong> Datele din formularele de înscriere (Nume, CNP, Istoric Medical) sunt stocate sigur și nu sunt partajate cu terți.</li>
-                <li><strong>Retragere Acord:</strong> Orice membru poate solicita oricând ștergerea imaginilor cu el sau a datelor personale din baza noastră de date.</li>
-            </ul>
-        </div>
-
-        <div class="policy-card">
-            <h2><i class="fas fa-gavel"></i> 4. Răspunderea Civilă (Art. 1349 - 1380)</h2>
-            <p>Participarea la un sport de contact implică o asumare conștientă a riscurilor (volenti non fit injuria).</p>
-            <ul>
-                <li><strong>Asumarea Riscului:</strong> Prin semnarea regulamentului, membrii confirmă că își asumă riscul inerent artelor marțiale (ex: vânătăi, luxații, contuzii).</li>
-                <li><strong>Limitarea Acțiunilor în Instanță:</strong> Nu se pot solicita despăgubiri organizatorilor pentru accidentări obișnuite, specifice sportului, produse în timpul unui antrenament regulamentar.</li>
-                <li><strong>Echipament:</strong> Lipsa echipamentului de protecție obligatoriu (proteză, mănuși) anulează dreptul la orice reclamație în caz de accidentare.</li>
-            </ul>
-        </div>
-
-        <div class="policy-card gear-card">
-            <h2><i class="fas fa-shield-alt"></i> 5. Echipament și Conduită</h2>
-            <p>Reguli interne pentru buna desfășurare a antrenamentelor:</p>
-            
-            <div class="offer-box">
-                <i class="fas fa-gift offer-icon"></i>
-                <div class="offer-text">
-                    <strong>START-UP PACK:</strong>
-                    Membrii noi beneficiază de echipament de împrumut timp de <strong>4 ședințe</strong>. Ulterior, echipamentul propriu devine obligatoriu.
-                </div>
-            </div>
-
-            <ul>
-                <li><strong>Toleranță Zero:</strong> Alcoolul, drogurile sau comportamentul agresiv duc la excluderea imediată.</li>
-                <li><strong>Igiena:</strong> Echipamentul trebuie curățat după fiecare antrenament. Unghiile trebuie tăiate scurt.</li>
-            </ul>
-        </div>
-
-        <div class="legal-disclaimer">
-            <h4>ACORD DE ÎNSCRIERE</h4>
-            <p>Prin completarea formularului de înscriere și participarea la antrenamente, membrul (sau tutorele legal) declară următoarele:</p>
-            
-            <div class="mandatory-text">
-                "Declar că am luat la cunoștință prevederile Art. 19 Cod Penal privind legitima apărare și mă angajez să nu folosesc tehnicile învățate în scopuri agresive. Accept condițiile de procesare a datelor conform GDPR și confirm că dețin o adeverință medicală validă conform Legii 69/2000."
-            </div>
-
-            <br>
-            <p>Coordonatorii BMC Botoșani își rezervă dreptul de a selecta membrii și de a interzice accesul persoanelor care nu respectă aceste principii etice și legale.</p>
         </div>
     </div>
 
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo.jpeg" alt="BMC Logo" class="logo-img">
+            <div class="logo-text">BMC <span>BOTOȘANI</span></div>
+        </a>
+        <a href="index.html" class="btn-back">
+            <i class="fas fa-chevron-left"></i> Înapoi
+        </a>
+    </header>
+
+    <section class="form-section">
+        <div class="form-container">
+            <h1>Devino membru</h1>
+            <p class="subtitle">Intră în echipa BMC Botoșani și începe antrenamentul.</p>
+
+            <form id="registrationForm" action="https://formsubmit.co/botosanimma@gmail.com" method="POST">
+                
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="Înscriere Nouă - BMC Botoșani!">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="form-group">
+                    <label for="nume">Nume și Prenume</label>
+                    <input type="text" name="Nume complet" id="nume" placeholder="Numele tău complet" required>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;" class="grid-mobile">
+                    <div class="form-group">
+                        <label for="varsta">Vârstă</label>
+                        <input type="number" name="Varsta" id="varsta" placeholder="Vârsta ta" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="experienta">Experiență</label>
+                        <select name="Experienta" id="experienta">
+                            <option value="Incepator">Începător</option>
+                            <option value="Mediu">Am mai practicat</option>
+                            <option value="Avansat">Sportiv activ</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Adresă Email</label>
+                    <input type="email" name="Email" id="email" placeholder="email@exemplu.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefon">Număr Telefon (Opțional)</label>
+                    <input type="tel" name="Telefon" id="telefon" placeholder="07xxxxxxxx">
+                </div>
+
+                <div class="form-group">
+                    <label for="mesaj">Motivația ta</label>
+                    <textarea name="Mesaj" id="mesaj" rows="3" placeholder="De ce vrei să te alături echipei noastre?"></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="termeni" name="Acord_Regulament" required>
+                    <label for="termeni">
+                        Confirm că înțeleg că antrenamentele se desfășoară pe propria răspundere și respect codul BMC.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">Trimite Înscrierea</button>
+            </form>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2026 BMC BOTOȘANI - More than a Gym, A Family.</p>
-        <p style="opacity: 0.5; margin-top: 5px;">Respect. Disciplină. Evoluție.</p>
+        <p>&copy; 2026 BMC BOTOȘANI • DISCIPLINĂ ȘI ONOARE</p>
     </footer>
+
+    <script>
+        function closePopup() {
+            const overlay = document.getElementById('popupOverlay');
+            overlay.style.opacity = '0';
+            overlay.style.transition = '0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.classList.remove('hidden-scroll');
+                document.getElementById('termeni').checked = true;
+            }, 400);
+        }
+
+        // SCRIPT NOU PENTRU TRIMITERE SI REDIRECT
+        document.getElementById("registrationForm").addEventListener("submit", function(e) {
+            e.preventDefault(); // Oprește trimiterea standard a formularului
+
+            const form = e.target;
+            const formData = new FormData(form);
+            const btn = document.getElementById("submitBtn");
+            const originalText = btn.innerText;
+
+            // Schimbă butonul pentru feedback vizual
+            btn.innerText = "SE PROCESEAZĂ...";
+            btn.disabled = true;
+            btn.style.opacity = "0.7";
+
+            // Trimite datele în fundal (AJAX)
+            fetch("https://formsubmit.co/ajax/botosanimma@gmail.com", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // SUCCESS: Trimite utilizatorul la s.html
+                window.location.href = "s.html";
+            })
+            .catch(error => {
+                console.error("Eroare:", error);
+                // Chiar și dacă apare o eroare de rețea, redirecționăm utilizatorul
+                // ca să nu rămână blocat (opțional, poți afișa o alertă)
+                window.location.href = "s.html";
+            });
+        });
+    </script>
 
 </body>
 </html>
