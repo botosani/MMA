@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +12,8 @@
         :root {
             --accent: #e63946;   /* Roșu */
             --charity: #2ecc71;  /* Verde */
-            --gear: #3498db;     /* Albastru pentru echipament */
-            --legal: #9b59b6;    /* Violet pentru juridic */
+            --gear: #3498db;     /* Albastru */
+            --legal: #9b59b6;    /* Violet */
             --bg: #0a0a0a;
             --card: #121212;
             --text: #ccc;
@@ -30,7 +32,7 @@
 
         /* --- HEADER --- */
         header {
-            padding: 10px 5%; /* Padding putin mai mic pentru a acomoda logo-ul */
+            padding: 10px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,38 +45,35 @@
         }
 
         .brand {
-@@ -49,213 +52,251 @@
-            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent); /* BMC este ROȘU */
             text-decoration: none;
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 15px; /* Spatiu intre logo imagine si text */
+            gap: 15px;
         }
         
-        /* Stil specific pentru imaginea logo */
         .brand img {
-            height: 50px; /* Dimensiune optima pentru meniu */
+            height: 50px;
             width: auto;
-            border-radius: 5px; /* Colturi usor rotunjite */
-            border: 1px solid var(--accent); /* Contur subtil rosu */
+            border-radius: 5px;
+            border: 1px solid var(--accent);
             object-fit: cover;
         }
 
-
-        .brand span { color: var(--accent); }
+        .brand span { color: white; } /* BOTOȘANI este ALB */
 
         nav { display: flex; gap: 10px; }
         .nav-btn {
             text-decoration: none; color: white; font-family: 'Oswald', sans-serif; font-size: 0.8rem;
             text-transform: uppercase; padding: 8px 15px; border-radius: 4px; transition: 0.3s;
             border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 6px;
-
-
         }
         .nav-btn:hover { background: rgba(255,255,255,0.1); }
         .btn-inscrie { background: var(--accent); border: none; font-weight: 700; box-shadow: 0 0 10px rgba(230, 57, 70, 0.4); }
-        .btn-inscrie:hover { background: white; color: var(--accent); }
 
         /* --- CONTINUT --- */
         .legal-container {
@@ -84,9 +83,6 @@
         }
 
         h1 {
-
-
-
             font-family: 'Oswald', sans-serif;
             font-size: clamp(2rem, 6vw, 3.5rem);
             text-transform: uppercase;
@@ -98,7 +94,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* CARDURI */
         .policy-card {
             background: var(--card);
             padding: 35px;
@@ -106,24 +101,27 @@
             margin-bottom: 30px;
             border-left: 5px solid var(--accent);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-
             transition: transform 0.2s;
         }
         .policy-card:hover { transform: translateY(-3px); }
 
         /* Variatiuni Carduri */
+        .info-card { border-left: 5px solid var(--charity); background: linear-gradient(145deg, #121212, #0d1a12); }
+        .info-card h2 i { color: var(--charity); }
+        .info-card ul li::before { color: var(--charity) !important; }
+
         .medical-card { border-left: 5px solid var(--warning); background: linear-gradient(145deg, #121212, #1a1810); }
         .medical-card h2 i { color: var(--warning); }
         .medical-card ul li::before { color: var(--warning) !important; }
 
         .gear-card { border-left: 5px solid var(--gear); background: linear-gradient(145deg, #121212, #0f151c); }
         .gear-card h2 i { color: var(--gear); }
-        
+        .gear-card ul li::before { color: var(--gear) !important; }
+
         .legal-card { border-left: 5px solid var(--legal); background: linear-gradient(145deg, #121212, #1a101f); }
         .legal-card h2 i { color: var(--legal); }
         .legal-card ul li::before { color: var(--legal) !important; }
 
-        /* Penal Code Specific */
         .penal-card { border-left: 5px solid red; border-right: 5px solid red; background: #1a0505; }
         .penal-card h2 i { color: red; }
 
@@ -133,9 +131,7 @@
             display: flex; align-items: center; gap: 15px;
             text-transform: uppercase;
             font-size: 1.5rem;
-
         }
-        .policy-card h2 i { color: var(--accent); }
         .policy-card p, .policy-card li { color: var(--text); margin-bottom: 10px; font-size: 0.95rem; }
 
         .policy-card ul { list-style: none; margin-top: 15px; }
@@ -143,19 +139,6 @@
         .policy-card ul li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--accent); margin-top: 4px;}
 
         .policy-card strong { color: white; font-weight: 700; }
-
-        /* OFFER BOX */
-
-
-
-
-
-
-
-
-
-
-
 
         .offer-box {
             background: rgba(52, 152, 219, 0.1);
@@ -166,24 +149,16 @@
             display: flex; gap: 20px; align-items: center;
         }
         .offer-icon { font-size: 2rem; color: var(--gear); }
-        .offer-text strong { color: var(--gear); display: block; font-size: 1.1rem; margin-bottom: 5px; }
 
-        /* ZONA CRITICA */
         .danger-zone {
             background: rgba(230, 57, 70, 0.1);
             border: 2px dashed var(--accent);
             padding: 25px;
             border-radius: 10px;
             margin-top: 20px;
-
-
-
-
-
         }
         .danger-zone h3 { font-family: 'Oswald', sans-serif; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
 
-        /* DISCLAIMER FINAL */
         .legal-disclaimer { 
             background: #050505; 
             padding: 30px; 
@@ -196,6 +171,7 @@
             border-top: 3px solid #333;
         }
         .legal-disclaimer h4 { color: white; margin-bottom: 15px; font-family: 'Oswald', sans-serif; text-transform: uppercase;}
+        
         .mandatory-text {
             background: #222;
             padding: 15px;
@@ -206,18 +182,12 @@
             font-weight: 600;
         }
 
-
-        /* Footer */
         footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; border-top: 1px solid #111; margin-top: 40px;}
 
-        /* Responsive */
         @media (max-width: 600px) {
             h1 { font-size: 1.8rem; }
-            .policy-card { padding: 20px; }
-
-            .offer-box { flex-direction: column; text-align: center; }
             header { flex-direction: column; gap: 10px; }
-            .brand img { height: 40px; } /* Logo putin mai mic pe mobil */
+            .brand img { height: 40px; }
         }
     </style>
 </head>
@@ -231,16 +201,26 @@
         <nav>
             <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Acasă</a>
             <a href="inscrie.html" class="nav-btn btn-inscrie">Înscrie-te</a>
-
         </nav>
     </header>
 
     <div class="legal-container">
         <h1>CADRUL LEGAL & REGULAMENT</h1>
 
+        <div class="policy-card info-card">
+            <h2><i class="fas fa-users-cog"></i> 1. Natura Activității & Program</h2>
+            <p>BMC Botoșani este un grup de inițiativă sportivă comunitară, nu o entitate comercială cu scop lucrativ.</p>
+            <ul>
+                <li><strong>Acces Gratuit:</strong> Antrenamentele sunt 100% <strong>GRATUITE</strong>. Nu există taxe de înscriere sau abonamente.</li>
+                <li><strong>Program:</strong> Sesiunile de pregătire au loc exclusiv <strong>Sâmbăta</strong>.</li>
+                <li><strong>Locație:</strong> Activitățile se desfășoară fie în aer liber, fie la sala parteneră din <strong>Strada Mihai Eminescu nr. 48</strong>.</li>
+                <li><strong>Statut Coordonatori:</strong> Persoanele care coordonează sesiunile <strong>nu sunt antrenori licențiați</strong>. Aceștia sunt membri cu experiență care oferă suport peer-to-peer, ajutând voluntar ceilalți participanți pe baza cunoștințelor acumulate anterior.</li>
+            </ul>
+        </div>
+
         <div class="policy-card penal-card">
-            <h2><i class="fas fa-balance-scale"></i> 1. Codul Penal (Esențial)</h2>
-            <p>Aceasta este <strong>cea mai critică parte</strong> a pregătirii noastre. Membrii trebuie să discearnă clar între sport și agresiune.</p>
+            <h2><i class="fas fa-balance-scale"></i> 2. Codul Penal & Responsabilitatea</h2>
+            <p>Membrii trebuie să discearnă clar între sport și agresiune. Orice tehnică învățată are scop pur sportiv sau defensiv.</p>
             
             <div class="danger-zone">
                 <h3><i class="fas fa-exclamation-circle"></i> Art. 19: Legitima Apărare</h3>
@@ -249,89 +229,67 @@
             </div>
 
             <ul style="margin-top:20px;">
-                <li><strong>Art. 193 (Lovirea și violențe):</strong> Orice agresiune nejustificată în afara cadrului sportiv atrage răspunderea penală.</li>
-                <li><strong>Consimțământul (în sală):</strong> Vătămările accidentale din timpul antrenamentului sunt acoperite de "asumarea riscului sportiv", atâta timp cât se respectă regulamentul.</li>
-                <li><strong>Hard Sparring Neautorizat:</strong> Violența intenționată sau excesivă în sparring iese din sfera sportivă și poate atrage răspunderea penală chiar și în sală.</li>
+                <li><strong>Art. 193 (Lovirea și violențe):</strong> Agresiunea nejustificată în afara cadrului sportiv atrage răspunderea penală individuală a membrului.</li>
+                <li><strong>Consimțământul (în sală):</strong> Vătămările accidentale sunt considerate parte din "asumarea riscului sportiv" între parteneri de antrenament, excluzând răspunderea penală dacă se respectă regulile de siguranță.</li>
+                <li><strong>Hard Sparring Neautorizat:</strong> Violența intenționată care depășește scopul exercițiului este strict interzisă.</li>
             </ul>
         </div>
 
         <div class="policy-card medical-card">
-            <h2><i class="fas fa-heartbeat"></i> 2. Legea Sportului (Legea 69/2000)</h2>
-            <p>Conform legislației în vigoare, siguranța medicală este prioritară înainte de orice efort fizic.</p>
+            <h2><i class="fas fa-heartbeat"></i> 3. Legea Sportului (69/2000) & Sănătate</h2>
+            <p>Siguranța fizică este responsabilitatea fiecărui participant.</p>
             <ul>
-                <li><strong>Control Medical Obligatoriu:</strong> Accesul la antrenamente este permis doar persoanelor declarate "Apte pentru efort fizic" de către un medic. Aceasta este o cerință legală care exonerează organizatorii în cazul unor incidente medicale imprevizibile (ex: afecțiuni cardiace ascunse).</li>
-                <li><strong>Protecția Minorilor (Legea 272/2004):</strong> Pentru membrii sub 18 ani, acordul scris al părinților este mandatoriu. Minorii nu pot decide singuri participarea la activități cu risc de vătămare.</li>
-                <li><strong>Responsabilitatea Organizatorului:</strong> Ne angajăm să asigurăm un mediu sigur, suprafață de luptă adecvată și echipament de protecție conform standardelor.</li>
+                <li><strong>Control Medical:</strong> Participanții declară pe proprie răspundere că sunt "Apți pentru efort fizic". Se recomandă posesia unei adeverințe medicale valide.</li>
+                <li><strong>Protecția Minorilor (Legea 272/2004):</strong> Cei sub 18 ani au nevoie de acordul scris al părinților/tutorilor pentru a participa la sesiuni.</li>
+                <li><strong>Asigurare:</strong> Fiind o activitate gratuită și voluntară, BMC Botoșani nu oferă asigurare de accidente; participanții sunt încurajați să dețină asigurări medicale private.</li>
             </ul>
         </div>
 
         <div class="policy-card legal-card">
-            <h2><i class="fas fa-user-shield"></i> 3. GDPR & Dreptul la Imagine</h2>
-            <p>Colectăm date și materiale media conform Regulamentului European 679/2016 și Codului Civil.</p>
-
-
-
-
-
-
-
-
-
+            <h2><i class="fas fa-user-shield"></i> 4. GDPR & Imagine</h2>
+            <p>Colectăm date minime pentru evidența grupului, conform Regulamentului European 679/2016.</p>
             <ul>
-                <li><strong>Dreptul la Imagine (Art. 73 Cod Civil):</strong> Pentru a posta videoclipuri în secțiunea "Fights" sau pe Social Media, este necesar acordul participanților.</li>
-                <li><strong>Confidențialitate:</strong> Datele din formularele de înscriere (Nume, CNP, Istoric Medical) sunt stocate sigur și nu sunt partajate cu terți.</li>
-                <li><strong>Retragere Acord:</strong> Orice membru poate solicita oricând ștergerea imaginilor cu el sau a datelor personale din baza noastră de date.</li>
+                <li><strong>Dreptul la Imagine (Art. 73 Cod Civil):</strong> Participarea la antrenamente poate implica fotografierea sau filmarea pentru materiale educative sau promovare pe rețelele sociale (Secțiunea "Fights").</li>
+                <li><strong>Retragere Acord:</strong> Orice participant poate solicita oricând eliminarea imaginilor în care apare direct.</li>
+                <li><strong>Confidențialitate:</strong> Datele din formulare nu vor fi niciodată înstrăinate către terți.</li>
             </ul>
         </div>
 
         <div class="policy-card">
-            <h2><i class="fas fa-gavel"></i> 4. Răspunderea Civilă (Art. 1349 - 1380)</h2>
-            <p>Participarea la un sport de contact implică o asumare conștientă a riscurilor (volenti non fit injuria).</p>
+            <h2><i class="fas fa-gavel"></i> 5. Răspunderea Civilă (Art. 1349 - 1380)</h2>
+            <p>Participarea la sporturi de contact implică o asumare conștientă a riscurilor (volenti non fit injuria).</p>
             <ul>
-                <li><strong>Asumarea Riscului:</strong> Prin semnarea regulamentului, membrii confirmă că își asumă riscul inerent artelor marțiale (ex: vânătăi, luxații, contuzii).</li>
-                <li><strong>Limitarea Acțiunilor în Instanță:</strong> Nu se pot solicita despăgubiri organizatorilor pentru accidentări obișnuite, specifice sportului, produse în timpul unui antrenament regulamentar.</li>
-                <li><strong>Echipament:</strong> Lipsa echipamentului de protecție obligatoriu (proteză, mănuși) anulează dreptul la orice reclamație în caz de accidentare.</li>
-
-
+                <li><strong>Asumarea Riscului:</strong> Membrii confirmă că acceptă riscul inerent artelor marțiale (contuzii, luxații, etc.).</li>
+                <li><strong>Exonerare:</strong> Coordonatorii (ajutoarele de antrenament) nu pot fi trași la răspundere pentru accidentări produse în timpul execuției exercițiilor în grup, deoarece nu există o relație contractuală de prestare servicii.</li>
+                <li><strong>Echipament Obligatoriu:</strong> Lipsa protecției (proteză, bandaje, mănuși) duce la pierderea dreptului de a invoca culpa oricui în caz de accidentare.</li>
             </ul>
         </div>
 
         <div class="policy-card gear-card">
-            <h2><i class="fas fa-shield-alt"></i> 5. Echipament și Conduită</h2>
-            <p>Reguli interne pentru buna desfășurare a antrenamentelor:</p>
-            
+            <h2><i class="fas fa-shield-alt"></i> 6. Echipament & Conduită</h2>
             <div class="offer-box">
                 <i class="fas fa-gift offer-icon"></i>
                 <div class="offer-text">
-                    <strong>START-UP PACK:</strong>
-                    Membrii noi beneficiază de echipament de împrumut timp de <strong>4 ședințe</strong>. Ulterior, echipamentul propriu devine obligatoriu.
+                    <strong>START-UP PACK (Împrumut):</strong>
+                    Pentru a vedea dacă sportul ți se potrivește, îți oferim echipament de împrumut pentru primele <strong>4 ședințe</strong>. Ulterior, din motive de igienă și siguranță, este necesar să deții echipament propriu.
                 </div>
             </div>
-
             <ul>
-                <li><strong>Toleranță Zero:</strong> Alcoolul, drogurile sau comportamentul agresiv duc la excluderea imediată.</li>
-                <li><strong>Igiena:</strong> Echipamentul trebuie curățat după fiecare antrenament. Unghiile trebuie tăiate scurt.</li>
-
+                <li><strong>Toleranță Zero:</strong> Prezența sub influența alcoolului sau a substanțelor interzise atrage excluderea imediată.</li>
+                <li><strong>Respect & Disciplină:</strong> Orice formă de bullying sau ego excesiv în timpul sparring-ului nu este tolerată.</li>
+                <li><strong>Igiena Personală:</strong> Echipament curat și unghii tăiate scurt pentru a preveni zgârierea partenerilor.</li>
             </ul>
         </div>
 
         <div class="legal-disclaimer">
-            <h4>ACORD DE ÎNSCRIERE</h4>
-            <p>Prin completarea formularului de înscriere și participarea la antrenamente, membrul (sau tutorele legal) declară următoarele:</p>
+            <h4>DECLARAȚIE DE ASUMARE</h4>
+            <p>Prin completarea formularului și prezența la locație, membrul declară:</p>
             
             <div class="mandatory-text">
-                "Declar că am luat la cunoștință prevederile Art. 19 Cod Penal privind legitima apărare și mă angajez să nu folosesc tehnicile învățate în scopuri agresive. Accept condițiile de procesare a datelor conform GDPR și confirm că dețin o adeverință medicală validă conform Legii 69/2000."
-
-
-
-
-
-
+                "Declar că am înțeles natura voluntară a grupului BMC Botoșani și faptul că persoanele care coordonează nu sunt instructori licențiați, ci mentori peer-to-peer. Îmi asum întreaga responsabilitate pentru starea mea de sănătate și integritatea fizică. Mă angajez să respect prevederile Art. 19 Cod Penal și să folosesc tehnicile învățate exclusiv în cadru sportiv."
             </div>
-
-
             <br>
-            <p>Coordonatorii BMC Botoșani își rezervă dreptul de a selecta membrii și de a interzice accesul persoanelor care nu respectă aceste principii etice și legale.</p>
+            <p>Coordonatorii BMC Botoșani își rezervă dreptul de a selecta participanții și de a refuza accesul oricărei persoane care nu respectă normele etice și de siguranță ale grupului.</p>
         </div>
     </div>
 
@@ -341,5 +299,4 @@
     </footer>
 
 </body>
-
 </html>
