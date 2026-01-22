@@ -11,9 +11,10 @@
     <style>
         :root {
             --accent: #e63946;
-            --bg: #0d0d0d;
-            --card: #161616;
-            --input-bg: #222;
+            --bg: #0a0a0a;
+            --card: #141414;
+            --input-bg: #1f1f1f;
+            --text-gray: #bbb;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -50,21 +51,20 @@
             text-decoration: none;
             color: white;
             font-family: 'Oswald', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 15px;
-            border: 1px solid #444;
-            border-radius: 5px;
+            padding: 10px 18px;
+            border: 1px solid #333;
+            border-radius: 30px;
             transition: 0.3s;
             text-transform: uppercase;
         }
 
         .btn-back:hover {
-            background: white;
-            color: black;
-            border-color: white;
+            background: var(--accent);
+            border-color: var(--accent);
         }
 
         /* POPUP ÎMBUNĂTĂȚIT */
@@ -74,43 +74,46 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(15px);
             animation: fadeIn 0.4s ease-out;
         }
 
         .popup {
-            background: linear-gradient(145deg, #1a1a1a, #111);
-            padding: 50px 40px;
-            border-radius: 20px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 40px;
+            border-radius: 24px;
             text-align: center;
-            max-width: 450px;
+            max-width: 420px;
             width: 90%;
-            border: 1px solid rgba(230, 57, 70, 0.4);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(230, 57, 70, 0.1);
-            transform: scale(1);
-            animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(230, 57, 70, 0.15);
+            animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { 
-            from { opacity: 0; transform: translateY(30px) scale(0.9); } 
+            from { opacity: 0; transform: translateY(40px) scale(0.95); } 
             to { opacity: 1; transform: translateY(0) scale(1); } 
         }
 
-        .popup-icon {
-            font-size: 3rem;
-            color: var(--accent);
+        .popup-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
             margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
         }
 
         .popup h2 {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 15px;
             color: white;
             text-transform: uppercase;
@@ -119,15 +122,15 @@
 
         .popup p {
             margin-bottom: 30px;
-            color: #bbb;
-            font-size: 1rem;
-            line-height: 1.5;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .popup-actions {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
         .btn-reg {
@@ -140,7 +143,7 @@
             padding: 14px;
             text-decoration: none;
             border: 1px solid #333;
-            border-radius: 8px;
+            border-radius: 12px;
             font-family: 'Oswald', sans-serif;
             transition: 0.3s;
             font-size: 0.9rem;
@@ -149,31 +152,31 @@
 
         .btn-reg:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: #555;
+            border-color: #666;
         }
 
         .btn-accept {
             display: block;
             background: var(--accent);
             color: white;
-            padding: 16px;
+            padding: 18px;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-family: 'Oswald', sans-serif;
             cursor: pointer;
             width: 100%;
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
             transition: 0.3s;
-            font-size: 1rem;
+            font-size: 1.1rem;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
         }
 
         .btn-accept:hover {
-            background: white;
-            color: var(--accent);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(230, 57, 70, 0.4);
+            filter: brightness(1.1);
         }
 
         /* FORM SECTION */
@@ -183,33 +186,33 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 100%);
+            background: radial-gradient(circle at top, #1a1a1a 0%, #050505 100%);
         }
 
         .form-container {
             background: var(--card);
             padding: 40px;
-            border-radius: 15px;
+            border-radius: 20px;
             width: 100%;
-            max-width: 650px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            max-width: 600px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
             border: 1px solid #222;
         }
 
         h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
             text-align: center;
             text-transform: uppercase;
-            color: white;
+            letter-spacing: 1px;
         }
 
         .subtitle {
             text-align: center;
-            color: #888;
+            color: #666;
             margin-bottom: 40px;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .form-group { margin-bottom: 25px; }
@@ -218,96 +221,80 @@
             display: block;
             margin-bottom: 10px;
             font-weight: 700;
-            font-size: 0.8rem;
-            color: #aaa;
+            font-size: 0.75rem;
+            color: #888;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 14px;
+            padding: 15px;
             background: var(--input-bg);
-            border: 1px solid #333;
-            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
             color: white;
             font-family: 'Montserrat', sans-serif;
             outline: none;
-            transition: 0.4s;
+            transition: 0.3s;
         }
 
         input:focus, textarea:focus {
             border-color: var(--accent);
-            background: #2a2a2a;
-            box-shadow: 0 0 10px rgba(230, 57, 70, 0.1);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
         }
-
-        .hidden-scroll { overflow: hidden; }
 
         .checkbox-group {
             display: flex;
             align-items: flex-start;
             gap: 12px;
             margin-top: 30px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .checkbox-group input {
-            width: 20px;
-            height: 20px;
-            margin-top: 3px;
-            cursor: pointer;
-        }
-
-        .checkbox-group label {
-            font-size: 0.85rem;
-            font-weight: 400;
-            line-height: 1.5;
-            text-transform: none;
-            color: #bbb;
-            cursor: pointer;
-        }
+        .checkbox-group input { width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent); }
+        .checkbox-group label { font-size: 0.8rem; font-weight: 400; text-transform: none; color: #999; cursor: pointer; line-height: 1.4; }
 
         .btn-submit {
             width: 100%;
             background: var(--accent);
             color: white;
             border: none;
-            padding: 18px;
+            padding: 20px;
             font-weight: 900;
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             margin-top: 30px;
             transition: 0.4s;
             letter-spacing: 2px;
-            font-size: 1.2rem;
-            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.2);
+            font-size: 1.1rem;
         }
 
         .btn-submit:hover {
-            background: white;
-            color: var(--accent);
-            transform: translateY(-3px);
+            transform: scale(1.02);
+            filter: brightness(1.1);
         }
 
         footer {
             padding: 30px;
             text-align: center;
-            font-size: 0.8rem;
-            color: #555;
-            border-top: 1px solid #111;
+            font-size: 0.75rem;
+            color: #444;
+            letter-spacing: 1px;
         }
+
+        .hidden-scroll { overflow: hidden; }
 
         @media (max-width: 600px) {
             .logo-text { display: none; }
             .form-section { padding: 30px 5%; }
-            .form-container { padding: 30px 20px; }
             .grid-mobile { grid-template-columns: 1fr !important; }
+            .popup { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -315,13 +302,13 @@
 
     <div class="overlay" id="popupOverlay">
         <div class="popup">
-            <div class="popup-icon"><i class="fas fa-shield-halved"></i></div>
+            <img src="logo1.jpeg" alt="BMC Logo" class="popup-logo">
             <h2>Bun venit în BMC</h2>
-            <p>Pentru a menține un standard ridicat de respect și siguranță, toți membrii trebuie să accepte regulamentul nostru înainte de înscriere.</p>
+            <p>Ești gata să îți depășești limitele? Pentru a menține un standard ridicat de respect, toți membrii acceptă codul nostru de onoare.</p>
             
             <div class="popup-actions">
                 <a href="p.html" class="btn-reg">
-                    <i class="fas fa-file-invoice"></i> Vezi Regulamentul
+                    <i class="fas fa-file-shield"></i> Citește Regulamentul
                 </a>
                 
                 <button class="btn-accept" onclick="closePopup()">
@@ -337,14 +324,14 @@
             <div class="logo-text">BMC <span>BOTOȘANI</span></div>
         </a>
         <a href="index.html" class="btn-back">
-            <i class="fas fa-arrow-left"></i> Acasă
+            <i class="fas fa-chevron-left"></i> Înapoi
         </a>
     </header>
 
     <section class="form-section">
         <div class="form-container">
             <h1>Devino membru</h1>
-            <p class="subtitle">Completează datele și alătură-te comunității noastre.</p>
+            <p class="subtitle">Intră în echipa BMC Botoșani și începe antrenamentul.</p>
 
             <form action="https://formsubmit.co/botosanimma@gmail.com" method="POST">
                 
@@ -354,43 +341,43 @@
 
                 <div class="form-group">
                     <label for="nume">Nume și Prenume</label>
-                    <input type="text" name="Nume complet" id="nume" placeholder="Cum te numești?" required>
+                    <input type="text" name="Nume complet" id="nume" placeholder="Numele tău complet" required>
                 </div>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;" class="grid-mobile">
                     <div class="form-group">
-                        <label for="varsta">Vârstă (Minim 14)</label>
-                        <input type="number" name="Varsta" id="varsta" min="14" placeholder="Câți ani ai?" required>
+                        <label for="varsta">Vârstă</label>
+                        <input type="number" name="Varsta" id="varsta" min="14" placeholder="Min. 14 ani" required>
                     </div>
                     <div class="form-group">
-                        <label for="experienta">Nivel Experiență</label>
+                        <label for="experienta">Experiență</label>
                         <select name="Experienta" id="experienta">
-                            <option value="Incepator">Începător (Nu am mai făcut)</option>
-                            <option value="Mediu">Am mai practicat sporturi de contact</option>
+                            <option value="Incepator">Începător</option>
+                            <option value="Mediu">Am mai practicat</option>
                             <option value="Avansat">Sportiv activ</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Adresă Email (Obligatoriu)</label>
-                    <input type="email" name="Email" id="email" placeholder="nume@exemplu.com" required>
+                    <label for="email">Adresă Email</label>
+                    <input type="email" name="Email" id="email" placeholder="email@exemplu.com" required>
                 </div>
 
                 <div class="form-group">
                     <label for="telefon">Număr Telefon (Opțional)</label>
-                    <input type="tel" name="Telefon" id="telefon" placeholder="07xx xxx xxx">
+                    <input type="tel" name="Telefon" id="telefon" placeholder="07xxxxxxxx">
                 </div>
 
                 <div class="form-group">
-                    <label for="mesaj">De ce vrei să te antrenezi cu noi?</label>
-                    <textarea name="Mesaj" id="mesaj" rows="3" placeholder="Spune-ne câteva cuvinte despre tine..."></textarea>
+                    <label for="mesaj">Motivația ta</label>
+                    <textarea name="Mesaj" id="mesaj" rows="3" placeholder="De ce vrei să te alături echipei noastre?"></textarea>
                 </div>
 
                 <div class="checkbox-group">
                     <input type="checkbox" id="termeni" name="Acord_Regulament" required>
                     <label for="termeni">
-                        Confirm că am peste 14 ani și înțeleg că antrenamentele se desfășoară pe propria răspundere, respectând codul de onoare BMC.
+                        Confirm că am peste 14 ani și înțeleg că antrenamentele se desfășoară pe propria răspundere, respectând codul BMC.
                     </label>
                 </div>
 
@@ -400,21 +387,20 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 BMC BOTOȘANI</p>
+        <p>&copy; 2026 BMC BOTOȘANI • DISCIPLINĂ ȘI ONOARE</p>
     </footer>
 
     <script>
         function closePopup() {
-            // Animăm dispariția înainte de a ascunde de tot elementul
             const overlay = document.getElementById('popupOverlay');
             overlay.style.opacity = '0';
-            overlay.style.transition = '0.3s';
+            overlay.style.transition = '0.4s cubic-bezier(0.4, 0, 0.2, 1)';
             
             setTimeout(() => {
                 overlay.style.display = 'none';
                 document.body.classList.remove('hidden-scroll');
                 document.getElementById('termeni').checked = true;
-            }, 300);
+            }, 400);
         }
     </script>
 
