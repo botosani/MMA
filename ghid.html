@@ -9,15 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* --- ACELAȘI STIL CSS CA ÎNAINTE --- */
         :root {
-            --accent: #e63946;   /* Roșu - Branding */
-            --charity: #2ecc71;  /* Verde */
-            --gear: #3498db;     /* Albastru */
-            --legal: #9b59b6;    /* Violet */
-            --bg: #0a0a0a;       /* Fundal */
-            --card: #121212;     /* Carduri */
-            --text: #ccc;        /* Text */
-            --warning: #f1c40f;  /* Galben */
+            --accent: #e63946;
+            --charity: #2ecc71;
+            --gear: #3498db;
+            --legal: #9b59b6;
+            --bg: #0a0a0a;
+            --card: #121212;
+            --text: #ccc;
+            --warning: #f1c40f;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* HEADER */
         header {
             padding: 10px 5%;
             display: flex;
@@ -78,7 +78,6 @@
         .btn-inscrie { background: var(--accent); border: none; font-weight: 700; box-shadow: 0 0 10px rgba(230, 57, 70, 0.4); }
         .btn-inscrie:hover { background: white; color: var(--accent); }
 
-        /* CONTENT */
         .content-container {
             max-width: 1000px;
             margin: 50px auto;
@@ -97,7 +96,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* CARD STYLES */
         .policy-card {
             background: var(--card);
             padding: 35px;
@@ -109,7 +107,7 @@
         }
         .policy-card:hover { transform: translateY(-3px); }
 
-        /* Culori Carduri */
+        /* Styles specifice cardurilor */
         .gear-card { border-left: 5px solid var(--gear); background: linear-gradient(145deg, #121212, #0f151c); }
         .gear-card h2 i { color: var(--gear); }
         .gear-card ul li::before { color: var(--gear) !important; }
@@ -122,7 +120,6 @@
         .medical-card h2 i { color: var(--warning); }
         .medical-card ul li::before { color: var(--warning) !important; }
 
-        /* Typography Inside Cards */
         .policy-card h2 {
             font-family: 'Oswald', sans-serif;
             margin-bottom: 20px;
@@ -134,23 +131,16 @@
 
         .policy-card ul { list-style: none; margin-top: 15px; }
         .policy-card ul li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; }
-        
-        .policy-card ul li::before { 
-            content: "\f00c"; 
-            font-family: "Font Awesome 6 Free"; 
-            font-weight: 900; 
-            margin-top: 5px;
-            font-size: 1.1rem;
-        }
+        .policy-card ul li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-top: 5px; font-size: 1.1rem;}
 
         .policy-card strong { color: white; font-weight: 700; font-size: 1.05rem; display: block; margin-bottom: 4px; }
         .sub-text { display: block; font-size: 0.9rem; color: #aaa; margin-top: 2px; }
+        
         .oz-badge {
             display: inline-block; background: #333; color: white; padding: 2px 6px; 
             border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-right: 5px; border: 1px solid #444;
         }
 
-        /* Danger Zone */
         .danger-zone {
             background: rgba(230, 57, 70, 0.1);
             border: 2px dashed var(--accent);
@@ -196,31 +186,30 @@
 
         <div class="policy-card gear-card">
             <h2><i class="fas fa-fist-raised"></i> Echipament Esențial</h2>
+            <p style="margin-bottom: 20px; color: #fff; font-style: italic;">
+                Ne axăm pe dezvoltare tehnică și drill-uri cu partenerul. Nu lovim cu ură, ci învățăm să controlăm lovitura.
+            </p>
             <ul>
                 <li>
                     <span>
-                        <strong>Mănuși de Box (Alege mărimea corectă):</strong>
-                        <span class="sub-text"><span class="oz-badge">10 oz</span> Pentru sac, palmare sau competiție (rapide, contact dur).</span>
-                        <span class="sub-text"><span class="oz-badge">12 / 14 / 16 oz</span> <b>OBLIGATORII pentru Sparring.</b> Au mai multă spumă pentru a proteja partenerul și mâinile tale.</span>
+                        <strong>Mănuși de Box (Partner Work):</strong>
+                        <span class="sub-text"><span class="oz-badge">10 oz - 12 oz</span> Ideale pentru palmare și lucru tehnic cu partenerul.</span>
+                        <span class="sub-text"><i>Notă:</i> Nu avem saci de box, deci nu investi în mănuși speciale "de sac". Ai nevoie de mănuși standard de box, care protejează bine încheietura.</span>
                     </span>
                 </li>
-
-                
 
                 <li>
                     <span>
                         <strong>Proteza Dentară "Boil & Bite":</strong>
-                        Este obligatorie. Caută proteze termoplastice.
-                        <span class="sub-text"><i>Instrucțiuni:</i> Se țin în apă fiartă câteva secunde (conform instrucțiunilor cutiei), apoi se mulează pe dinți. O proteză nemulată nu oferă protecție reală!</span>
+                        Recomandată pentru siguranță. Chiar și la "joacă" sau lucru tehnic, se pot întâmpla mici accidente.
+                        <span class="sub-text"><i>Tip:</i> Cumpără una simplă, termoplastică (care se pune în apă fiartă și se mulează).</span>
                     </span>
                 </li>
 
                 <li>
                     <span>
-                        <strong>Echipament Opțional (Avansați):</strong>
-                        Dacă vrei să treci la nivelul următor:
-                        <span class="sub-text">• <b>Tibiere:</b> Pentru Kickbox/MMA (protejează tibia la lovituri).</span>
-                        <span class="sub-text">• <b>Cască de protecție:</b> Utilă pentru sparring intens.</span>
+                        <strong>Tibiere (Opțional):</strong>
+                        Doar dacă vrei să lucrezi și kickbox tehnic. Fiind sparring ușor (light contact), tibierele textile (tip ciorap) sunt suficiente și foarte comode.
                     </span>
                 </li>
             </ul>
@@ -232,13 +221,13 @@
                 <li>
                     <span>
                         <strong>Program Flexibil:</strong>
-                        Locația și ora se confirmă mereu pe grupul de WhatsApp/Facebook înainte de antrenament. Nu avem sală permanent deschisă, funcționăm pe bază de programare.
+                        Locația și ora se confirmă mereu pe grupul de WhatsApp/Facebook înainte de antrenament.
                     </span>
                 </li>
                 <li>
                     <span>
                         <strong>Respectă Spațiul:</strong>
-                        Lăsăm locul curat după fiecare sesiune.
+                        Lăsăm locul curat după fiecare sesiune, indiferent unde ne antrenăm.
                     </span>
                 </li>
             </ul>
@@ -250,13 +239,13 @@
                 <li>
                     <span>
                         <strong>Echipament Curat:</strong>
-                        Tricoul și pantalonii se spală după FIECARE antrenament.
+                        Respectă-ți partenerul de antrenament: vino mereu cu tricou curat și unghii tăiate (pentru a nu zgâria la grappling/clinci).
                     </span>
                 </li>
                 <li>
                     <span>
                         <strong>Papuci de schimb:</strong>
-                        Obligatorii. Nu mergem desculți în afara spațiului de luptă (saltea) pentru a nu aduce microbi pe suprafața de antrenament.
+                        Obligatorii. Nu mergem desculți în afara spațiului de antrenament.
                     </span>
                 </li>
             </ul>
@@ -264,13 +253,13 @@
 
         <div class="danger-zone">
             <h3><i class="fas fa-exclamation-triangle"></i> Atenție la Mănuși!</h3>
-            <p><strong>NU băga mănușile la mașina de spălat!</strong> Se vor distruge (spuma se strică, pielea crapă). <br>După antrenament, scoate-le din geantă imediat și lasă-le la aerisit într-un loc uscat. Este singura metodă prin care eviți mirosurile neplăcute.</p>
+            <p><strong>NU băga mănușile la mașina de spălat!</strong> Se vor distruge rapid. <br>După antrenament, scoate-le din geantă și lasă-le la aerisit într-un loc uscat. Așa previi mirosurile neplăcute și le prelungești viața.</p>
         </div>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 BMC Botoșani - Evoluăm împreună.</p>
+        <p>&copy; 2026 BMC Botoșani</p>
     </footer>
 
 </body>
