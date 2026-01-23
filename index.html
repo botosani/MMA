@@ -15,6 +15,7 @@
             --card: #161616;
             --text-gray: #b0b0b0;
             --youtube: #FF0000;
+            --info-blue: #457b9d;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -149,6 +150,16 @@
         }
         .disclaimer-box p { margin: 0; font-size: 1rem; color: #eee; font-style: italic; }
 
+        /* Caseta Peer Info - Albastra/Neutru */
+        .peer-info-box {
+            background: rgba(69, 123, 157, 0.1);
+            padding: 20px;
+            border-left: 4px solid var(--info-blue);
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .peer-info-box strong { color: #a8dadc; }
+
         /* Listă Antrenamente */
         .training-list {
             list-style: none;
@@ -185,6 +196,24 @@
         .info-item:hover { transform: translateY(-5px); background: #222; }
         .info-item i { color: var(--accent); font-size: 2rem; margin-bottom: 15px; }
         .info-item h4 { font-family: 'Oswald', sans-serif; margin-bottom: 10px; font-size: 1.3rem; }
+
+        /* HUB CONCLUSION */
+        .hub-conclusion {
+            margin-top: 60px;
+            padding: 40px;
+            background: linear-gradient(45deg, #1a1a1a, #0d0d0d);
+            border: 1px solid #333;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .hub-conclusion h2 {
+            font-family: 'Oswald', sans-serif;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 0;
+        }
+        .hub-conclusion span { color: var(--accent); }
 
         .side-logo-container { text-align: center; position: sticky; top: 120px; }
         .side-logo {
@@ -270,10 +299,6 @@
                 <i class="fas fa-shirt"></i> Ghid Echipament
             </a>
 
-            <a href="fight.html" class="nav-btn btn-reguli">
-                <i class="fas fa-fist-raised"></i> "Fights"
-            </a>
-
             <a href="inscrie.html" class="nav-btn btn-inscrie">
                 <i class="fas fa-user-plus"></i> Înscrie-te
             </a>
@@ -282,7 +307,7 @@
 
     <section class="hero">
         <h1>Botoșani Martial Combat</h1>
-        <p>Inițiativă Social-Sportivă de Tineret</p>
+        <p>Mai mult decât sport. O comunitate de tineri pentru tineri.</p>
         <a href="inscrie.html" class="btn-inscrie nav-btn" style="font-size: 1.1rem; padding: 15px 40px; border-radius: 50px;">Hai în Echipă</a>
     </section>
 
@@ -294,13 +319,22 @@
                 Suntem conștienți de o problemă reală în orașul nostru: <span class="highlight">lipsa activităților sănătoase pentru tineret</span>.
             </p>
             
+            <div class="peer-info-box">
+                <p>
+                    <i class="fas fa-user-friends" style="margin-right: 10px;"></i>
+                    <strong>Nota:</strong> Nu suntem antrenori specializați sau maeștri certificați. 
+                    <br><br>
+                    Conceptul nostru este de <em>Shared Learning</em>: dăm mai departe din ce am învățat la rândul nostru, ne antrenăm cot la cot și creștem împreună.
+                </p>
+            </div>
+
             <div class="disclaimer-box">
                 <p>
                     <i class="fas fa-shield-alt" style="color: var(--accent); margin-right: 10px; font-size: 1.2rem;"></i>
                     <strong>ZERO TOLERANȚĂ PENTRU VIOLENȚĂ:</strong> Suntem <span style="text-decoration: underline;">împotriva violenței</span> și a bătăilor de stradă. Nu organizăm lupte!
                 </p>
             </div>
-
+            
             <h3>MISIUNEA NOASTRĂ:</h3>
             <p>
                 Știm că viața de adolescent poate fi grea. Știm că mulți tineri ajung să își caute refugiul în locuri greșite și în <span class="highlight">vicii (alcool, țigări, substanțe interzise)</span> doar pentru a scăpa de presiune, singurătate sau probleme.
@@ -311,50 +345,61 @@
             <p>
                 Vrem să înlocuim dependențele nocive cu sportul și o viață sănătoasă. Vrem să te ajutăm și să te dezvolți pe toate planurile.
             </p>
+            
+            
+
+            <h3>DE CE ACEST SPORT?</h3>
+            <p>
+                Mulți se întreabă de ce am ales sportul de contact. Răspunsul este simplu: acest sport este un vehicul perfect pentru auto-perfecționare.
+                Vrem să înlocuim dependențele nocive cu disciplina și o viață sănătoasă.
+            </p>
 
             <div class="info-grid">
                 <div class="info-item">
-                    <i class="fas fa-dumbbell"></i>
-                    <h4>Sănătate Fizică</h4>
-                    <p>Corpul tău este singurul loc în care vei locui mereu. Ai grijă de el prin mișcare, pentru ca el să aibă grijă de tine pe termen lung.</p>
-                </div>
-                <div class="info-item">
                     <i class="fas fa-brain"></i>
-                    <h4>Sănătate Mentală</h4>
-                    <p>Antrenamentul elimină stresul și anxietatea. Înveți să fii calm și concentrat.</p>
+                    <h4>Calm sub Presiune</h4>
+                    <p>Sportul de contact te învață să rămâi lucid atunci când situația devine dificilă. Înveți să îți controlezi emoțiile și frica.</p>
                 </div>
                 <div class="info-item">
-                    <i class="fas fa-heart"></i>
-                    <h4>Sănătate Sufletească</h4>
-                    <p>Găsești un scop, prieteni adevărați și liniște interioară.</p>
+                    <i class="fas fa-balance-scale"></i>
+                    <h4>Disciplină de Fier</h4>
+                    <p>Consecvența la antrenament se traduce în consecvență în viață. Devii mai organizat și mai bun în tot ce faci.</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <h4>Sănătate Totală</h4>
+                    <p>Corpul devine mai puternic, iar mintea mai limpede. Este cel mai bun antidot împotriva viciilor.</p>
                 </div>
             </div>
 
             <h3>CUM NE ANTRENĂM?</h3>
             <p>
-                La noi <span class="highlight">tu alegi ritmul</span>. Respectăm dorința fiecăruia. Dacă vrei doar să faci mișcare și a te simți bine, ești binevenit.
+                La noi <span class="highlight">tu alegi ritmul</span>. Respectăm dorința fiecăruia. Mediul este unul de respect reciproc.
             </p>
 
             <ul class="training-list">
                 <li>
                     <i class="fas fa-users"></i>
-                    <div><strong>Comunitate de Suport:</strong> Aici găsești colegi care te trag în sus, nu în jos. Ne susținem reciproc să rămânem pe drumul cel bun.</div>
+                    <div><strong>Comunitate de Suport:</strong> Ne susținem reciproc să rămânem pe drumul cel bun.</div>
                 </li>
                 <li>
                     <i class="fas fa-hand-holding-heart"></i>
-                    <div><strong>Siguranță (Sparring Opțional):</strong> Contactul fizic este strict opțional. Poți face doar palmare sau condiție fizică.</div>
+                    <div><strong>Siguranță (Sparring Opțional):</strong> Contactul fizic este strict opțional. Poți face doar tehnică și condiție fizică.</div>
                 </li>
                 <li>
                     <i class="fas fa-running"></i>
                     <div><strong>Eliberare de Energie:</strong> Antrenamentele te ajută să dormi liniștit și să scapi de agitație.</div>
                 </li>
-                <li>
-                    <i class="fas fa-balance-scale"></i>
-                    <div><strong>Disciplină:</strong> Sportul îți ordonează viața și îți dă puterea să spui "NU" la ce e rău.</div>
-                </li>
             </ul>
 
-            <p>Indiferent de unde vii sau prin ce ai trecut, la BMC ai o șansă la sport.</p>
+            <div class="hub-conclusion">
+                <i class="fas fa-star" style="color: var(--accent); font-size: 2rem; margin-bottom: 15px;"></i>
+                <h2>CONCLUZIE</h2>
+                <p style="font-size: 1.2rem; color: #ddd; margin-top: 15px;">
+                    BMC Botoșani este un <span class="highlight">Hub de Dezvoltare Personală și Sportivă</span> pentru Tineri.
+                </p>
+            </div>
+
         </div>
         
         <div class="side-logo-container">
@@ -363,7 +408,7 @@
     </section>
 
     <section class="contact-section">
-        <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.1rem; text-transform: uppercase;">Urmărește-ne pe social media pentru a vedea parcursul nostru și comunitatea pe care o construim!</h2>
+        <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.1rem; text-transform: uppercase;">Urmărește-ne parcursul și comunitatea!</h2>
         <div class="contact-container">
             <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="contact-link insta-btn">
                 <i class="fab fa-instagram"></i> Instagram
