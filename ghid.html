@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echipament & Info - BMC Botoșani</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --accent: #e63946;   /* Roșu - Branding BMC */
-            --charity: #2ecc71;  /* Verde - Info */
-            --gear: #3498db;     /* Albastru - Echipament */
-            --legal: #9b59b6;    /* Violet - Juridic */
-            --bg: #0a0a0a;       /* Fundal negru */
-            --card: #121212;     /* Fundal carduri */
-            --text: #ccc;        /* Text gri deschis */
-            --warning: #f1c40f;  /* Galben - Medical */
+            --accent: #e63946;   /* Roșu - Branding */
+            --charity: #2ecc71;  /* Verde */
+            --gear: #3498db;     /* Albastru */
+            --legal: #9b59b6;    /* Violet */
+            --bg: #0a0a0a;       /* Fundal */
+            --card: #121212;     /* Carduri */
+            --text: #ccc;        /* Text */
+            --warning: #f1c40f;  /* Galben */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,7 +30,7 @@
             overflow-x: hidden;
         }
 
-        /* --- HEADER (Identic cu Regulamentul) --- */
+        /* HEADER */
         header {
             padding: 10px 5%;
             display: flex;
@@ -78,7 +78,7 @@
         .btn-inscrie { background: var(--accent); border: none; font-weight: 700; box-shadow: 0 0 10px rgba(230, 57, 70, 0.4); }
         .btn-inscrie:hover { background: white; color: var(--accent); }
 
-        /* --- CONTINUT --- */
+        /* CONTENT */
         .content-container {
             max-width: 1000px;
             margin: 50px auto;
@@ -97,7 +97,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* STIL CARDURI */
+        /* CARD STYLES */
         .policy-card {
             background: var(--card);
             padding: 35px;
@@ -109,24 +109,20 @@
         }
         .policy-card:hover { transform: translateY(-3px); }
 
-        /* --- Tipuri de Carduri (Mapate pe conținutul tău) --- */
-        
-        /* Gear - Albastru (Pentru Echipament) */
+        /* Culori Carduri */
         .gear-card { border-left: 5px solid var(--gear); background: linear-gradient(145deg, #121212, #0f151c); }
         .gear-card h2 i { color: var(--gear); }
         .gear-card ul li::before { color: var(--gear) !important; }
 
-        /* Info - Verde (Pentru Locație) */
         .info-card { border-left: 5px solid var(--charity); background: linear-gradient(145deg, #121212, #0d1a12); }
         .info-card h2 i { color: var(--charity); }
         .info-card ul li::before { color: var(--charity) !important; }
 
-        /* Medical - Galben (Pentru Igienă) */
         .medical-card { border-left: 5px solid var(--warning); background: linear-gradient(145deg, #121212, #1a1810); }
         .medical-card h2 i { color: var(--warning); }
         .medical-card ul li::before { color: var(--warning) !important; }
 
-        /* Typography Carduri */
+        /* Typography Inside Cards */
         .policy-card h2 {
             font-family: 'Oswald', sans-serif;
             margin-bottom: 20px;
@@ -134,22 +130,27 @@
             text-transform: uppercase;
             font-size: 1.5rem;
         }
-        .policy-card p, .policy-card li { color: var(--text); margin-bottom: 10px; font-size: 0.95rem; }
+        .policy-card p, .policy-card li { color: var(--text); margin-bottom: 15px; font-size: 0.95rem; }
 
         .policy-card ul { list-style: none; margin-top: 15px; }
-        .policy-card ul li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+        .policy-card ul li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; }
         
-        /* Iconita checkmark customizata pentru fiecare card */
         .policy-card ul li::before { 
             content: "\f00c"; 
             font-family: "Font Awesome 6 Free"; 
             font-weight: 900; 
-            margin-top: 4px;
+            margin-top: 5px;
+            font-size: 1.1rem;
         }
 
-        .policy-card strong { color: white; font-weight: 700; }
+        .policy-card strong { color: white; font-weight: 700; font-size: 1.05rem; display: block; margin-bottom: 4px; }
+        .sub-text { display: block; font-size: 0.9rem; color: #aaa; margin-top: 2px; }
+        .oz-badge {
+            display: inline-block; background: #333; color: white; padding: 2px 6px; 
+            border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-right: 5px; border: 1px solid #444;
+        }
 
-        /* ZONA DE PERICOL (Pentru avertismentul cu spălatul) */
+        /* Danger Zone */
         .danger-zone {
             background: rgba(230, 57, 70, 0.1);
             border: 2px dashed var(--accent);
@@ -161,18 +162,13 @@
             font-family: 'Oswald', sans-serif; 
             color: var(--accent); 
             margin-bottom: 10px; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            font-size: 1.3rem;
-            text-transform: uppercase;
+            display: flex; align-items: center; gap: 10px; 
+            font-size: 1.3rem; text-transform: uppercase;
         }
         .danger-zone p { color: #ddd; }
 
-        /* Footer */
         footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; border-top: 1px solid #111; margin-top: 40px;}
 
-        /* Responsive */
         @media (max-width: 600px) {
             h1 { font-size: 1.8rem; }
             header { flex-direction: column; gap: 10px; }
@@ -197,37 +193,78 @@
     <div class="content-container">
         
         <h1>Ghidul tău de start</h1>
-        
-        
 
         <div class="policy-card gear-card">
             <h2><i class="fas fa-fist-raised"></i> Echipament Esențial</h2>
             <ul>
-                <li><strong>Mănuși de Box:</strong> Sunt baza. Recomandăm mănuși de 12oz sau 14oz pentru a putea lucra tehnic și sigur cu partenerul.</li>
-                <li><strong>Proteza Dentară:</strong> Obligatorie dacă vrei să lucrezi mai intens. Protecția ta e pe primul loc.</li>
-                <li><strong>Mănuși MMA:</strong> Depinde doar de tine dacă vrei să îți iei. Ne adaptăm antrenamentul în funcție de ce avem.</li>
+                <li>
+                    <span>
+                        <strong>Mănuși de Box (Alege mărimea corectă):</strong>
+                        <span class="sub-text"><span class="oz-badge">10 oz</span> Pentru sac, palmare sau competiție (rapide, contact dur).</span>
+                        <span class="sub-text"><span class="oz-badge">12 / 14 / 16 oz</span> <b>OBLIGATORII pentru Sparring.</b> Au mai multă spumă pentru a proteja partenerul și mâinile tale.</span>
+                    </span>
+                </li>
+
+                
+
+                <li>
+                    <span>
+                        <strong>Proteza Dentară "Boil & Bite":</strong>
+                        Este obligatorie. Caută proteze termoplastice.
+                        <span class="sub-text"><i>Instrucțiuni:</i> Se țin în apă fiartă câteva secunde (conform instrucțiunilor cutiei), apoi se mulează pe dinți. O proteză nemulată nu oferă protecție reală!</span>
+                    </span>
+                </li>
+
+                <li>
+                    <span>
+                        <strong>Echipament Opțional (Avansați):</strong>
+                        Dacă vrei să treci la nivelul următor:
+                        <span class="sub-text">• <b>Tibiere:</b> Pentru Kickbox/MMA (protejează tibia la lovituri).</span>
+                        <span class="sub-text">• <b>Cască de protecție:</b> Utilă pentru sparring intens.</span>
+                    </span>
+                </li>
             </ul>
         </div>
 
         <div class="policy-card info-card">
             <h2><i class="fas fa-map-marker-alt"></i> Locația & Sala</h2>
             <ul>
-                <li><strong>Program Flexibil:</strong> Nu avem sală la dispoziție 24/7. Locația și ora se confirmă mereu pe grupul nostru înainte de antrenament.</li>
-                <li><strong>Respectă Spațiul:</strong> Indiferent unde ne antrenăm, lăsăm locul curat.</li>
+                <li>
+                    <span>
+                        <strong>Program Flexibil:</strong>
+                        Locația și ora se confirmă mereu pe grupul de WhatsApp/Facebook înainte de antrenament. Nu avem sală permanent deschisă, funcționăm pe bază de programare.
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <strong>Respectă Spațiul:</strong>
+                        Lăsăm locul curat după fiecare sesiune.
+                    </span>
+                </li>
             </ul>
         </div>
 
         <div class="policy-card medical-card">
-            <h2><i class="fas fa-pump-soap"></i> Igienă</h2>
+            <h2><i class="fas fa-pump-soap"></i> Igienă & Sănătate</h2>
             <ul>
-                <li><strong>Haine Curate:</strong> Venim mereu cu tricou și pantaloni de sport spălați.</li>
-                <li><strong>Papuci:</strong> Obligatorii pentru a nu merge desculț prin afara spațiului de antrenament.</li>
+                <li>
+                    <span>
+                        <strong>Echipament Curat:</strong>
+                        Tricoul și pantalonii se spală după FIECARE antrenament.
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <strong>Papuci de schimb:</strong>
+                        Obligatorii. Nu mergem desculți în afara spațiului de luptă (saltea) pentru a nu aduce microbi pe suprafața de antrenament.
+                    </span>
+                </li>
             </ul>
         </div>
 
         <div class="danger-zone">
-            <h3><i class="fas fa-exclamation-triangle"></i> Atenție la Întreținere</h3>
-            <p><strong>NU băga mănușile la mașina de spălat!</strong> Se vor distruge imediat. După antrenament, scoate-le din geantă și lasă-le la aerisit. Este singura metodă prin care nu vor prinde miros urât.</p>
+            <h3><i class="fas fa-exclamation-triangle"></i> Atenție la Mănuși!</h3>
+            <p><strong>NU băga mănușile la mașina de spălat!</strong> Se vor distruge (spuma se strică, pielea crapă). <br>După antrenament, scoate-le din geantă imediat și lasă-le la aerisit într-un loc uscat. Este singura metodă prin care eviți mirosurile neplăcute.</p>
         </div>
 
     </div>
