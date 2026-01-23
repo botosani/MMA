@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echipament & Info - BMC Botoșani</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --accent: #e63946;
-            --bg: #0d0d0d;
-            --card: #161616;
-            --text: #ececec;
+            --accent: #e63946;   /* Roșu - Branding BMC */
+            --charity: #2ecc71;  /* Verde - Info */
+            --gear: #3498db;     /* Albastru - Echipament */
+            --legal: #9b59b6;    /* Violet - Juridic */
+            --bg: #0a0a0a;       /* Fundal negru */
+            --card: #121212;     /* Fundal carduri */
+            --text: #ccc;        /* Text gri deschis */
+            --warning: #f1c40f;  /* Galben - Medical */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,142 +27,180 @@
             background-color: var(--bg);
             color: white;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* --- HEADER (Identic cu Regulamentul) --- */
         header {
-            padding: 15px 5%;
+            padding: 10px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #000;
-            border-bottom: 2px solid var(--accent);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 2px solid var(--accent);
         }
 
-        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
-        .logo-img { height: 55px; border-radius: 5px; }
-        .logo-text { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; }
-        .logo-text span { color: var(--accent); }
-
-        .btn-back {
-            text-decoration: none;
-            color: white;
+        .brand {
             font-family: 'Oswald', sans-serif;
-            padding: 8px 18px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .brand img {
+            height: 50px;
+            width: auto;
+            border-radius: 5px;
             border: 1px solid var(--accent);
-            border-radius: 4px;
-            transition: 0.3s;
+            object-fit: cover;
         }
 
-        .btn-back:hover { background: var(--accent); }
+        .brand span { color: white; }
 
-        .container {
-            max-width: 900px;
+        nav { display: flex; gap: 10px; }
+        
+        .nav-btn {
+            text-decoration: none; color: white; font-family: 'Oswald', sans-serif; font-size: 0.8rem;
+            text-transform: uppercase; padding: 8px 15px; border-radius: 4px; transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 6px;
+        }
+        .nav-btn:hover { background: rgba(255,255,255,0.1); }
+        
+        .btn-inscrie { background: var(--accent); border: none; font-weight: 700; box-shadow: 0 0 10px rgba(230, 57, 70, 0.4); }
+        .btn-inscrie:hover { background: white; color: var(--accent); }
+
+        /* --- CONTINUT --- */
+        .content-container {
+            max-width: 1000px;
             margin: 50px auto;
             padding: 0 20px;
         }
 
-        .section-header {
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            text-transform: uppercase;
             text-align: center;
             margin-bottom: 50px;
-        }
-
-        .section-header h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2.5rem;
-            text-transform: uppercase;
             letter-spacing: 2px;
+            background: -webkit-linear-gradient(#fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* CARDS */
-        .equip-card {
+        /* STIL CARDURI */
+        .policy-card {
             background: var(--card);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 25px;
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 30px;
             border-left: 5px solid var(--accent);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
         }
+        .policy-card:hover { transform: translateY(-3px); }
 
-        .equip-card h2 {
+        /* --- Tipuri de Carduri (Mapate pe conținutul tău) --- */
+        
+        /* Gear - Albastru (Pentru Echipament) */
+        .gear-card { border-left: 5px solid var(--gear); background: linear-gradient(145deg, #121212, #0f151c); }
+        .gear-card h2 i { color: var(--gear); }
+        .gear-card ul li::before { color: var(--gear) !important; }
+
+        /* Info - Verde (Pentru Locație) */
+        .info-card { border-left: 5px solid var(--charity); background: linear-gradient(145deg, #121212, #0d1a12); }
+        .info-card h2 i { color: var(--charity); }
+        .info-card ul li::before { color: var(--charity) !important; }
+
+        /* Medical - Galben (Pentru Igienă) */
+        .medical-card { border-left: 5px solid var(--warning); background: linear-gradient(145deg, #121212, #1a1810); }
+        .medical-card h2 i { color: var(--warning); }
+        .medical-card ul li::before { color: var(--warning) !important; }
+
+        /* Typography Carduri */
+        .policy-card h2 {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            margin-bottom: 20px;
+            display: flex; align-items: center; gap: 15px;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+        .policy-card p, .policy-card li { color: var(--text); margin-bottom: 10px; font-size: 0.95rem; }
+
+        .policy-card ul { list-style: none; margin-top: 15px; }
+        .policy-card ul li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+        
+        /* Iconita checkmark customizata pentru fiecare card */
+        .policy-card ul li::before { 
+            content: "\f00c"; 
+            font-family: "Font Awesome 6 Free"; 
+            font-weight: 900; 
+            margin-top: 4px;
         }
 
-        .equip-card h2 i { color: var(--accent); }
+        .policy-card strong { color: white; font-weight: 700; }
 
-        .equip-card ul { list-style: none; }
-        .equip-card li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-            color: #ccc;
-        }
-
-        .equip-card li::before {
-            content: "\f111";
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
-            font-size: 8px;
-            position: absolute;
-            left: 0;
-            top: 8px;
-            color: var(--accent);
-        }
-
-        /* INFO BOX */
-        .info-box {
-            background: #111;
-            border: 1px solid #333;
+        /* ZONA DE PERICOL (Pentru avertismentul cu spălatul) */
+        .danger-zone {
+            background: rgba(230, 57, 70, 0.1);
+            border: 2px dashed var(--accent);
             padding: 25px;
-            border-radius: 12px;
+            border-radius: 10px;
             margin-top: 40px;
         }
-
-        .info-box h3 {
-            font-family: 'Oswald', sans-serif;
-            color: #fff;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .danger-zone h3 { 
+            font-family: 'Oswald', sans-serif; 
+            color: var(--accent); 
+            margin-bottom: 10px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-size: 1.3rem;
+            text-transform: uppercase;
         }
+        .danger-zone p { color: #ddd; }
 
-        .critical {
-            background: rgba(230, 57, 70, 0.15);
-            border: 1px solid var(--accent);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 30px;
+        /* Footer */
+        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; border-top: 1px solid #111; margin-top: 40px;}
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            header { flex-direction: column; gap: 10px; }
+            .brand img { height: 40px; }
+            .policy-card { padding: 20px; }
         }
-
-        .critical strong { color: var(--accent); }
-
-        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html" class="logo-container">
-            <img src="logo1.jpeg" alt="RMC Logo" class="logo-img">
-            <div class="logo-text">BMC <span>BOTOȘANI</span></div>
+        <a href="index.html" class="brand">
+            <img src="logo1.jpeg" alt="Logo BMC Botosani">
+            BMC <span>BOTOȘANI</span>
         </a>
-        <a href="index.html" class="btn-back">ACASĂ</a>
+        <nav>
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Acasă</a>
+            <a href="inscrie.html" class="nav-btn btn-inscrie">Înscrie-te</a>
+        </nav>
     </header>
 
-    <div class="container">
-        <div class="section-header">
-            <h1>Ghidul tău de start</h1>
-        </div>
+    <div class="content-container">
+        
+        <h1>Ghidul tău de start</h1>
+        
+        
 
-        <div class="equip-card">
+        <div class="policy-card gear-card">
             <h2><i class="fas fa-fist-raised"></i> Echipament Esențial</h2>
             <ul>
                 <li><strong>Mănuși de Box:</strong> Sunt baza. Recomandăm mănuși de 12oz sau 14oz pentru a putea lucra tehnic și sigur cu partenerul.</li>
@@ -167,7 +209,7 @@
             </ul>
         </div>
 
-        <div class="equip-card">
+        <div class="policy-card info-card">
             <h2><i class="fas fa-map-marker-alt"></i> Locația & Sala</h2>
             <ul>
                 <li><strong>Program Flexibil:</strong> Nu avem sală la dispoziție 24/7. Locația și ora se confirmă mereu pe grupul nostru înainte de antrenament.</li>
@@ -175,16 +217,16 @@
             </ul>
         </div>
 
-        <div class="equip-card">
-            <h2><i class="fas fa-shining"></i> Igienă</h2>
+        <div class="policy-card medical-card">
+            <h2><i class="fas fa-pump-soap"></i> Igienă</h2>
             <ul>
                 <li><strong>Haine Curate:</strong> Venim mereu cu tricou și pantaloni de sport spălați.</li>
                 <li><strong>Papuci:</strong> Obligatorii pentru a nu merge desculț prin afara spațiului de antrenament.</li>
             </ul>
         </div>
 
-        <div class="critical">
-            <h3><i class="fas fa-exclamation-triangle"></i> ATENȚIE LA ÎNTREȚINERE</h3>
+        <div class="danger-zone">
+            <h3><i class="fas fa-exclamation-triangle"></i> Atenție la Întreținere</h3>
             <p><strong>NU băga mănușile la mașina de spălat!</strong> Se vor distruge imediat. După antrenament, scoate-le din geantă și lasă-le la aerisit. Este singura metodă prin care nu vor prinde miros urât.</p>
         </div>
 
