@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMC- Botoșani Martial Combat</title>
+    <title>BMC - Botoșani Martial Combat</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -14,7 +14,7 @@
             --bg: #0d0d0d;
             --card: #161616;
             --text-gray: #b0b0b0;
-            --youtube: #FF0000; /* Culoare YouTube */
+            --youtube: #FF0000;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -114,15 +114,17 @@
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             gap: 60px;
-            align-items: center;
+            align-items: start;
         }
 
-        .details-text h2 {
+        .details-text h2, .details-text h3 {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 25px;
             position: relative;
         }
+
+        .details-text h2 { font-size: clamp(2rem, 5vw, 3rem); }
+        .details-text h3 { font-size: 1.6rem; margin-top: 50px; color: white; margin-bottom: 20px;}
 
         .details-text h2::after {
             content: '';
@@ -147,6 +149,24 @@
         }
         .disclaimer-box p { margin: 0; font-size: 1rem; color: #eee; font-style: italic; }
 
+        /* Listă Antrenamente */
+        .training-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        .training-list li {
+            margin-bottom: 15px;
+            color: #ccc;
+            display: flex;
+            align-items: start;
+            gap: 15px;
+            background: rgba(255,255,255,0.03);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .training-list li i { color: var(--accent); margin-top: 5px; font-size: 1.2rem; }
+
+        /* Grid Info */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -166,7 +186,7 @@
         .info-item i { color: var(--accent); font-size: 2rem; margin-bottom: 15px; }
         .info-item h4 { font-family: 'Oswald', sans-serif; margin-bottom: 10px; font-size: 1.3rem; }
 
-        .side-logo-container { text-align: center; }
+        .side-logo-container { text-align: center; position: sticky; top: 120px; }
         .side-logo {
             width: 100%;
             max-width: 500px;
@@ -220,6 +240,8 @@
         @media (max-width: 992px) {
             .project-details { grid-template-columns: 1fr; text-align: center; }
             .details-text h2::after { left: 50%; transform: translateX(-50%); }
+            .side-logo-container { position: relative; top: 0; margin-top: 40px; }
+            .training-list li { justify-content: left; text-align: left; }
         }
 
         @media (max-width: 600px) {
@@ -235,7 +257,7 @@
 
     <header>
         <a href="index.html" class="logo-container">
-            <img src="logo1.jpeg" alt="RMC Logo" class="logo-img">
+            <img src="logo1.jpeg" alt="BMC Logo" class="logo-img">
             <div class="logo-text">BMC <span>BOTOȘANI</span></div>
         </a>
         
@@ -260,56 +282,88 @@
 
     <section class="hero">
         <h1>Botoșani Martial Combat</h1>
-        <p>Proiect independent creat de tineri pentru tineri. Disciplină, sport și respect reciproc.</p>
-        <a href="inscrie.html" class="btn-inscrie nav-btn" style="font-size: 1.1rem; padding: 15px 40px; border-radius: 50px;">Vino la antrenament</a>
+        <p>Mai mult decât un antrenament. O comunitate unită, un refugiu și un drum spre cea mai bună versiune a ta.</p>
+        <a href="inscrie.html" class="btn-inscrie nav-btn" style="font-size: 1.1rem; padding: 15px 40px; border-radius: 50px;">Hai în Echipă</a>
     </section>
 
     <section class="project-details">
         <div class="details-text">
-            <h2>POVESTEA NOASTRĂ</h2>
+            <h2>CINE SUNTEM?</h2>
             <p>
-                BMC Botoșani a luat naștere din inițiativa a <span class="highlight">doi tineri din județul Botoșani</span>, de 17 și 18 ani, pasionați de artele marțiale mixte (MMA). 
+                BMC Botoșani a luat naștere din inițiativa a <span class="highlight">doi tineri din județul Botoșani</span>, de 17 și 18 ani. 
+                Suntem conștienți de o problemă reală în orașul nostru: <span class="highlight">lipsa activităților sănătoase pentru tineret</span>.
             </p>
             
             <div class="disclaimer-box">
                 <p>
-                    <i class="fas fa-exclamation-triangle" style="color: var(--accent); margin-right: 10px;"></i>
-                    <strong>Transparență totală:</strong> Nu suntem antrenori calificați cu diplome. Suntem practicanți de MMA care vor să ofere tinerilor un cadru unde să muncească, să învețe și să se dezvolte împreună cu noi.
+                    <i class="fas fa-shield-alt" style="color: var(--accent); margin-right: 10px; font-size: 1.2rem;"></i>
+                    <strong>ZERO TOLERANȚĂ PENTRU VIOLENȚĂ:</strong> Suntem <span style="text-decoration: underline;">împotriva violenței</span> și a bătăilor de stradă. Nu organizăm "lupte reale". Tot ceea ce facem este într-un cadru sportiv, controlat și disciplinat.
                 </p>
             </div>
 
+            <h3>MISIUNEA NOASTRĂ: UN REFUGIU, NU O JUDECATĂ</h3>
             <p>
-                Scopul nostru este simplu: să scoatem tineretul din fața ecranelor și să-i învățăm ce înseamnă <span class="highlight">autocontrolul</span>. Nu promovăm bătaia pe stradă, ci disciplina care te ajută să eviți conflictele inutile.
+                Știm că viața de adolescent poate fi grea. Știm că mulți tineri ajung să își caute refugiul în locuri greșite și în <span class="highlight">vicii (alcool, țigări, substanțe interzise)</span> doar pentru a scăpa de presiune, singurătate sau probleme.
+            </p>
+            <p style="border-left: 3px solid var(--accent); padding-left: 15px; font-style: italic; color: white;">
+                "Noi nu suntem aici să te judecăm pentru alegerile din trecut. Suntem aici să îți oferim o mână de ajutor și o alternativă."
+            </p>
+            <p>
+                Vrem să înlocuim dependențele nocive cu dependența de sport, de endorfine și de o viață curată. Vrem să te ajutăm să te vindeci și să te dezvolți pe toate planurile.
             </p>
 
             <div class="info-grid">
                 <div class="info-item">
+                    <i class="fas fa-dumbbell"></i>
+                    <h4>Sănătate Fizică</h4>
+                    <p>Corpul tău este templul tău. Îl curățăm de toxine prin efort și disciplină.</p>
+                </div>
+                <div class="info-item">
                     <i class="fas fa-brain"></i>
-                    <h4>Mentalitate</h4>
-                    <p>Înveți să-ți stăpânești furia și să gândești limpede sub presiune.</p>
+                    <h4>Sănătate Mentală</h4>
+                    <p>Antrenamentul elimină stresul și anxietatea. Înveți să fii calm și concentrat.</p>
                 </div>
                 <div class="info-item">
-                    <i class="fas fa-handshake"></i>
-                    <h4>Respect</h4>
-                    <p>În sală toți suntem egali. Respectăm efortul fiecărui coleg.</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-ban"></i>
-                    <h4>Fără Stradă</h4>
-                    <p>Artele marțiale sunt pentru autoapărare și sport, nu pentru agresiune.</p>
+                    <i class="fas fa-heart"></i>
+                    <h4>Sănătate Sufletească</h4>
+                    <p>Găsești un scop, prieteni adevărați și liniște interioară. Nu mai ești singur.</p>
                 </div>
             </div>
 
-            <p>Dacă vrei să te antrenezi gratuit, să-ți faci prieteni noi și să devii o versiune mai bună a ta, ușa noastră e deschisă (14 ani+).</p>
+            <h3>CUM NE ANTRENĂM?</h3>
+            <p>
+                La noi <span class="highlight">tu alegi ritmul</span>. Respectăm dorința fiecăruia. Dacă vrei doar să faci mișcare pentru a scăpa de vicii și a te simți bine, ești binevenit fără obligația de a lupta.
+            </p>
+
+            <ul class="training-list">
+                <li>
+                    <i class="fas fa-users"></i>
+                    <div><strong>Comunitate de Suport:</strong> Aici găsești colegi care te trag în sus, nu în jos. Ne susținem reciproc să rămânem pe drumul cel bun.</div>
+                </li>
+                <li>
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <div><strong>Siguranță (Sparring Opțional):</strong> Contactul fizic este strict opțional. Poți face doar palmare, sac și condiție fizică.</div>
+                </li>
+                <li>
+                    <i class="fas fa-running"></i>
+                    <div><strong>Eliberare de Energie:</strong> Antrenamente cardio intense care te ajută să dormi liniștit și să scapi de agitație.</div>
+                </li>
+                <li>
+                    <i class="fas fa-balance-scale"></i>
+                    <div><strong>Disciplină:</strong> Sportul îți ordonează viața și îți dă puterea să spui "NU" tentațiilor.</div>
+                </li>
+            </ul>
+
+            <p>Indiferent de unde vii sau prin ce ai trecut, la BMC ai o șansă la un nou început. (14 ani+).</p>
         </div>
         
         <div class="side-logo-container">
-            <img src="logo.jpeg" alt="RMC Training" class="side-logo">
+            <img src="logo.jpeg" alt="BMC Training" class="side-logo">
         </div>
     </section>
 
     <section class="contact-section">
-        <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase;">Urmărește-ne parcursul</h2>
+        <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase;">Fă primul pas</h2>
         <div class="contact-container">
             <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="contact-link insta-btn">
                 <i class="fab fa-instagram"></i> Instagram
@@ -320,7 +374,7 @@
             </a>
 
             <a href="mailto:botosanimma@gmail.com" class="contact-link">
-                <i class="fas fa-envelope"></i> Email Contact
+                <i class="fas fa-envelope"></i> Scrie-ne
             </a>
         </div>
     </section>
