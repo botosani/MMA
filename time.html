@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locație & Program - BMC Botoșani</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- STILURI GENERALE --- */
+        :root {
+            --accent: #e63946;
+            --charity: #2ecc71; /* Verde pentru activ */
+            --warning: #f1c40f; /* Galben pentru vară */
+            --bg: #0a0a0a;
+            --card: #121212;
+            --text: #ccc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .brand img {
+            height: 50px;
+            width: auto;
+            border-radius: 5px;
+            border: 1px solid var(--accent);
+            object-fit: cover;
+        }
+
+        .brand span { color: white; }
+
+        nav { display: flex; gap: 10px; }
+        
+        .nav-btn {
+            text-decoration: none; color: white; font-family: 'Oswald', sans-serif; font-size: 0.8rem;
+            text-transform: uppercase; padding: 8px 15px; border-radius: 4px; transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 6px;
+        }
+        .nav-btn:hover { background: rgba(255,255,255,0.1); }
+        
+        .btn-inscrie { background: var(--accent); border: none; font-weight: 700; box-shadow: 0 0 10px rgba(230, 57, 70, 0.4); }
+        .btn-inscrie:hover { background: white; color: var(--accent); }
+
+        /* --- CONȚINUT --- */
+        .content-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+            flex: 1; /* Împinge footer-ul jos */
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            background: -webkit-linear-gradient(#fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- CARD STYLING --- */
+        .policy-card {
+            background: linear-gradient(145deg, #121212, #0d1a12); /* Tentă verzuie subtilă */
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 5px solid var(--charity);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .policy-card h2 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 20px;
+            display: flex; align-items: center; gap: 15px;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .policy-card p { color: var(--text); margin-bottom: 15px; font-size: 1rem; }
+
+        /* --- ELEMENTE SPECIFICE --- */
+        
+        /* Buton Instagram */
+        .social-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+            color: white; padding: 12px 25px; border-radius: 50px;
+            text-decoration: none; font-weight: bold; font-family: 'Oswald', sans-serif;
+            margin: 15px 0; transition: transform 0.3s, box-shadow 0.3s;
+            border: none; font-size: 0.95rem;
+        }
+        .social-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(225, 48, 108, 0.5); }
+
+        /* Blocuri Program */
+        ul { list-style: none; margin-top: 20px; }
+        
+        .schedule-block {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--charity);
+            padding: 20px; 
+            margin-bottom: 20px; 
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .schedule-summer { border-left-color: var(--warning); } /* Galben pt vara */
+
+        .schedule-title { 
+            font-family: 'Oswald', sans-serif; 
+            text-transform: uppercase; 
+            font-size: 1.2rem; 
+            display: block; 
+            margin-bottom: 8px; 
+        }
+
+        .sub-text { display: block; font-size: 0.95rem; color: #ddd; margin-top: 5px; line-height: 1.5; }
+        
+        /* Contact Box */
+        .contact-box {
+            margin-top: 30px; 
+            background: rgba(0,0,0,0.3); 
+            padding: 20px; 
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        .contact-numbers { 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 1.3rem; 
+            color: white; 
+            letter-spacing: 1px; 
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* --- FOOTER --- */
+        footer { text-align: center; padding: 30px; color: #555; font-size: 0.8rem; border-top: 1px solid #111; margin-top: auto;}
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            header { flex-direction: column; gap: 10px; }
+            .brand img { height: 40px; }
+            .policy-card { padding: 20px; }
+            .contact-numbers { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="brand">
+            <img src="logo1.jpeg" alt="Logo BMC Botosani">
+            BMC <span>BOTOȘANI</span>
+        </a>
+        <nav>
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Acasă</a>
+            <a href="inscrie.html" class="nav-btn btn-inscrie">Înscrie-te</a>
+        </nav>
+    </header>
+
+    <div class="content-container">
+        
+        <h1>Locație & Program</h1>
+
+        <div class="policy-card">
+            <h2><i class="fas fa-map-marker-alt" style="color: var(--charity);"></i> Unde & Cum ne Antrenăm</h2>
+            
+            <p>
+                La BMC Botoșani nu ne limităm la un singur stil. Combinăm tehnicitatea din <strong>MMA (Arte Marțiale Mixte)</strong> cu forța și controlul corporal din <strong>Calisthenics</strong>. 
+            </p>
+            <p>
+                Antrenamentele sunt dinamice și se desfășoară fie în aer liber, fie la sala noastră din <strong>Strada Mihai Eminescu nr. 48</strong>.
+            </p>
+
+            <div style="margin: 30px 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 20px 0;">
+                <strong style="color:white; font-size: 1.1rem;"><i class="fas fa-bullhorn" style="color: var(--accent);"></i> Anunțuri Importante</strong>
+                <p style="margin-top: 5px;">Locația exactă a fiecărui antrenament și noutățile se postează pe Instagram și pe grupul intern de WhatsApp.</p>
+                
+                <a href="https://www.instagram.com/bmc.botosani/" target="_blank" class="social-btn">
+                    <i class="fab fa-instagram"></i> Urmărește @bmc.botosani
+                </a>
+            </div>
+
+            <h3 style="font-family:'Oswald', sans-serif; color:white; margin-bottom:15px; font-size:1.4rem;">
+                <i class="far fa-clock" style="color:var(--charity);"></i> Orar Antrenamente
+            </h3>
+
+            <ul>
+                <li>
+                    <div class="schedule-block">
+                        <strong class="schedule-title" style="color: var(--charity);">❄️ Program Curent (Toamnă/Iarnă)</strong>
+                        <span class="sub-text">De obicei ne vedem <strong>Sâmbăta</strong>:</span>
+                        
+                        <div style="margin-top: 10px;">
+                            <div style="display:flex; align-items:center; margin-bottom: 8px;">
+                                <i class="fas fa-dumbbell" style="color:var(--charity); width: 25px;"></i>
+                                <span style="color:#ccc;"><strong>La Sală:</strong> 12:30 - 15:00</span>
+                            </div>
+                            <div style="display:flex; align-items:center;">
+                                <i class="fas fa-cloud-sun" style="color:var(--charity); width: 25px;"></i>
+                                <span style="color:#ccc;"><strong>Aer Liber:</strong> 13:25 - 16:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="schedule-block schedule-summer">
+                        <strong class="schedule-title" style="color: var(--warning);">☀️ Program de Vară</strong>
+                        <span class="sub-text">
+                            Pe timpul verii avem mai mult timp liber, așa că mărim turația! Programul se extinde considerabil.
+                        </span>
+                        <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 10px;">
+                            <span class="sub-text" style="color: white;">
+                                <i class="far fa-calendar-alt"></i> <strong>Zile:</strong> Luni, Marți, Joi, Vineri
+                            </span>
+                            <span class="sub-text" style="color: white;">
+                                <i class="far fa-clock"></i> <strong>Interval:</strong> 14:00 - 17:00 (Sală sau Aer Liber)
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="contact-box">
+                <strong style="color:white; font-size:1.1rem;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Ai întrebări? Intră în grup!</strong>
+                <p style="margin-bottom: 5px; font-size: 0.9rem;">Contactează-ne pentru detalii sau ghidare:</p>
+                <div class="contact-numbers">
+                    0743 780 139 <span style="color:#555; margin: 0 10px;">|</span> 0759 855 350
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 BMC Botoșani</p>
+    </footer>
+
+</body>
+</html>
