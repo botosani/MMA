@@ -15,6 +15,7 @@
             --card: #161616;
             --text-gray: #b0b0b0;
             --youtube: #FF0000;
+            --facebook: #1877F2;
             --info-blue: #457b9d;
         }
 
@@ -28,7 +29,7 @@
             overflow-x: hidden;
         }
 
-        /* HEADER CU NAVIGARE */
+        /* H */
         header {
             padding: 10px 5%;
             display: flex;
@@ -253,6 +254,7 @@
 
         .insta-btn { background: linear-gradient(45deg, #f09433, #bc1888); }
         .yt-btn { background: var(--youtube); }
+        .fb-btn { background: var(--facebook); } 
         
         .contact-link:hover { transform: scale(1.05); }
 
@@ -265,7 +267,7 @@
             border-top: 1px solid #111;
         }
 
-        /* RESPONSIVE */
+        /* R */
         @media (max-width: 992px) {
             .project-details { grid-template-columns: 1fr; text-align: center; }
             .details-text h2::after { left: 50%; transform: translateX(-50%); }
