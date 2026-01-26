@@ -244,11 +244,44 @@
             box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
         }
 
+        /* STIL PENTRU PREVIZUALIZARE FISA */
+        .fisa-preview {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed #444;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .fisa-preview p {
+            font-size: 0.8rem;
+            color: #bbb;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .fisa-preview img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+            object-fit: contain;
+        }
+
+        .fisa-preview img:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+        }
+
         .checkbox-group {
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            margin-top: 30px;
+            margin-top: 10px;
             background: rgba(255, 255, 255, 0.02);
             padding: 20px;
             border-radius: 12px;
@@ -385,10 +418,18 @@
                     <textarea name="Mesaj" id="mesaj" rows="3" placeholder="De ce vrei să te alături echipei noastre?"></textarea>
                 </div>
 
+                <div class="fisa-preview">
+                    <label>Exemplar Fișă de Înscriere</label>
+                    <p>Acesta este modelul fișei pe care o vei completa și semna fizic la primul antrenament. Te rugăm să iei la cunoștință conținutul ei.</p>
+                    <a href="exe.jpg" target="_blank">
+                        <img src="exe.jpg" alt="Exemplar Fisa Inscriere BMC">
+                    </a>
+                </div>
+
                 <div class="checkbox-group">
                     <input type="checkbox" id="termeni" name="Acord_Regulament" required>
                     <label for="termeni">
-                        Confirm că înțeleg că antrenamentele se desfășoară pe propria răspundere și respect codul BMC.
+                        Confirm că am vizualizat exemplarul fișei de mai sus, înțeleg că antrenamentele se desfășoară pe propria răspundere și respect codul BMC.
                     </label>
                 </div>
 
