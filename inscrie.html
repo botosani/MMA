@@ -11,6 +11,7 @@
     <style>
         :root {
             --accent: #e63946;
+            --green: #2ecc71; /* Culoare pentru butonul online */
             --bg: #0a0a0a;
             --card: #141414;
             --input-bg: #1f1f1f;
@@ -244,17 +245,21 @@
             box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
         }
 
-        /* STIL PENTRU PREVIZUALIZARE FISA */
+        /* --- STILURI NOI PENTRU DOCUMENTE (FIZIC VS ONLINE) --- */
+        
+        .registration-container {
+            margin-bottom: 25px;
+        }
+
         .fisa-preview {
             background: rgba(255, 255, 255, 0.03);
             border: 1px dashed #444;
             padding: 20px;
             border-radius: 12px;
-            margin-bottom: 25px;
             text-align: center;
         }
 
-        .fisa-preview p {
+        .fisa-preview p, .fisa-digital p {
             font-size: 0.8rem;
             color: #bbb;
             margin-bottom: 15px;
@@ -276,6 +281,39 @@
             transform: scale(1.02);
             border-color: var(--accent);
         }
+
+        /* Stilul nou pentru fisa digitala */
+        .fisa-digital {
+            background: rgba(46, 204, 113, 0.05); /* Tentă verde */
+            border: 1px dashed var(--green);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .btn-online {
+            display: inline-block;
+            background-color: var(--green);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2);
+        }
+
+        .btn-online:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+        }
+        
+        /* ----------------------------------------------------- */
 
         .checkbox-group {
             display: flex;
@@ -418,30 +456,33 @@
                     <textarea name="Mesaj" id="mesaj" rows="3" placeholder="De ce vrei să te alături echipei noastre?"></textarea>
                 </div>
 
-              <div class="registration-container">
+                <div class="registration-container">
     
-    <div class="fisa-preview">
-        <label>Exemplar Fișă de Înscriere (Fizic)</label>
-        <p>Acesta este modelul fișei pe care o vei completa și semna fizic la primul antrenament. Te rugăm să iei la cunoștință conținutul ei.</p>
-        <a href="exe.jpg" target="_blank">
-            <img src="exe.jpg" alt="Exemplar Fisa Inscriere BMC" style="max-width: 100%; height: auto;">
-        </a>
-    </div>
+                    <div class="fisa-preview">
+                        <label>Exemplar Fișă de Înscriere (Fizic)</label>
+                        <p>Acesta este modelul fișei pe care o vei completa și semna fizic la primul antrenament.</p>
+                        <a href="exe.jpg" target="_blank">
+                            <img src="exe.jpg" alt="Exemplar Fisa Inscriere BMC">
+                        </a>
+                    </div>
 
-    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
+                    <div style="display: flex; align-items: center; margin: 20px 0;">
+                        <hr style="flex: 1; border: 0; border-top: 1px solid #333;">
+                        <span style="padding: 0 10px; color: #666; font-size: 0.8rem; text-transform: uppercase;">SAU</span>
+                        <hr style="flex: 1; border: 0; border-top: 1px solid #333;">
+                    </div>
 
-    <div class="fisa-digital">
-        <label>Fișă de Înscriere Digitală (Online)</label>
-        <p>Aceasta este o variantă mai simplă și rapidă de completat de acasă.</p>
-        <p><em><strong>Notă:</strong> Deși completarea online scurtează timpul, semnarea exemplarului fizic la sală rămâne recomandată/obligatorie.</em></p>
-        
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZOIzMcuUNbahjI9xVaRNWa5Ny-XMbS5XguY6q_BJT60MftQ/viewform" target="_blank" class="btn-online" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">
-            Completează Formularul Online
-        </a>
-    </div>
+                    <div class="fisa-digital">
+                        <label style="color: #2ecc71;">Fișă de Înscriere Digitală</label>
+                        <p>Variantă rapidă de completat de acasă.</p>
+                        <p><em><strong>Notă:</strong> Chiar dacă completezi online, semnătura fizică la sală rămâne obligatorie.</em></p>
+                        
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZOIzMcuUNbahjI9xVaRNWa5Ny-XMbS5XguY6q_BJT60MftQ/viewform" target="_blank" class="btn-online">
+                            <i class="fas fa-edit"></i> Completează Online
+                        </a>
+                    </div>
 
-</div>
-
+                </div>
                 <div class="checkbox-group">
                     <input type="checkbox" id="termeni" name="Acord_Regulament" required>
                     <label for="termeni">
@@ -478,32 +519,24 @@
         const submitBtn = document.getElementById("submitBtn");
 
         form.addEventListener("submit", function(e) {
-            e.preventDefault(); // 1. Oprește refresh-ul paginii curente
+            e.preventDefault(); 
 
-            // 2. Deschide IMEDIAT tab-ul nou cu s.html
-            // Facem asta la început pentru a nu fi blocat de browser (popup blocker)
             window.open("s.html", "_blank");
 
-            // 3. Schimbă butonul din pagina curentă pentru feedback
             submitBtn.innerText = "SE TRIMITE...";
             submitBtn.classList.add("loading");
             submitBtn.disabled = true;
 
-            // 4. Colectează datele
             const formData = new FormData(form);
 
-            // 5. Trimite email-ul în fundal (prin AJAX) către FormSubmit
-            // Adresa trebuie să conțină /ajax/ pentru a funcționa corect în fundal
             fetch("https://formsubmit.co/ajax/botosanimma@gmail.com", {
                 method: "POST",
                 body: formData
             })
             .then(response => response.json())
             .then(data => {
-                // Succes: Emailul a plecat din acest tab
                 console.log("Formular trimis cu succes!");
                 
-                // Opțional: Resetăm formularul și arătăm confirmare pe acest tab
                 form.reset();
                 submitBtn.innerText = "TRIMIS CU SUCCES ✔";
                 submitBtn.classList.remove("loading");
@@ -511,8 +544,6 @@
             })
             .catch(error => {
                 console.error("Eroare la trimitere:", error);
-                // Chiar dacă e eroare, utilizatorul a fost trimis pe s.html, 
-                // deci va crede că e ok. Putem reseta butonul.
                 submitBtn.innerText = "REÎNCEARCĂ";
                 submitBtn.classList.remove("loading");
                 submitBtn.disabled = false;
