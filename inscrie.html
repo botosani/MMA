@@ -11,7 +11,7 @@
     <style>
         :root {
             --accent: #e63946;
-            --green: #2ecc71; /* Culoare pentru butonul online */
+            --green: #2ecc71;
             --bg: #0a0a0a;
             --card: #141414;
             --input-bg: #1f1f1f;
@@ -245,50 +245,60 @@
             box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
         }
 
-        /* --- STILURI NOI PENTRU DOCUMENTE (FIZIC VS ONLINE) --- */
+        /* --- STILURI INSCRIERE DIGITALA --- */
         
         .registration-container {
-            margin-bottom: 25px;
+            margin-bottom: 15px; /* Redus puțin pentru a apropia checkbox-ul nou */
         }
 
-        .fisa-preview {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed #444;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .fisa-preview p, .fisa-digital p {
-            font-size: 0.8rem;
-            color: #bbb;
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-
-        .fisa-preview img {
-            max-width: 100%;
-            height: auto;
-            max-height: 400px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            transition: transform 0.3s ease;
-            cursor: zoom-in;
-            object-fit: contain;
-        }
-
-        .fisa-preview img:hover {
-            transform: scale(1.02);
-            border-color: var(--accent);
-        }
-
-        /* Stilul nou pentru fisa digitala */
         .fisa-digital {
-            background: rgba(46, 204, 113, 0.05); /* Tentă verde */
+            background: rgba(46, 204, 113, 0.05); /* Tentă verde subtilă */
             border: 1px dashed var(--green);
-            padding: 20px;
+            padding: 25px 20px;
             border-radius: 12px;
             text-align: center;
+        }
+
+        .digital-label {
+            color: var(--green); 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            display: block; 
+            margin-bottom: 15px;
+            text-transform: none; /* Reset uppercase from global label */
+            letter-spacing: 0.5px;
+        }
+
+        /* Chenarul informativ (Important) */
+        .info-box {
+            background-color: rgba(255, 255, 255, 0.05); /* Gri inchis transparent */
+            border-left: 4px solid var(--green);
+            padding: 15px;
+            text-align: left;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .info-box p {
+            margin: 0 0 8px;
+            font-weight: bold;
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+
+        .info-box ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #bbb;
+        }
+        
+        .info-box li {
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+        }
+        
+        .info-box li strong {
+            color: white;
         }
 
         .btn-online {
@@ -302,7 +312,7 @@
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 10px;
+            margin-top: 5px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2);
         }
@@ -326,8 +336,20 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* Stil specific pentru checkbox-ul legat de fisa digitala (verde) */
+        .checkbox-group.fisa-check {
+            border-color: rgba(46, 204, 113, 0.3);
+            background: rgba(46, 204, 113, 0.02);
+            margin-bottom: 25px;
+            margin-top: 5px;
+        }
+
         .checkbox-group input { width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent); }
+        /* Accent verde pentru checkbox-ul fisei */
+        .checkbox-group.fisa-check input { accent-color: var(--green); }
+        
         .checkbox-group label { font-size: 0.8rem; font-weight: 400; text-transform: none; color: #999; cursor: pointer; line-height: 1.4; }
+        .checkbox-group.fisa-check label { color: #ccc; }
 
         .btn-submit {
             width: 100%;
@@ -457,36 +479,40 @@
                 </div>
 
                 <div class="registration-container">
-    
-                    <div class="fisa-preview">
-                        <label>Exemplar Fișă de Înscriere (Fizic)</label>
-                        <p>Acesta este modelul fișei pe care o vei completa și semna fizic la primul antrenament.</p>
-                        <a href="exe.jpg" target="_blank">
-                            <img src="exe.jpg" alt="Exemplar Fisa Inscriere BMC">
-                        </a>
-                    </div>
-
-                    <div style="display: flex; align-items: center; margin: 20px 0;">
-                        <hr style="flex: 1; border: 0; border-top: 1px solid #333;">
-                        <span style="padding: 0 10px; color: #666; font-size: 0.8rem; text-transform: uppercase;">SAU</span>
-                        <hr style="flex: 1; border: 0; border-top: 1px solid #333;">
-                    </div>
-
                     <div class="fisa-digital">
-                        <label style="color: #2ecc71;">Fișă de Înscriere Digitală</label>
-                        <p>Variantă rapidă de completat de acasă.</p>
-                        <p><em><strong>Notă:</strong> Chiar dacă completezi online, semnătura fizică la sală rămâne obligatorie.</em></p>
+                        <label class="digital-label">
+                            Fișă de Înscriere Digitală
+                        </label>
+
+                        <div class="info-box">
+                            <p>Important:</p>
+                            <ul>
+                                <li>
+                                    Completarea formularului reprezintă <strong>acordul tău cu Termenii și Condițiile BMC</strong>.
+                                </li>
+                                <li>
+                                    Nu uita să finalizezi procedura trimițând confirmarea și pe <strong>email</strong>.
+                                </li>
+                            </ul>
+                        </div>
                         
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZOIzMcuUNbahjI9xVaRNWa5Ny-XMbS5XguY6q_BJT60MftQ/viewform" target="_blank" class="btn-online">
                             <i class="fas fa-edit"></i> Completează Online
                         </a>
                     </div>
-
                 </div>
+
+                <div class="checkbox-group fisa-check">
+                    <input type="checkbox" id="check_fisa_digitala" name="Fisa_Digitala_Completata" value="DA" required>
+                    <label for="check_fisa_digitala">
+                        Confirm că am accesat link-ul de mai sus și am completat <strong>Fișa de Înscriere Digitală</strong>.
+                    </label>
+                </div>
+
                 <div class="checkbox-group">
                     <input type="checkbox" id="termeni" name="Acord_Regulament" required>
                     <label for="termeni">
-                        Confirm că am vizualizat exemplarul fișei de mai sus, înțeleg că antrenamentele se desfășoară pe propria răspundere și respect codul BMC.
+                        Confirm că am luat la cunoștință instrucțiunile de înscriere, înțeleg că antrenamentele se desfășoară pe propria răspundere și respect codul BMC.
                     </label>
                 </div>
 
@@ -508,12 +534,14 @@
             setTimeout(() => {
                 overlay.style.display = 'none';
                 document.body.classList.remove('hidden-scroll');
-                document.getElementById('termeni').checked = true;
+                // Debifam checkbox-urile pentru a obliga userul sa le bifeze manual
+                document.getElementById('termeni').checked = false;
+                document.getElementById('check_fisa_digitala').checked = false;
             }, 400);
         }
 
         // ==========================================
-        // SCRIPTUL CARE FACE MAGIA CU TABURILE
+        // SCRIPT PENTRU TRIMITERE FORMULAR
         // ==========================================
         const form = document.getElementById("registrationForm");
         const submitBtn = document.getElementById("submitBtn");
@@ -521,6 +549,7 @@
         form.addEventListener("submit", function(e) {
             e.preventDefault(); 
 
+            // Deschide pagina de succes custom intr-un tab nou (daca e cazul)
             window.open("s.html", "_blank");
 
             submitBtn.innerText = "SE TRIMITE...";
