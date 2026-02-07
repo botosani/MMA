@@ -109,15 +109,17 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .policy-card h2 {
+        .policy-card h2, .policy-card h3 {
             font-family: 'Oswald', sans-serif;
             margin-bottom: 20px;
             display: flex; align-items: center; gap: 15px;
             text-transform: uppercase;
-            font-size: 1.5rem;
             color: white;
         }
         
+        .policy-card h2 { font-size: 1.5rem; }
+        .policy-card h3 { font-size: 1.3rem; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;}
+
         .policy-card p { color: var(--text); margin-bottom: 15px; font-size: 1rem; }
 
         /* --- ELEMENTE SPECIFICE --- */
@@ -133,8 +135,37 @@
         }
         .social-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(225, 48, 108, 0.5); }
 
+        /* --- ROUTINE SECTION (NOU) --- */
+        .routine-list {
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+        }
+        .routine-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+        .time-badge {
+            font-family: 'Oswald', sans-serif;
+            background: rgba(255,255,255,0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            height: fit-content;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        .routine-desc strong { color: white; display: block; margin-bottom: 4px; font-size: 1.05rem; }
+        .routine-desc span { font-size: 0.9rem; color: #bbb; }
+
         /* Blocuri Program */
-        ul { list-style: none; margin-top: 20px; }
+        ul.schedule-list { list-style: none; margin-top: 20px; }
         
         .schedule-block {
             background: rgba(255, 255, 255, 0.05);
@@ -183,6 +214,8 @@
             .brand img { height: 40px; }
             .policy-card { padding: 20px; }
             .contact-numbers { font-size: 1.1rem; }
+            .routine-item { flex-direction: column; gap: 5px; }
+            .time-badge { width: fit-content; }
         }
     </style>
 </head>
@@ -210,7 +243,7 @@
                 La BMC Botoșani nu ne limităm la un singur stil. Combinăm tehnicitatea din <strong>MMA (Arte Marțiale Mixte)</strong> cu forța și controlul corporal din <strong>Calisthenics</strong>. 
             </p>
             <p>
-                Antrenamentele sunt dinamice și se desfășoară fie în aer liber, fie la sala noastră din <strong>Strada Mihai Eminescu nr. 48</strong>.
+                Antrenamentele sunt dinamice și se desfășoară fie în aer liber, fie la sala noastră din <strong>Strada Mihai Eminescu nr. 48 la sala Arlechin</strong>.
             </p>
 
             <div style="margin: 30px 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 20px 0;">
@@ -222,11 +255,43 @@
                 </a>
             </div>
 
-            <h3 style="font-family:'Oswald', sans-serif; color:white; margin-bottom:15px; font-size:1.4rem;">
+            <h3><i class="fas fa-fist-raised" style="color: var(--accent);"></i> Structura unui Antrenament</h3>
+            <p>Fiecare sesiune este intensă și bine structurată pentru a maximiza rezultatele:</p>
+            
+            <div class="routine-list">
+                <div class="routine-item">
+                    <div class="time-badge">20 MIN</div>
+                    <div class="routine-desc">
+                        <strong>Încălzire Specifică</strong>
+                        <span>Fandări, pendulări, încălzirea articulațiilor și a coloanei vertebrale pentru mobilitate maximă.</span>
+                    </div>
+                </div>
+
+                <div class="routine-item">
+                    <div class="time-badge">30 MIN</div>
+                    <div class="routine-desc">
+                        <strong>Condiție Fizică (Calisthenics)</strong>
+                        <span>Exerciții cu greutatea corpului: flotări, genuflexiuni, abdomene și cardio.</span>
+                    </div>
+                </div>
+
+                <div class="routine-item">
+                    <div class="time-badge">1 ORA</div>
+                    <div class="routine-desc">
+                        <strong>MMA & Tehnică</strong>
+                        <span>
+                            • 30 min: Lucru cu partenerul la palmare.<br>
+                            • 30 min: Light sparring, drill-uri și exerciții explozive (ex: flotări cu bătaie din palme în 2).
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>
                 <i class="far fa-clock" style="color:var(--charity);"></i> Orar Antrenamente
             </h3>
 
-            <ul>
+            <ul class="schedule-list">
                 <li>
                     <div class="schedule-block">
                         <strong class="schedule-title" style="color: var(--charity);">Program Curent (Toamnă/Iarnă)</strong>
@@ -251,6 +316,7 @@
                         <span class="sub-text">
                             Pe timpul verii avem mai mult timp liber, așa că mărim turația! Programul se extinde considerabil.
                         </span>
+
                         <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 10px;">
                             <span class="sub-text" style="color: white;">
                                 <i class="far fa-calendar-alt"></i> <strong>Zile:</strong> Luni, Marți, Joi, Vineri
