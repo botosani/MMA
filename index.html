@@ -15,9 +15,7 @@
             --red-glow: rgba(230, 57, 70, 0.35);
             --bg: #080808;
             --surface: #111111;
-            --surface2: #181818;
             --border: rgba(255,255,255,0.07);
-            --text: #f0f0f0;
             --muted: #777;
             --blue: #457b9d;
         }
@@ -29,9 +27,8 @@
         body {
             font-family: 'Barlow', sans-serif;
             background: var(--bg);
-            color: var(--text);
+            color: #f0f0f0;
             overflow-x: hidden;
-            cursor: default;
         }
 
         /* ─── NOISE OVERLAY ─── */
@@ -93,10 +90,7 @@
             line-height: 1;
         }
 
-        .logo-name em {
-            color: var(--red);
-            font-style: normal;
-        }
+        .logo-name em { color: var(--red); font-style: normal; }
 
         .logo-sub {
             font-family: 'Barlow', sans-serif;
@@ -108,11 +102,7 @@
             margin-top: 2px;
         }
 
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        nav { display: flex; align-items: center; gap: 8px; }
 
         .nav-link {
             text-decoration: none;
@@ -186,11 +176,7 @@
         }
 
         .mobile-menu.open { display: flex; }
-
-        .mobile-menu .nav-link {
-            font-size: 1.4rem;
-            padding: 12px 32px;
-        }
+        .mobile-menu .nav-link { font-size: 1.4rem; padding: 12px 32px; }
 
         /* ─── HERO ─── */
         .hero {
@@ -213,10 +199,9 @@
 
         @keyframes slowZoom {
             from { transform: scale(1.05); }
-            to { transform: scale(1.12); }
+            to   { transform: scale(1.12); }
         }
 
-        /* Diagonal red slash */
         .hero::after {
             content: '';
             position: absolute;
@@ -275,9 +260,9 @@
             transform: translateY(60px);
         }
 
-        .hero-title .line:nth-child(1) { animation: slideUp 0.8s 0.5s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .hero-title .line:nth-child(1) { animation: slideUp 0.8s 0.5s  cubic-bezier(0.16,1,0.3,1) forwards; }
         .hero-title .line:nth-child(2) { animation: slideUp 0.8s 0.65s cubic-bezier(0.16,1,0.3,1) forwards; color: var(--red); }
-        .hero-title .line:nth-child(3) { animation: slideUp 0.8s 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .hero-title .line:nth-child(3) { animation: slideUp 0.8s 0.8s  cubic-bezier(0.16,1,0.3,1) forwards; }
 
         .hero-sub {
             font-size: clamp(1rem, 2.5vw, 1.25rem);
@@ -316,32 +301,11 @@
             border: 2px solid transparent;
         }
 
-        .btn-primary {
-            background: var(--red);
-            color: white;
-            border-color: var(--red);
-        }
+        .btn-primary { background: var(--red); color: white; border-color: var(--red); }
+        .btn-primary:hover { background: transparent; color: var(--red); box-shadow: 0 0 30px var(--red-glow); }
 
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--red);
-            box-shadow: 0 0 30px var(--red-glow);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: white;
-            border-color: rgba(255,255,255,0.25);
-        }
-
-        .btn-ghost:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(255,255,255,0.5);
-        }
-
-
-
-
+        .btn-ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.25); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.5); }
 
         /* ─── SECTION COMMONS ─── */
         section { position: relative; }
@@ -387,8 +351,6 @@
             align-items: start;
         }
 
-        .about-left {}
-
         .about-text {
             font-size: 1.15rem;
             font-weight: 300;
@@ -397,11 +359,7 @@
             margin-bottom: 20px;
         }
 
-        .about-text strong {
-            color: white;
-            font-weight: 600;
-        }
-
+        .about-text strong { color: white; font-weight: 600; }
         .about-text .accent { color: var(--red); font-weight: 600; }
 
         .callout {
@@ -412,12 +370,7 @@
             border-radius: 0 10px 10px 0;
         }
 
-        .callout p {
-            font-size: 1.1rem;
-            font-style: italic;
-            color: #ddd;
-            line-height: 1.7;
-        }
+        .callout p { font-size: 1.1rem; font-style: italic; color: #ddd; line-height: 1.7; }
 
         .peer-note {
             padding: 20px 24px;
@@ -430,7 +383,6 @@
         .peer-note p { font-size: 1rem; color: #bbb; line-height: 1.7; }
         .peer-note strong { color: #7fc8e8; }
 
-        /* About right — visual stack */
         .about-right {
             position: sticky;
             top: 100px;
@@ -473,11 +425,7 @@
             color: rgba(255,255,255,0.7);
         }
 
-        .about-badge-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
+        .about-badge-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
         .badge {
             background: var(--surface);
@@ -490,19 +438,9 @@
             transition: all 0.3s;
         }
 
-        .badge:hover {
-            border-color: var(--red);
-            background: var(--red-dim);
-            transform: translateY(-3px);
-        }
+        .badge:hover { border-color: var(--red); background: var(--red-dim); transform: translateY(-3px); }
 
-        .badge-icon {
-            font-size: 1.5rem;
-            color: var(--red);
-            width: 40px;
-            flex-shrink: 0;
-            text-align: center;
-        }
+        .badge-icon { font-size: 1.5rem; color: var(--red); width: 40px; flex-shrink: 0; text-align: center; }
 
         .badge-text {
             font-family: 'Barlow Condensed', sans-serif;
@@ -513,13 +451,7 @@
             color: #ddd;
         }
 
-        .badge-sub {
-            font-size: 0.75rem;
-            color: var(--muted);
-            font-family: 'Barlow', sans-serif;
-            font-weight: 300;
-            margin-top: 2px;
-        }
+        .badge-sub { font-size: 0.75rem; color: var(--muted); font-family: 'Barlow', sans-serif; font-weight: 300; margin-top: 2px; }
 
         /* ─── MISSION ─── */
         .mission {
@@ -534,8 +466,7 @@
         .mission::before {
             content: 'MISIUNE';
             position: absolute;
-            top: -30px;
-            right: -20px;
+            top: -30px; right: -20px;
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(8rem, 18vw, 18rem);
             color: rgba(255,255,255,0.02);
@@ -544,10 +475,7 @@
             white-space: nowrap;
         }
 
-        .mission-inner {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
+        .mission-inner { max-width: 1300px; margin: 0 auto; }
 
         .mission-grid {
             display: grid;
@@ -568,33 +496,16 @@
             top: 100px;
         }
 
-        .mission-quote em {
-            color: var(--red);
-            font-style: normal;
-        }
+        .mission-quote em { color: var(--red); font-style: normal; }
 
-        .mission-body {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+        .mission-body { display: flex; flex-direction: column; gap: 20px; }
 
-        .mission-para {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: #999;
-            line-height: 1.9;
-        }
-
+        .mission-para { font-size: 1.1rem; font-weight: 300; color: #999; line-height: 1.9; }
         .mission-para strong { color: white; font-weight: 600; }
         .mission-para .red { color: var(--red); font-weight: 600; }
 
         /* ─── PILLARS ─── */
-        .pillars {
-            padding: 120px 5%;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
+        .pillars { padding: 120px 5%; max-width: 1300px; margin: 0 auto; }
 
         .pillars-header {
             display: flex;
@@ -647,12 +558,7 @@
 
         .pillar:hover .pillar-number { color: rgba(230,57,70,0.15); }
 
-        .pillar-icon {
-            font-size: 1.8rem;
-            color: var(--red);
-            margin-bottom: 20px;
-            position: relative;
-        }
+        .pillar-icon { font-size: 1.8rem; color: var(--red); margin-bottom: 20px; position: relative; }
 
         .pillar-title {
             font-family: 'Barlow Condensed', sans-serif;
@@ -665,26 +571,11 @@
             position: relative;
         }
 
-        .pillar-body {
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: #777;
-            line-height: 1.75;
-            position: relative;
-        }
+        .pillar-body { font-size: 0.95rem; font-weight: 300; color: #777; line-height: 1.75; position: relative; }
 
         /* ─── TRAINING ─── */
-        .training {
-            padding: 100px 5%;
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-        }
-
-        .training-inner {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
+        .training { padding: 100px 5%; background: var(--surface); border-top: 1px solid var(--border); }
+        .training-inner { max-width: 1300px; margin: 0 auto; }
         .training-header { margin-bottom: 60px; }
 
         .training-list {
@@ -732,75 +623,7 @@
             margin-bottom: 8px;
         }
 
-        .t-body {
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: #777;
-            line-height: 1.7;
-        }
-
-        /* ─── SPORT SECTION ─── */
-        .sport {
-            padding: 120px 5%;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .sport-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 80px;
-            align-items: center;
-            margin-top: 60px;
-        }
-
-        .sport-text .about-text { margin-bottom: 16px; }
-
-        .sport-visual {
-            position: relative;
-        }
-
-        .sport-img-frame {
-            border-radius: 16px;
-            overflow: hidden;
-            aspect-ratio: 3/4;
-            background: var(--surface);
-        }
-
-        .sport-img-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.7) saturate(0.8);
-            transition: transform 0.6s;
-        }
-
-        .sport-img-frame:hover img { transform: scale(1.04); }
-
-        .sport-tag {
-            position: absolute;
-            top: -20px; right: -20px;
-            width: 120px;
-            height: 120px;
-            background: var(--red);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
-            line-height: 1.1;
-            text-align: center;
-            padding: 10px;
-            animation: spin 20s linear infinite;
-            box-shadow: 0 0 40px var(--red-glow);
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        .t-body { font-size: 0.95rem; font-weight: 300; color: #777; line-height: 1.7; }
 
         /* ─── CONTACT ─── */
         .contact {
@@ -825,27 +648,11 @@
             white-space: nowrap;
         }
 
-        .contact-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .contact-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
 
-        .contact-sub {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: var(--muted);
-            margin: 20px 0 56px;
-        }
+        .contact-sub { font-size: 1.1rem; font-weight: 300; color: var(--muted); margin: 20px 0 56px; }
 
-        .social-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 48px;
-        }
+        .social-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 48px; }
 
         .social-btn {
             display: inline-flex;
@@ -864,29 +671,18 @@
             transition: all 0.3s;
         }
 
-        .social-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.4);
-        }
+        .social-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
 
         .soc-insta { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .soc-fb { background: #1877f2; }
-        .soc-yt { background: #ff0000; }
-        .soc-tt { background: #000; border-color: #333; }
+        .soc-fb    { background: #1877f2; }
+        .soc-yt    { background: #ff0000; }
+        .soc-tt    { background: #000; border-color: #333; }
         .soc-tt:hover { border-color: #fe2c55; box-shadow: 0 12px 32px rgba(254,44,85,0.25) !important; }
-        .soc-mail { background: transparent; border-color: rgba(255,255,255,0.2); }
+        .soc-mail  { background: transparent; border-color: rgba(255,255,255,0.2); }
         .soc-mail:hover { background: rgba(255,255,255,0.05); }
 
-        .contact-cta {
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
-        }
-
-        .contact-cta p {
-            font-size: 1rem;
-            color: var(--muted);
-            margin-bottom: 20px;
-        }
+        .contact-cta { padding-top: 40px; border-top: 1px solid var(--border); }
+        .contact-cta p { font-size: 1rem; color: var(--muted); margin-bottom: 20px; }
 
         /* ─── FOOTER ─── */
         footer {
@@ -899,92 +695,60 @@
             gap: 12px;
         }
 
-        .footer-logo {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 0.08em;
-            color: var(--muted);
-        }
-
+        .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.08em; color: var(--muted); }
         .footer-logo span { color: var(--red); }
-
-        .footer-copy {
-            font-size: 0.8rem;
-            color: #444;
-            letter-spacing: 0.04em;
-        }
-
-        .footer-zero {
-            font-size: 0.75rem;
-            color: #333;
-            font-style: italic;
-        }
+        .footer-copy { font-size: 0.8rem; color: #444; letter-spacing: 0.04em; }
+        .footer-zero { font-size: 0.75rem; color: #333; font-style: italic; }
 
         /* ─── ANIMATIONS ─── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ─── REVEAL ─── */
+        /* ─── REVEAL ON SCROLL ─── */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+            transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
+                        transform 0.9s cubic-bezier(0.16,1,0.3,1);
         }
 
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.visible  { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1  { transition-delay: 0.1s; }
+        .reveal-delay-2  { transition-delay: 0.2s; }
+        .reveal-delay-3  { transition-delay: 0.3s; }
+        .reveal-delay-4  { transition-delay: 0.4s; }
 
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-
-        /* ─── HIGHLIGHT TEXT ─── */
-        .red-text { color: var(--red); }
-
-        /* ─── DIVIDER ─── */
-        .divider {
-            width: 60px;
-            height: 3px;
-            background: var(--red);
-            border-radius: 2px;
-            margin: 20px 0 32px;
-        }
+        .divider { width: 60px; height: 3px; background: var(--red); border-radius: 2px; margin: 20px 0 32px; }
 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1100px) {
             .pillars-grid { grid-template-columns: repeat(2, 1fr); }
-            .sport-grid { grid-template-columns: 1fr; }
-            .sport-visual { max-width: 400px; margin: 0 auto; }
         }
 
         @media (max-width: 900px) {
-            .about { grid-template-columns: 1fr; gap: 60px; }
-            .mission-grid { grid-template-columns: 1fr; }
+            .about         { grid-template-columns: 1fr; gap: 60px; }
+            .mission-grid  { grid-template-columns: 1fr; }
             .mission-quote { position: relative; top: 0; }
             .training-list { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            nav { display: none; }
-            .hamburger { display: flex; }
-            .stats-strip { gap: 30px; }
-            .pillars-grid { grid-template-columns: 1fr; }
+            nav              { display: none; }
+            .hamburger       { display: flex; }
+            .pillars-grid    { grid-template-columns: 1fr; }
             .about-badge-row { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 500px) {
             .hero-title { font-size: clamp(3.5rem, 18vw, 5rem); }
-            footer { flex-direction: column; text-align: center; }
+            footer      { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -1001,18 +765,10 @@
     </a>
 
     <nav>
-        <a href="p.html" class="nav-link">
-            <i class="fas fa-gavel"></i> Regulament
-        </a>
-        <a href="ghid.html" class="nav-link">
-            <i class="fas fa-shirt"></i> Ghid Echipament
-        </a>
-        <a href="time.html" class="nav-link">
-            <i class="fas fa-location-dot"></i> Locație & Program
-        </a>
-        <a href="inscrie.html" class="nav-link nav-cta">
-            <i class="fas fa-user-plus"></i> Înscrie-te
-        </a>
+        <a href="p.html"       class="nav-link"><i class="fas fa-gavel"></i> Regulament</a>
+        <a href="ghid.html"    class="nav-link"><i class="fas fa-shirt"></i> Ghid Echipament</a>
+        <a href="time.html"    class="nav-link"><i class="fas fa-location-dot"></i> Locație &amp; Program</a>
+        <a href="inscrie.html" class="nav-link nav-cta"><i class="fas fa-user-plus"></i> Înscrie-te</a>
     </nav>
 
     <div class="hamburger" id="hamburger">
@@ -1022,9 +778,9 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
-    <a href="p.html" class="nav-link" onclick="closeMobile()"><i class="fas fa-gavel"></i> Regulament</a>
-    <a href="ghid.html" class="nav-link" onclick="closeMobile()"><i class="fas fa-shirt"></i> Ghid Echipament</a>
-    <a href="time.html" class="nav-link" onclick="closeMobile()"><i class="fas fa-location-dot"></i> Locație & Program</a>
+    <a href="p.html"       class="nav-link" onclick="closeMobile()"><i class="fas fa-gavel"></i> Regulament</a>
+    <a href="ghid.html"    class="nav-link" onclick="closeMobile()"><i class="fas fa-shirt"></i> Ghid Echipament</a>
+    <a href="time.html"    class="nav-link" onclick="closeMobile()"><i class="fas fa-location-dot"></i> Locație &amp; Program</a>
     <a href="inscrie.html" class="nav-link nav-cta" onclick="closeMobile()"><i class="fas fa-user-plus"></i> Înscrie-te</a>
 </div>
 
@@ -1048,15 +804,11 @@
                 <i class="fas fa-user-plus"></i> Hai în Echipă
             </a>
             <a href="time.html" class="btn btn-ghost">
-                <i class="fas fa-location-dot"></i> Locație & Program
+                <i class="fas fa-location-dot"></i> Locație &amp; Program
             </a>
         </div>
     </div>
-
-
 </section>
-
-
 
 <!-- ══════════════════════════ ABOUT ══════════════════════════ -->
 <section>
@@ -1078,7 +830,8 @@
             </p>
 
             <div class="callout reveal reveal-delay-3">
-                <p><i class="fas fa-shield-alt" style="color:var(--red); margin-right:10px;"></i>
+                <p>
+                    <i class="fas fa-shield-alt" style="color:var(--red); margin-right:10px;"></i>
                     <strong>ZERO TOLERANȚĂ:</strong> Suntem împotriva violenței și a bătăilor de stradă. Nu organizăm lupte — organizăm antrenamente.
                 </p>
             </div>
@@ -1119,9 +872,9 @@
             </div>
         </div>
 
-<div class="about-right">
+        <div class="about-right">
             <div class="about-img-frame reveal">
-                <img src="manusi.jpg" alt="Training">
+                <img src="manusi.jpg" alt="BMC Training">
                 <div class="about-img-overlay"></div>
                 <div class="about-img-tag">BMC</div>
             </div>
@@ -1191,7 +944,7 @@
             <div class="pillar reveal reveal-delay-3">
                 <div class="pillar-number">04</div>
                 <div class="pillar-icon"><i class="fas fa-handshake"></i></div>
-                <div class="pillar-title">Respect & Caracter</div>
+                <div class="pillar-title">Respect &amp; Caracter</div>
                 <div class="pillar-body">Înveți respectul față de ceilalți, autocontrolul și gestionarea emoțiilor sub presiune. Artele marțiale formează caractere, nu bătăuși.</div>
             </div>
         </div>
@@ -1204,7 +957,7 @@
         <div class="training-header">
             <div class="section-label reveal">Cum funcționează</div>
             <h2 class="section-title reveal reveal-delay-1">Cum ne<br>antrenăm?</h2>
-            <p style="font-size:1.1rem; font-weight:300; color:#777; max-width:560px;" class="reveal reveal-delay-2">
+            <p class="reveal reveal-delay-2" style="font-size:1.1rem; font-weight:300; color:#777; max-width:560px;">
                 La noi <strong style="color:white;">tu alegi ritmul</strong>. Respectăm dorința fiecăruia. Mediul este unul de respect reciproc, fără judecată.
             </p>
         </div>
@@ -1262,7 +1015,7 @@
             <a href="https://www.tiktok.com/@bmc.botosani" target="_blank" class="social-btn soc-tt">
                 <i class="fab fa-tiktok"></i> TikTok
             </a>
-            <a href="/cdn-cgi/l/email-protection#aeccc1dac1ddcfc0c7c3c3cfeec9c3cfc7c280cdc1c3" class="social-btn soc-mail">
+            <a href="mailto:botosanimma@gmail.com" class="social-btn soc-mail">
                 <i class="fas fa-envelope"></i> Scrie-ne
             </a>
         </div>
@@ -1283,7 +1036,7 @@
     <div class="footer-zero">Zero violență · Zero taxe · 100% comunitate</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     // ── Scroll header
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
@@ -1313,3 +1066,12 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
