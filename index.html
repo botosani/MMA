@@ -339,39 +339,7 @@
             border-color: rgba(255,255,255,0.5);
         }
 
-        .hero-scroll {
-            position: absolute;
-            bottom: 140px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            opacity: 0;
-            animation: fadeUp 1s 1.6s forwards;
-        }
 
-        .scroll-text {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .scroll-line {
-            width: 1px;
-            height: 50px;
-            background: linear-gradient(to bottom, var(--red), transparent);
-            animation: scrollPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes scrollPulse {
-            0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
-            50% { opacity: 1; transform: scaleY(1); }
-        }
 
 
 
@@ -1085,10 +1053,7 @@
         </div>
     </div>
 
-    <div class="hero-scroll">
-        <span class="scroll-text">Scroll</span>
-        <div class="scroll-line"></div>
-    </div>
+
 </section>
 
 
@@ -1297,7 +1262,7 @@
             <a href="https://www.tiktok.com/@bmc.botosani" target="_blank" class="social-btn soc-tt">
                 <i class="fab fa-tiktok"></i> TikTok
             </a>
-            <a href="mailto:botosanimma@gmail.com" class="social-btn soc-mail">
+            <a href="/cdn-cgi/l/email-protection#aeccc1dac1ddcfc0c7c3c3cfeec9c3cfc7c280cdc1c3" class="social-btn soc-mail">
                 <i class="fas fa-envelope"></i> Scrie-ne
             </a>
         </div>
@@ -1318,7 +1283,7 @@
     <div class="footer-zero">Zero violență · Zero taxe · 100% comunitate</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── Scroll header
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
@@ -1348,12 +1313,3 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-    reveals.forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
