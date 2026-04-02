@@ -3,347 +3,798 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locație & Program - BMC Botoșani</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Locație & Program — BMC Botoșani</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* --- STILURI GENERALE --- */
         :root {
-            --accent: #e63946;
-            --charity: #2ecc71; /* Verde pentru activ */
-            --warning: #f1c40f; /* Galben pentru vară */
-            --bg: #0a0a0a;
-            --card: #121212;
-            --text: #ccc;
+            --red:      #e63946;
+            --red-dim:  rgba(230, 57, 70, 0.12);
+            --red-glow: rgba(230, 57, 70, 0.35);
+            --green:    #2ecc71;
+            --green-dim:rgba(46, 204, 113, 0.10);
+            --yellow:   #f1c40f;
+            --yellow-dim:rgba(241, 196, 15, 0.10);
+            --bg:       #080808;
+            --surface:  #111111;
+            --surface2: #141414;
+            --border:   rgba(255,255,255,0.07);
+            --muted:    #666;
+            --blue:     #457b9d;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg);
-            color: white;
-            line-height: 1.6;
+            font-family: 'Barlow', sans-serif;
+            background: var(--bg);
+            color: #f0f0f0;
             overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
             min-height: 100vh;
+            display: flex; flex-direction: column;
         }
 
-        /* --- HEADER --- */
+        /* ─── NOISE ─── */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 9999; opacity: 0.4;
+        }
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+        /* ─── SCROLL PROGRESS ─── */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: linear-gradient(90deg, var(--red), #ff8c8c);
+            z-index: 10000; width: 0%;
+            box-shadow: 0 0 10px var(--red-glow);
+            transition: width 0.1s linear;
+        }
+
+        /* ─── HEADER ─── */
         header {
-            padding: 10px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(15px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--accent);
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 1000; padding: 0 5%; height: 72px;
+            display: flex; align-items: center; justify-content: space-between;
+            transition: background 0.4s, border-color 0.4s;
+            border-bottom: 1px solid transparent;
+        }
+        header.scrolled {
+            background: rgba(8,8,8,0.97);
+            backdrop-filter: blur(24px);
+            border-color: var(--border);
         }
 
-        .brand {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
+        .logo {
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; color: white;
+        }
+        .logo-img {
+            height: 48px; width: 48px; object-fit: cover;
+            border-radius: 8px; border: 1.5px solid var(--red);
+            transition: box-shadow 0.3s;
+        }
+        .logo:hover .logo-img { box-shadow: 0 0 20px var(--red-glow); }
+        .logo-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem; letter-spacing: 0.05em; line-height: 1;
+        }
+        .logo-name em { color: var(--red); font-style: normal; }
+        .logo-sub {
+            font-size: 0.6rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--muted);
+            display: block; margin-top: 2px;
+        }
+
+        nav { display: flex; align-items: center; gap: 8px; }
+
+        .nav-link {
+            text-decoration: none; color: #bbb;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.85rem; letter-spacing: 0.12em;
+            text-transform: uppercase; padding: 8px 16px;
+            border-radius: 6px; border: 1px solid transparent;
+            transition: all 0.25s; display: flex; align-items: center; gap: 7px;
+        }
+        .nav-link:hover { color: white; border-color: var(--border); background: rgba(255,255,255,0.04); }
+        .nav-cta { background: var(--red); color: white !important; border-color: var(--red) !important; font-weight: 700; }
+        .nav-cta:hover { background: white !important; color: var(--red) !important; border-color: white !important; }
+
+        /* ─── HAMBURGER ─── */
+        .hamburger {
+            display: none; flex-direction: column;
+            gap: 5px; cursor: pointer; padding: 8px; z-index: 1001;
+        }
+        .hamburger span { display: block; width: 24px; height: 2px; background: white; transition: 0.3s; transform-origin: center; }
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+        .mobile-menu {
+            display: none; position: fixed; inset: 0;
+            background: rgba(8,8,8,0.98); backdrop-filter: blur(20px);
+            z-index: 999; flex-direction: column;
+            align-items: center; justify-content: center; gap: 24px;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu .nav-link { font-size: 1.4rem; padding: 12px 32px; }
+
+        /* ─── PAGE HERO ─── */
+        .page-hero {
+            padding-top: 72px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: relative; overflow: hidden;
+        }
+        .page-hero::before {
+            content: 'PROGRAM';
+            position: absolute; top: -20px; right: -20px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(6rem, 16vw, 14rem);
+            color: rgba(255,255,255,0.02);
+            line-height: 1; pointer-events: none; white-space: nowrap;
+        }
+        .page-hero-inner {
+            max-width: 1300px; margin: 0 auto;
+            padding: 64px 5% 60px;
+            position: relative; z-index: 1;
+        }
+
+        .breadcrumb {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 28px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.8rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--muted);
+        }
+        .breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: var(--red); }
+        .breadcrumb i { font-size: 0.6rem; color: #333; }
+
+        .section-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.72rem; letter-spacing: 0.32em;
+            text-transform: uppercase; color: var(--red);
+            margin-bottom: 16px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .section-label::after {
+            content: ''; flex: 1; height: 1px;
+            background: var(--red); opacity: 0.3; max-width: 80px;
+        }
+
+        .page-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 0.9; letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+        .page-title em { color: var(--red); font-style: normal; }
+
+        .page-sub {
+            font-size: 1.1rem; font-weight: 300;
+            color: #777; margin-top: 20px; max-width: 560px;
+            line-height: 1.8;
+        }
+
+        /* ─── MAIN CONTENT ─── */
+        main { flex: 1; }
+        .content-wrap {
+            max-width: 1000px; margin: 0 auto;
+            padding: 80px 5%;
+            display: flex; flex-direction: column; gap: 40px;
+        }
+
+        /* ─── SECTION BLOCKS ─── */
+        .block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .block-header {
+            padding: 32px 40px;
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; gap: 16px;
+            position: relative; overflow: hidden;
+        }
+        .block-header::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(90deg, var(--red-dim), transparent);
+            pointer-events: none;
+        }
+        .block-header-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            background: var(--red-dim); border: 1px solid rgba(230,57,70,0.25);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--red); font-size: 1.3rem; flex-shrink: 0;
+            position: relative;
+        }
+        .block-header-text { position: relative; }
+        .block-header-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem; letter-spacing: 0.04em;
+            text-transform: uppercase; color: white; line-height: 1;
+        }
+        .block-header-sub {
+            font-size: 0.85rem; font-weight: 300;
+            color: var(--muted); margin-top: 4px;
+        }
+
+        .block-body { padding: 40px; }
+
+        /* ─── LOCATION INFO ─── */
+        .location-card {
+            display: flex; gap: 20px; align-items: flex-start;
+            padding: 24px 28px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 14px; margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        .location-card:hover {
+            border-color: rgba(46,204,113,0.3);
+            background: rgba(46,204,113,0.04);
+            transform: translateY(-2px);
+        }
+        .loc-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            background: var(--green-dim); border: 1px solid rgba(46,204,113,0.2);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--green); font-size: 1rem; flex-shrink: 0;
+        }
+        .loc-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem; font-weight: 700; letter-spacing: 0.06em;
+            text-transform: uppercase; color: white; margin-bottom: 6px;
+        }
+        .loc-body { font-size: 0.95rem; font-weight: 300; color: #888; line-height: 1.7; }
+        .loc-body strong { color: #ccc; font-weight: 600; }
+
+        /* Alert banner */
+        .alert-banner {
+            display: flex; gap: 16px; align-items: flex-start;
+            padding: 20px 24px;
+            background: var(--red-dim);
+            border: 1px solid rgba(230,57,70,0.2);
+            border-radius: 12px; margin: 24px 0;
+        }
+        .alert-banner i { color: var(--red); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+        .alert-banner p { font-size: 0.95rem; color: #ccc; line-height: 1.7; }
+        .alert-banner strong { color: white; }
+
+        /* Instagram button */
+        .insta-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white; padding: 12px 28px; border-radius: 10px;
             text-decoration: none;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.95rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; transition: all 0.3s;
+            margin-top: 8px;
         }
-        
-        .brand img {
-            height: 50px;
-            width: auto;
-            border-radius: 5px;
-            border: 1px solid var(--accent);
-            object-fit: cover;
+        .insta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(220,39,67,0.35); }
+
+        /* ─── ROUTINE ─── */
+        .routine-grid { display: flex; flex-direction: column; gap: 12px; }
+
+        .routine-item {
+            display: flex; gap: 20px; align-items: flex-start;
+            padding: 22px 24px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s; position: relative; overflow: hidden;
+        }
+        .routine-item::before {
+            content: '';
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 3px; background: var(--red);
+            transform: scaleY(0); transition: transform 0.3s;
+            transform-origin: bottom;
+        }
+        .routine-item:hover { background: rgba(255,255,255,0.03); border-color: rgba(230,57,70,0.2); }
+        .routine-item:hover::before { transform: scaleY(1); }
+
+        .time-badge {
+            font-family: 'Bebas Neue', sans-serif;
+            background: var(--red-dim);
+            border: 1px solid rgba(230,57,70,0.2);
+            padding: 6px 14px; border-radius: 6px;
+            height: fit-content; font-size: 1.1rem;
+            white-space: nowrap; color: var(--red);
+            letter-spacing: 0.05em; flex-shrink: 0;
+        }
+        .routine-desc strong {
+            color: white; display: block;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.05rem; font-weight: 700;
+            letter-spacing: 0.04em; text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .routine-desc span { font-size: 0.9rem; color: #777; line-height: 1.7; }
+
+        /* ─── SCHEDULE ─── */
+        .schedule-grid { display: flex; flex-direction: column; gap: 16px; }
+
+        .schedule-block {
+            padding: 28px 32px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            position: relative; overflow: hidden;
+            transition: all 0.3s;
+        }
+        .schedule-block::after {
+            content: ''; position: absolute;
+            bottom: 0; left: 0; right: 0; height: 3px;
+            border-radius: 0 0 14px 14px;
+            transform: scaleX(0); transition: transform 0.4s;
+        }
+        .schedule-block.season-fall::after  { background: var(--green); }
+        .schedule-block.season-summer::after { background: var(--yellow); }
+        .schedule-block:hover::after { transform: scaleX(1); }
+        .schedule-block:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+
+        .schedule-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.25em; text-transform: uppercase;
+            padding: 5px 12px; border-radius: 20px;
+            margin-bottom: 16px;
+        }
+        .tag-fall   { background: var(--green-dim);  color: var(--green);  border: 1px solid rgba(46,204,113,0.25); }
+        .tag-summer { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(241,196,15,0.25); }
+
+        .schedule-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem; letter-spacing: 0.04em;
+            text-transform: uppercase; color: white;
+            margin-bottom: 16px; line-height: 1;
         }
 
-        .brand span { color: white; }
-
-        nav { display: flex; gap: 10px; }
-        
-        .nav-btn {
-            text-decoration: none; color: white; font-family: 'Oswald', sans-serif; font-size: 0.8rem;
-            text-transform: uppercase; padding: 8px 15px; border-radius: 4px; transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 6px;
+        .schedule-rows { display: flex; flex-direction: column; gap: 10px; }
+        .schedule-row {
+            display: flex; align-items: center; gap: 14px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
         }
-        .nav-btn:hover { background: rgba(255,255,255,0.1); }
-        
-        .btn-inscrie { background: var(--accent); border: none; font-weight: 700; box-shadow: 0 0 10px rgba(230, 57, 70, 0.4); }
-        .btn-inscrie:hover { background: white; color: var(--accent); }
-
-        /* --- CONȚINUT --- */
-        .content-container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 0 20px;
-            flex: 1; /* Împinge footer-ul jos */
+        .schedule-row-icon { width: 32px; text-align: center; flex-shrink: 0; }
+        .schedule-row-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.78rem; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--muted);
+            width: 90px; flex-shrink: 0;
         }
+        .schedule-row-value { font-size: 0.95rem; color: #ccc; font-weight: 300; }
+        .schedule-row-value strong { color: white; font-weight: 600; }
 
-        h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            text-transform: uppercase;
-            text-align: center;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-            background: -webkit-linear-gradient(#fff, #999);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .schedule-note {
+            margin-top: 16px; padding: 12px 16px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px; border-left: 2px solid rgba(255,255,255,0.08);
+            font-size: 0.88rem; color: var(--muted); line-height: 1.6;
+            font-style: italic;
         }
 
-        /* --- CARD STYLING --- */
-        .policy-card {
-            background: linear-gradient(145deg, #121212, #0d1a12); /* Tentă verzuie subtilă */
-            padding: 35px;
-            border-radius: 15px;
-            border-left: 5px solid var(--charity);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        /* ─── CONTACT BOX ─── */
+        .contact-strip {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 14px; padding: 32px;
+            display: flex; flex-wrap: wrap;
+            align-items: center; justify-content: space-between;
+            gap: 24px; margin-top: 8px;
         }
-
-        .policy-card h2, .policy-card h3 {
-            font-family: 'Oswald', sans-serif;
-            margin-bottom: 20px;
-            display: flex; align-items: center; gap: 15px;
-            text-transform: uppercase;
+        .contact-strip-left { display: flex; flex-direction: column; gap: 6px; }
+        .contact-strip-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem; letter-spacing: 0.04em;
             color: white;
         }
-        
-        .policy-card h2 { font-size: 1.5rem; }
-        .policy-card h3 { font-size: 1.3rem; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;}
+        .contact-strip-sub { font-size: 0.9rem; color: var(--muted); font-weight: 300; }
 
-        .policy-card p { color: var(--text); margin-bottom: 15px; font-size: 1rem; }
-
-        /* --- ELEMENTE SPECIFICE --- */
-        
-        /* Buton Instagram */
-        .social-btn {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-            color: white; padding: 12px 25px; border-radius: 50px;
-            text-decoration: none; font-weight: bold; font-family: 'Oswald', sans-serif;
-            margin: 15px 0; transition: transform 0.3s, box-shadow 0.3s;
-            border: none; font-size: 0.95rem;
+        .contact-numbers {
+            display: flex; flex-wrap: wrap; gap: 12px;
         }
-        .social-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(225, 48, 108, 0.5); }
-
-        /* --- ROUTINE SECTION (NOU) --- */
-        .routine-list {
-            list-style: none;
-            margin: 20px 0;
-            padding: 0;
-        }
-        .routine-item {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.03);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-        }
-        .time-badge {
-            font-family: 'Oswald', sans-serif;
-            background: rgba(255,255,255,0.1);
-            padding: 5px 10px;
-            border-radius: 4px;
-            height: fit-content;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            color: var(--accent);
-            font-weight: bold;
-        }
-        .routine-desc strong { color: white; display: block; margin-bottom: 4px; font-size: 1.05rem; }
-        .routine-desc span { font-size: 0.9rem; color: #bbb; }
-
-        /* Blocuri Program */
-        ul.schedule-list { list-style: none; margin-top: 20px; }
-        
-        .schedule-block {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--charity);
-            padding: 20px; 
-            margin-bottom: 20px; 
-            border-radius: 0 10px 10px 0;
-        }
-        
-        .schedule-summer { border-left-color: var(--warning); } /* Galben pt vara */
-
-        .schedule-title { 
-            font-family: 'Oswald', sans-serif; 
-            text-transform: uppercase; 
-            font-size: 1.2rem; 
-            display: block; 
-            margin-bottom: 8px; 
-        }
-
-        .sub-text { display: block; font-size: 0.95rem; color: #ddd; margin-top: 5px; line-height: 1.5; }
-        
-        /* Contact Box */
-        .contact-box {
-            margin-top: 30px; 
-            background: rgba(0,0,0,0.3); 
-            padding: 20px; 
+        .phone-chip {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.1rem; letter-spacing: 0.06em;
+            color: white; text-decoration: none;
+            transition: all 0.3s;
         }
-        .contact-numbers { 
-            font-family: 'Oswald', sans-serif; 
-            font-size: 1.3rem; 
-            color: white; 
-            letter-spacing: 1px; 
-            margin-top: 10px;
-            display: block;
+        .phone-chip i { color: #25D366; }
+        .phone-chip:hover {
+            border-color: #25D366;
+            background: rgba(37,211,102,0.06);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37,211,102,0.1);
         }
 
-        /* --- FOOTER --- */
-        footer { text-align: center; padding: 30px; color: #555; font-size: 0.8rem; border-top: 1px solid #111; margin-top: auto;}
+        /* ─── DIVIDER ─── */
+        .divider { width: 60px; height: 3px; background: var(--red); border-radius: 2px; margin: 20px 0 32px; }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            header { flex-direction: column; gap: 10px; }
-            .brand img { height: 40px; }
-            .policy-card { padding: 20px; }
-            .contact-numbers { font-size: 1.1rem; }
-            .routine-item { flex-direction: column; gap: 5px; }
-            .time-badge { width: fit-content; }
+        /* ─── ANIMATIONS ─── */
+        .reveal {
+            opacity: 0; transform: translateY(44px);
+            transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
+                        transform 0.9s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal.visible      { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1      { transition-delay: 0.1s; }
+        .reveal-delay-2      { transition-delay: 0.2s; }
+        .reveal-delay-3      { transition-delay: 0.3s; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            padding: 28px 5%;
+            display: flex; align-items: center; justify-content: space-between;
+            border-top: 1px solid var(--border); flex-wrap: wrap; gap: 12px;
+        }
+        .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.08em; color: #333; }
+        .footer-logo span { color: var(--red); }
+        .footer-copy { font-size: 0.8rem; color: #333; letter-spacing: 0.04em; }
+        .footer-zero { font-size: 0.75rem; color: #2a2a2a; font-style: italic; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hamburger { display: flex; }
+            .block-body { padding: 24px; }
+            .block-header { padding: 24px; }
+            .contact-strip { flex-direction: column; }
+            .page-title { font-size: clamp(2.8rem, 12vw, 5rem); }
+        }
+        @media (max-width: 500px) {
+            footer { flex-direction: column; text-align: center; }
+            .routine-item { flex-direction: column; gap: 10px; }
+            .schedule-row { flex-wrap: wrap; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="index.html" class="brand">
-            <img src="logo1.jpeg" alt="Logo BMC Botosani">
-            BMC <span>BOTOȘANI</span>
-        </a>
-        <nav>
-            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Acasă</a>
-            <a href="inscrie.html" class="nav-btn btn-inscrie">Înscrie-te</a>
-        </nav>
-    </header>
+<!-- Scroll progress -->
+<div id="progress-bar"></div>
 
-    <div class="content-container">
-        
-        <h1>Locație & Program</h1>
+<!-- ══════════════════════════ HEADER ══════════════════════════ -->
+<header id="header">
+    <a href="index.html" class="logo">
+        <img src="logo1.jpeg" alt="BMC Logo" class="logo-img">
+        <div>
+            <div class="logo-name">BMC <em>BOTOȘANI</em></div>
+            <span class="logo-sub">Martial Combat</span>
+        </div>
+    </a>
 
-        <div class="policy-card">
-            <h2><i class="fas fa-map-marker-alt" style="color: var(--charity);"></i> Unde & Cum ne Antrenăm</h2>
-            
-            <p>
-                La BMC Botoșani nu ne limităm la un singur stil. Combinăm tehnicitatea din <strong>MMA (Arte Marțiale Mixte)</strong> cu forța și controlul corporal din <strong>Calisthenics</strong>. 
-            </p>
-            <p>
-                Antrenamentele sunt dinamice și se desfășoară fie în aer liber, fie la sala noastră din <strong>Strada Mihai Eminescu nr. 48 la sala Arlechin</strong>.
-            </p>
+    <nav>
+        <a href="p.html"       class="nav-link"><i class="fas fa-gavel"></i> Regulament</a>
+        <a href="ghid.html"    class="nav-link"><i class="fas fa-shirt"></i> Ghid Echipament</a>
+        <a href="time.html"    class="nav-link" style="color:white; border-color:var(--border);"><i class="fas fa-location-dot"></i> Locație &amp; Program</a>
+        <a href="inscrie.html" class="nav-link nav-cta"><i class="fas fa-user-plus"></i> Înscrie-te</a>
+    </nav>
 
-            <div style="margin: 30px 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 20px 0;">
-                <strong style="color:white; font-size: 1.1rem;"><i class="fas fa-bullhorn" style="color: var(--accent);"></i> Anunțuri Importante</strong>
-                <p style="margin-top: 5px;">Locația exactă a fiecărui antrenament și noutățile se postează pe Instagram și pe grupul intern de WhatsApp.</p>
-                
-                <a href="https://www.instagram.com/bmc.botosani/" target="_blank" class="social-btn">
-                    <i class="fab fa-instagram"></i> Urmărește @bmc.botosani
-                </a>
+    <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="p.html"       class="nav-link" onclick="closeMobile()"><i class="fas fa-gavel"></i> Regulament</a>
+    <a href="ghid.html"    class="nav-link" onclick="closeMobile()"><i class="fas fa-shirt"></i> Ghid Echipament</a>
+    <a href="time.html"    class="nav-link" onclick="closeMobile()"><i class="fas fa-location-dot"></i> Locație &amp; Program</a>
+    <a href="inscrie.html" class="nav-link nav-cta" onclick="closeMobile()"><i class="fas fa-user-plus"></i> Înscrie-te</a>
+</div>
+
+<!-- ══════════════════════════ PAGE HERO ══════════════════════════ -->
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <div class="breadcrumb" style="opacity:0; animation: fadeUp 0.6s 0.2s forwards;">
+            <a href="index.html">Acasă</a>
+            <i class="fas fa-chevron-right"></i>
+            <span style="color: white;">Locație &amp; Program</span>
+        </div>
+
+        <div class="section-label" style="opacity:0; animation: fadeUp 0.6s 0.3s forwards;">
+            Unde &amp; Când
+        </div>
+
+        <h1 class="page-title" style="opacity:0; animation: fadeUp 0.8s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;">
+            Locație &amp;<br><em>Program</em>
+        </h1>
+
+        <p class="page-sub" style="opacity:0; animation: fadeUp 0.8s 0.6s forwards;">
+            Află unde ne antrenăm, cum arată o sesiune tipică și când ne putem vedea — toamnă, iarnă sau vară.
+        </p>
+    </div>
+</div>
+
+<!-- ══════════════════════════ MAIN ══════════════════════════ -->
+<main>
+<div class="content-wrap">
+
+    <!-- BLOC 1 — Locație & Discipline -->
+    <div class="block reveal">
+        <div class="block-header">
+            <div class="block-header-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="block-header-text">
+                <div class="block-header-title">Unde ne antrenăm</div>
+                <div class="block-header-sub">Locație fixă + aer liber · Botoșani</div>
+            </div>
+        </div>
+        <div class="block-body">
+
+            <div class="location-card">
+                <div class="loc-icon"><i class="fas fa-dumbbell"></i></div>
+                <div>
+                    <div class="loc-title">Sala Arlechin</div>
+                    <div class="loc-body">
+                        <strong>Str. Mihai Eminescu nr. 48</strong>, Botoșani.<br>
+                        Sala noastră principală pentru antrenamentele de interior — MMA, pad work și sparring tehnic.
+                    </div>
+                </div>
             </div>
 
-            <h3><i class="fas fa-fist-raised" style="color: var(--accent);"></i> Structura unui Antrenament</h3>
-            <p>Fiecare sesiune este intensă și bine structurată pentru a maximiza rezultatele:</p>
-            
-            <div class="routine-list">
+            <div class="location-card">
+                <div class="loc-icon"><i class="fas fa-cloud-sun"></i></div>
+                <div>
+                    <div class="loc-title">Aer Liber</div>
+                    <div class="loc-body">
+                        Antrenamente de calisthenics, alergare și condiție fizică generală în locații publice din Botoșani. <strong>Locul exact se anunță pe Instagram și în grupul de WhatsApp.</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <div class="loc-icon"><i class="fas fa-fist-raised"></i></div>
+                <div>
+                    <div class="loc-title">Disciplinele noastre</div>
+                    <div class="loc-body">
+                        Combinăm <strong>MMA (Arte Marțiale Mixte)</strong> cu <strong>Calisthenics</strong> — tehnică marțială, mobilitate și forță cu greutatea corpului.
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert-banner">
+                <i class="fas fa-bullhorn"></i>
+                <p>
+                    <strong>Anunțuri importante:</strong> Locația exactă a fiecărui antrenament și orice schimbare de program se postează pe Instagram și în grupul intern de WhatsApp. Urmărește-ne ca să nu ratezi nimic.
+                </p>
+            </div>
+
+            <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="insta-btn">
+                <i class="fab fa-instagram"></i> @mma.botosani
+            </a>
+
+        </div>
+    </div>
+
+    <!-- BLOC 2 — Structura antrenamentului -->
+    <div class="block reveal reveal-delay-1">
+        <div class="block-header">
+            <div class="block-header-icon"><i class="fas fa-stopwatch"></i></div>
+            <div class="block-header-text">
+                <div class="block-header-title">Structura unui Antrenament</div>
+                <div class="block-header-sub">Sesiune tipică · ~2h</div>
+            </div>
+        </div>
+        <div class="block-body">
+
+            <p style="font-size:1rem; font-weight:300; color:#777; margin-bottom:28px; line-height:1.8;">
+                Fiecare sesiune este structurată pentru a maximiza rezultatele — de la mobilitate și condiție fizică până la tehnică marțială aplicată.
+            </p>
+
+            <div class="routine-grid">
+
                 <div class="routine-item">
                     <div class="time-badge">20 MIN</div>
                     <div class="routine-desc">
                         <strong>Încălzire Specifică</strong>
-                        <span>Fandări, pendulări, încălzirea articulațiilor și a coloanei vertebrale pentru mobilitate maximă.</span>
+                        <span>Fandări, pendulări, încălzirea articulațiilor și a coloanei vertebrale pentru mobilitate maximă și prevenirea accidentărilor.</span>
                     </div>
                 </div>
 
                 <div class="routine-item">
                     <div class="time-badge">30 MIN</div>
                     <div class="routine-desc">
-                        <strong>Condiție Fizică (Calisthenics)</strong>
-                        <span>Exerciții cu greutatea corpului: flotări, genuflexiuni, abdomene și cardio.</span>
+                        <strong>Condiție Fizică · Calisthenics</strong>
+                        <span>Exerciții cu greutatea corpului: flotări, genuflexiuni, abdomene, cardio. Forță funcțională fără echipament.</span>
                     </div>
                 </div>
 
                 <div class="routine-item">
-                    <div class="time-badge">1 ORA</div>
+                    <div class="time-badge">30 MIN</div>
                     <div class="routine-desc">
-                        <strong>MMA & Tehnică</strong>
-                        <span>
-                            • 30 min: Lucru cu partenerul la palmare.<br>
-                            • 30 min: Light sparring, drill-uri și exerciții explozive (ex: flotări cu bătaie din palme în 2).
-                        </span>
+                        <strong>Lucru cu Partenerul · Palmare</strong>
+                        <span>Exerciții de distanță, coordonare și timing cu manușile. Focus pe tehnică, nu pe forță.</span>
                     </div>
                 </div>
+
+                <div class="routine-item">
+                    <div class="time-badge">30 MIN</div>
+                    <div class="routine-desc">
+                        <strong>Light Sparring &amp; Drill-uri</strong>
+                        <span>Sparring ușor opțional, drill-uri de reacție și exerciții explozive. Nimeni nu este forțat — ritmul îl alegi tu.</span>
+                    </div>
+                </div>
+
             </div>
 
-            <h3>
-                <i class="far fa-clock" style="color:var(--charity);"></i> Orar Antrenamente
-            </h3>
+        </div>
+    </div>
 
-            <ul class="schedule-list">
-                <li>
-                    <div class="schedule-block">
-                        <strong class="schedule-title" style="color: var(--charity);">Program de Toamnă/Iarnă</strong>
-                        <span class="sub-text">De obicei ne vedem <strong>Sâmbăta</strong>:</span>
-                        
-                        <div style="margin-top: 10px;">
-                            <div style="display:flex; align-items:center; margin-bottom: 8px;">
-                                <i class="fas fa-dumbbell" style="color:var(--charity); width: 25px;"></i>
-                                <span style="color:#ccc;"><strong>La Sală:</strong> 12:30 - 15:00</span>
-                            </div>
-                            <div style="display:flex; align-items:center;">
-                                <i class="fas fa-cloud-sun" style="color:var(--charity); width: 25px;"></i>
-                                <span style="color:#ccc;"><strong>Aer Liber:</strong> 13:25 - 16:00</span>
-                            </div>
+    <!-- BLOC 3 — Orar -->
+    <div class="block reveal reveal-delay-2">
+        <div class="block-header">
+            <div class="block-header-icon"><i class="far fa-calendar-alt"></i></div>
+            <div class="block-header-text">
+                <div class="block-header-title">Orar Antrenamente</div>
+                <div class="block-header-sub">Toamnă/Iarnă · Vară</div>
+            </div>
+        </div>
+        <div class="block-body">
+
+            <div class="schedule-grid">
+
+                <!-- Toamnă / Iarnă -->
+                <div class="schedule-block season-fall">
+                    <div class="schedule-tag tag-fall">
+                        <i class="fas fa-leaf"></i> Toamnă &amp; Iarnă
+                    </div>
+                    <div class="schedule-title">Program de Toamnă / Iarnă</div>
+
+                    <div class="schedule-rows">
+                        <div class="schedule-row">
+                            <div class="schedule-row-icon"><i class="fas fa-calendar-day" style="color:var(--green);"></i></div>
+                            <div class="schedule-row-label">Ziua</div>
+                            <div class="schedule-row-value"><strong>Sâmbătă</strong></div>
+                        </div>
+                        <div class="schedule-row">
+                            <div class="schedule-row-icon"><i class="fas fa-dumbbell" style="color:var(--green);"></i></div>
+                            <div class="schedule-row-label">La Sală</div>
+                            <div class="schedule-row-value">12:30 – <strong>15:00</strong></div>
+                        </div>
+                        <div class="schedule-row">
+                            <div class="schedule-row-icon"><i class="fas fa-cloud-sun" style="color:var(--green);"></i></div>
+                            <div class="schedule-row-label">Aer Liber</div>
+                            <div class="schedule-row-value">13:25 – <strong>16:00</strong></div>
                         </div>
                     </div>
-                </li>
 
-                <li>
-                    <div class="schedule-block schedule-summer">
-                        <strong class="schedule-title" style="color: var(--warning);">Program de Vară</strong>
-                        <span class="sub-text">
-                            Pe timpul verii avem mai mult timp liber, așa că mărim turația! Programul se extinde considerabil.
-                        </span>
+                    <p class="schedule-note">
+                        Locația se confirmă săptămânal pe Instagram și WhatsApp în funcție de vreme și disponibilitate.
+                    </p>
+                </div>
 
-                        <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 10px;">
-                            <span class="sub-text" style="color: white;">
-                                <i class="far fa-calendar-alt"></i> <strong>Zile:</strong> Luni, Marți, Joi, Vineri
-                            </span>
-                            <span class="sub-text" style="color: white;">
-                                <i class="far fa-clock"></i> <strong>Interval:</strong> 14:00 - 17:00 (Sală sau Aer Liber)
-                            </span>
+                <!-- Vară -->
+                <div class="schedule-block season-summer">
+                    <div class="schedule-tag tag-summer">
+                        <i class="fas fa-sun"></i> Vară
+                    </div>
+                    <div class="schedule-title">Program de Vară</div>
+
+                    <div class="schedule-rows">
+                        <div class="schedule-row">
+                            <div class="schedule-row-icon"><i class="fas fa-calendar-week" style="color:var(--yellow);"></i></div>
+                            <div class="schedule-row-label">Zilele</div>
+                            <div class="schedule-row-value"><strong>Luni, Marți, Joi, Vineri</strong></div>
+                        </div>
+                        <div class="schedule-row">
+                            <div class="schedule-row-icon"><i class="far fa-clock" style="color:var(--yellow);"></i></div>
+                            <div class="schedule-row-label">Interval</div>
+                            <div class="schedule-row-value">14:00 – <strong>17:00</strong></div>
+                        </div>
+                        <div class="schedule-row">
+                            <div class="schedule-row-icon"><i class="fas fa-location-dot" style="color:var(--yellow);"></i></div>
+                            <div class="schedule-row-label">Locație</div>
+                            <div class="schedule-row-value">Sală sau Aer Liber</div>
                         </div>
                     </div>
-                </li>
-            </ul>
 
-            <div class="contact-box">
-                <strong style="color:white; font-size:1.1rem;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Ai întrebări? Intră în grup!</strong>
-                <p style="margin-bottom: 5px; font-size: 0.9rem;">Contactează-ne pentru detalii sau ghidare:</p>
+                    <p class="schedule-note">
+                        Vara avem mai mult timp liber — frecvența crește semnificativ. E cel mai bun moment să începi!
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Contact strip -->
+            <div class="contact-strip" style="margin-top:32px;">
+                <div class="contact-strip-left">
+                    <div class="contact-strip-title">Ai întrebări? Scrie-ne direct.</div>
+                    <div class="contact-strip-sub">Contactează-ne pe WhatsApp sau prin email pentru detalii.</div>
+                </div>
                 <div class="contact-numbers">
-                    0743 780 139 <span style="color:#555; margin: 0 10px;">|</span> 0759 855 350
+                    <a href="tel:0743780139" class="phone-chip">
+                        <i class="fab fa-whatsapp"></i> 0743 780 139
+                    </a>
+                    <a href="tel:0759855350" class="phone-chip">
+                        <i class="fab fa-whatsapp"></i> 0759 855 350
+                    </a>
                 </div>
             </div>
 
         </div>
-
     </div>
 
-    <footer>
-        <p>&copy; 2026 BMC Botoșani</p>
-    </footer>
+    <!-- CTA -->
+    <div style="text-align:center; padding: 20px 0 40px; opacity:0; animation: fadeUp 0.8s 0.5s forwards;" class="reveal">
+        <p style="font-size:1rem; color:var(--muted); margin-bottom:20px; font-weight:300;">
+            Gata să faci parte din echipă?
+        </p>
+        <a href="inscrie.html" class="nav-link nav-cta" style="display:inline-flex; padding:14px 40px; font-size:1rem; border-radius:8px;">
+            <i class="fas fa-user-plus"></i> Înscrie-te Acum
+        </a>
+    </div>
+
+</div>
+</main>
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<footer>
+    <div class="footer-logo">BMC <span>BOTOȘANI</span></div>
+    <div class="footer-copy">© 2026 Botoșani Martial Combat. Toate drepturile rezervate.</div>
+    <div class="footer-zero">Zero violență · Zero taxe · 100% comunitate</div>
+</footer>
+
+<script>
+    /* ── Scroll header + progress */
+    const header   = document.getElementById('header');
+    const progress = document.getElementById('progress-bar');
+
+    window.addEventListener('scroll', () => {
+        const scrolled  = window.scrollY;
+        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        header.classList.toggle('scrolled', scrolled > 30);
+        progress.style.width = (scrolled / maxScroll * 100) + '%';
+    });
+
+    /* ── Hamburger */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeMobile() {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    /* ── Reveal on scroll */
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
