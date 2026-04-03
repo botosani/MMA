@@ -13,7 +13,6 @@
             --red: #e63946;
             --red-dim: rgba(230, 57, 70, 0.12);
             --red-glow: rgba(230, 57, 70, 0.35);
-            --blue: #457b9d;
             --green: #2ecc71;
             --yellow: #f1c40f;
             --purple: #9b59b6;
@@ -33,7 +32,6 @@
             overflow-x: hidden;
         }
 
-        /* NOISE */
         body::before {
             content: '';
             position: fixed; inset: 0;
@@ -45,7 +43,6 @@
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
 
-        /* ── HEADER ── */
         header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             padding: 0 5%; height: 72px;
@@ -53,11 +50,7 @@
             transition: background 0.4s, border-color 0.4s;
             border-bottom: 1px solid transparent;
         }
-        header.scrolled {
-            background: rgba(8,8,8,0.97);
-            backdrop-filter: blur(20px);
-            border-color: var(--border);
-        }
+        header.scrolled { background: rgba(8,8,8,0.97); backdrop-filter: blur(20px); border-color: var(--border); }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
         .logo-img { height: 48px; width: 48px; object-fit: cover; border-radius: 8px; border: 1.5px solid var(--red); }
         .logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.05em; line-height: 1; }
@@ -85,22 +78,11 @@
         .mobile-menu.open { display: flex; }
         .mobile-menu .nav-link { font-size: 1.4rem; padding: 12px 32px; }
 
-        /* ── PAGE HERO ── */
         .page-hero {
             padding: 160px 5% 100px;
-            position: relative; overflow: hidden;
             border-bottom: 1px solid var(--border);
         }
-        .page-hero::before {
-            content: 'REGULI';
-            position: absolute; top: 50%; right: -20px;
-            transform: translateY(-50%);
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(10rem, 22vw, 20rem);
-            color: rgba(255,255,255,0.02); line-height: 1;
-            pointer-events: none; white-space: nowrap;
-        }
-        .page-hero-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
+        .page-hero-inner { max-width: 1300px; margin: 0 auto; }
         .breadcrumb {
             display: flex; align-items: center; gap: 10px;
             font-family: 'Barlow Condensed', sans-serif;
@@ -125,10 +107,8 @@
             opacity: 0; animation: fadeUp 0.9s 0.6s forwards;
         }
 
-        /* ── LAYOUT ── */
         .content-wrap { max-width: 1300px; margin: 0 auto; padding: 100px 5%; }
 
-        /* ── SECTION ── */
         .reg-section { margin-bottom: 64px; }
 
         .section-label {
@@ -139,14 +119,10 @@
         }
         .section-label::after { content: ''; flex: 1; height: 1px; background: var(--red); opacity: 0.3; max-width: 80px; }
 
-        /* ── CARD BLOCK ── */
         .rule-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: border-color 0.3s;
-            position: relative;
+            border-radius: 16px; overflow: hidden; transition: border-color 0.3s;
         }
         .rule-card:hover { border-color: rgba(255,255,255,0.12); }
 
@@ -158,8 +134,8 @@
         }
         .rule-num {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3.5rem, 6vw, 5rem);
-            line-height: 1; color: rgba(255,255,255,0.04);
+            font-size: clamp(3.5rem, 6vw, 5rem); line-height: 1;
+            color: rgba(255,255,255,0.04);
             position: absolute; right: 32px; top: 50%; transform: translateY(-50%);
             pointer-events: none;
         }
@@ -178,36 +154,24 @@
         .rule-card-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(1.5rem, 3vw, 2.2rem);
-            letter-spacing: 0.04em; text-transform: uppercase;
-            line-height: 1;
+            letter-spacing: 0.04em; text-transform: uppercase; line-height: 1;
         }
-        .rule-card-sub {
-            font-size: 0.85rem; font-weight: 300; color: var(--muted);
-            margin-top: 4px; letter-spacing: 0.04em;
-        }
+        .rule-card-sub { font-size: 0.85rem; font-weight: 300; color: var(--muted); margin-top: 4px; letter-spacing: 0.04em; }
 
         .rule-card-body { padding: 28px 36px 32px; }
-        .rule-card-body > p {
-            font-size: 1rem; font-weight: 300; color: #999; line-height: 1.8;
-            margin-bottom: 20px;
-        }
+        .rule-card-body > p { font-size: 1rem; font-weight: 300; color: #999; line-height: 1.8; margin-bottom: 20px; }
 
-        /* ── RULE LIST ── */
         .rule-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
         .rule-list li {
             display: flex; gap: 16px; align-items: flex-start;
             padding: 16px 20px;
             background: rgba(255,255,255,0.025);
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);
             transition: background 0.25s, border-color 0.25s;
         }
         .rule-list li:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.09); }
 
-        .rule-dot {
-            width: 6px; height: 6px; border-radius: 50%;
-            background: var(--red); flex-shrink: 0; margin-top: 8px;
-        }
+        .rule-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); flex-shrink: 0; margin-top: 8px; }
         .rule-dot.green  { background: var(--green); }
         .rule-dot.yellow { background: var(--yellow); }
         .rule-dot.purple { background: #c39bd3; }
@@ -222,10 +186,8 @@
         }
         .rule-li-body { font-size: 0.92rem; font-weight: 300; color: #888; line-height: 1.65; }
 
-        /* ── DANGER ZONE ── */
         .danger-inset {
-            margin: 24px 0 8px;
-            padding: 24px 28px;
+            margin: 24px 0 8px; padding: 24px 28px;
             border: 1px solid rgba(230,57,70,0.3);
             border-left: 4px solid var(--red);
             background: rgba(230,57,70,0.06);
@@ -242,10 +204,8 @@
         .danger-inset p:last-child { margin-bottom: 0; }
         .danger-inset strong { color: white; font-weight: 600; }
 
-        /* ── OFFER BOX ── */
         .offer-box {
-            margin: 24px 0;
-            padding: 24px 28px;
+            margin: 24px 0; padding: 24px 28px;
             border: 1px solid rgba(69,123,157,0.3);
             border-left: 4px solid #7fc8e8;
             background: rgba(69,123,157,0.08);
@@ -261,21 +221,16 @@
         .offer-box p { font-size: 0.95rem; font-weight: 300; color: #aaa; line-height: 1.7; }
         .offer-box strong { color: white; font-weight: 600; }
 
-        /* ── DISCLAIMER ── */
         .disclaimer-block {
-            margin-top: 80px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-top: 3px solid var(--red);
-            border-radius: 0 0 16px 16px;
-            overflow: hidden;
+            margin-top: 80px; background: var(--surface);
+            border: 1px solid var(--border); border-top: 3px solid var(--red);
+            border-radius: 0 0 16px 16px; overflow: hidden;
         }
         .disclaimer-header {
-            padding: 28px 36px;
-            border-bottom: 1px solid var(--border);
+            padding: 28px 36px; border-bottom: 1px solid var(--border);
             display: flex; align-items: center; gap: 16px;
         }
-        .disclaimer-header .disc-icon {
+        .disc-icon {
             width: 44px; height: 44px; border-radius: 10px;
             background: var(--red-dim); border: 1px solid rgba(230,57,70,0.3);
             display: flex; align-items: center; justify-content: center;
@@ -293,38 +248,19 @@
             background: rgba(255,255,255,0.03);
             border-left: 3px solid var(--red);
             border-radius: 0 10px 10px 0;
-            font-style: italic;
-            font-size: 1rem; color: #ccc; line-height: 1.85;
-        }
-        .mandatory-text::before {
-            content: '\201C';
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem; color: var(--red);
-            line-height: 0.5; display: block;
-            margin-bottom: 12px;
+            font-style: italic; font-size: 1rem; color: #ccc; line-height: 1.85;
         }
         .disclaimer-note {
             margin-top: 20px;
-            font-size: 0.9rem; font-weight: 300; color: var(--muted);
-            line-height: 1.7;
+            font-size: 0.9rem; font-weight: 300; color: var(--muted); line-height: 1.7;
         }
 
-        /* ── CTA STRIP ── */
         .cta-strip {
             margin-top: 80px; padding: 56px 48px;
             background: var(--surface); border: 1px solid var(--border);
             border-radius: 16px;
             display: flex; align-items: center; justify-content: space-between;
             gap: 32px; flex-wrap: wrap;
-            position: relative; overflow: hidden;
-        }
-        .cta-strip::before {
-            content: 'JOIN';
-            position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(5rem, 12vw, 10rem);
-            color: rgba(255,255,255,0.025);
-            line-height: 1; pointer-events: none; white-space: nowrap;
         }
         .cta-text h3 {
             font-family: 'Bebas Neue', sans-serif;
@@ -332,7 +268,6 @@
             letter-spacing: 0.03em; margin-bottom: 10px;
         }
         .cta-text p { font-size: 1rem; font-weight: 300; color: var(--muted); }
-
         .btn {
             display: inline-flex; align-items: center; gap: 10px;
             padding: 14px 36px;
@@ -340,38 +275,32 @@
             font-size: 1rem; font-weight: 700;
             letter-spacing: 0.12em; text-transform: uppercase;
             text-decoration: none; border-radius: 6px;
-            transition: all 0.3s; border: 2px solid transparent;
-            white-space: nowrap; position: relative; z-index: 1;
+            transition: all 0.3s; border: 2px solid transparent; white-space: nowrap;
         }
         .btn-primary { background: var(--red); color: white; border-color: var(--red); }
         .btn-primary:hover { background: transparent; color: var(--red); box-shadow: 0 0 30px var(--red-glow); }
 
-        /* ── FOOTER ── */
         footer {
-            padding: 28px 5%;
-            display: flex; align-items: center; justify-content: space-between;
+            padding: 28px 5%; display: flex; align-items: center; justify-content: space-between;
             border-top: 1px solid var(--border); flex-wrap: wrap; gap: 12px;
         }
         .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.08em; color: var(--muted); }
         .footer-logo span { color: var(--red); }
         .footer-copy { font-size: 0.8rem; color: #444; letter-spacing: 0.04em; }
 
-        /* ── ANIMATIONS ── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
         }
         .reveal {
             opacity: 0; transform: translateY(40px);
-            transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
-                        transform 0.9s cubic-bezier(0.16,1,0.3,1);
+            transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
         }
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
 
-        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             nav { display: none; }
             .hamburger { display: flex; }
@@ -379,17 +308,13 @@
             .rule-card-body { padding: 20px 24px 24px; }
             .disclaimer-header, .disclaimer-body { padding: 20px 24px; }
             .cta-strip { text-align: center; justify-content: center; }
-            .cta-strip::before { display: none; }
             .offer-box { flex-direction: column; }
         }
-        @media (max-width: 500px) {
-            footer { flex-direction: column; text-align: center; }
-        }
+        @media (max-width: 500px) { footer { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
 
-<!-- ══ HEADER ══ -->
 <header id="header">
     <a href="index.html" class="logo">
         <img src="logo1.jpeg" alt="BMC Logo" class="logo-img">
@@ -404,9 +329,7 @@
         <a href="time.html"    class="nav-link"><i class="fas fa-location-dot"></i> Locație &amp; Program</a>
         <a href="inscrie.html" class="nav-link nav-cta"><i class="fas fa-user-plus"></i> Înscrie-te</a>
     </nav>
-    <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
@@ -416,7 +339,6 @@
     <a href="inscrie.html" class="nav-link nav-cta" onclick="closeMobile()"><i class="fas fa-user-plus"></i> Înscrie-te</a>
 </div>
 
-<!-- ══ PAGE HERO ══ -->
 <section class="page-hero">
     <div class="page-hero-inner">
         <div class="breadcrumb">
@@ -424,20 +346,14 @@
             <i class="fas fa-chevron-right"></i>
             <span class="current">Regulament</span>
         </div>
-        <h1 class="page-hero-title">
-            Regulament
-            <em>&amp; Termeni</em>
-        </h1>
-        <p class="page-hero-sub">
-            Regulile care definesc comunitatea BMC — drepturi, obligații și responsabilități pentru toți membrii.
-        </p>
+        <h1 class="page-hero-title">Regulament<em>&amp; Termeni</em></h1>
+        <p class="page-hero-sub">Regulile care definesc comunitatea BMC — drepturi, obligații și responsabilități pentru toți membrii.</p>
     </div>
 </section>
 
-<!-- ══ CONTENT ══ -->
 <div class="content-wrap">
 
-    <!-- 1. DESPRE NOI -->
+    <!-- 1 -->
     <div class="reg-section reveal">
         <div class="section-label">Articolul 01</div>
         <div class="rule-card">
@@ -452,33 +368,15 @@
             <div class="rule-card-body">
                 <p>BMC Botoșani funcționează ca un grup de inițiativă sportivă comunitară (peer-to-peer), nu ca o sală comercială.</p>
                 <ul class="rule-list">
-                    <li>
-                        <div class="rule-dot green"></div>
-                        <div>
-                            <div class="rule-li-title">Acces 100% Gratuit</div>
-                            <div class="rule-li-body">Antrenamentele sunt și vor rămâne complet gratuite pentru toți participanții.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot green"></div>
-                        <div>
-                            <div class="rule-li-title">Donații Voluntare</div>
-                            <div class="rule-li-body">Pentru cei care vor să susțină proiectul, există posibilitatea donațiilor, în mod complet voluntar. Acestea ne ajută să acoperim cheltuielile și să continuăm antrenamentele — nu condiționează participarea.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot green"></div>
-                        <div>
-                            <div class="rule-li-title">Mentori, Nu Antrenori Licențiați</div>
-                            <div class="rule-li-body">Persoanele care coordonează sesiunile nu sunt antrenori licențiați. Aceștia sunt membri cu experiență care oferă suport voluntar, împărtășind din cunoștințele lor celorlalți participanți.</div>
-                        </div>
-                    </li>
+                    <li><div class="rule-dot green"></div><div><div class="rule-li-title">Acces 100% Gratuit</div><div class="rule-li-body">Antrenamentele sunt și vor rămâne complet gratuite pentru toți participanții.</div></div></li>
+                    <li><div class="rule-dot green"></div><div><div class="rule-li-title">Donații Voluntare</div><div class="rule-li-body">Pentru cei care vor să susțină proiectul, există posibilitatea donațiilor, în mod complet voluntar. Acestea ne ajută să acoperim cheltuielile și să continuăm antrenamentele — nu condiționează participarea.</div></div></li>
+                    <li><div class="rule-dot green"></div><div><div class="rule-li-title">Mentori, Nu Antrenori Licențiați</div><div class="rule-li-body">Persoanele care coordonează sesiunile nu sunt antrenori licențiați. Aceștia sunt membri cu experiență care oferă suport voluntar, împărtășind din cunoștințele lor celorlalți participanți.</div></div></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- 2. COD PENAL -->
+    <!-- 2 -->
     <div class="reg-section reveal">
         <div class="section-label">Articolul 02</div>
         <div class="rule-card">
@@ -492,41 +390,21 @@
             </div>
             <div class="rule-card-body">
                 <p>Membrii trebuie să discearnă clar între sport și agresiune. Tehnicile învățate sunt instrumente de apărare și disciplină, nu de atac.</p>
-
                 <div class="danger-inset">
                     <h4><i class="fas fa-shield-alt"></i> Art. 19 — Legitima Apărare</h4>
                     <p>Tehnicile învățate pot fi folosite în afara sălii <strong>DOAR</strong> pentru a respinge un atac material, direct, imediat și injust.</p>
                     <p><strong>Regula de Aur:</strong> Riposta trebuie să fie proporțională cu pericolul. Orice exces transformă victima în agresor.</p>
                 </div>
-
                 <ul class="rule-list" style="margin-top:24px;">
-                    <li>
-                        <div class="rule-dot"></div>
-                        <div>
-                            <div class="rule-li-title">Art. 193 — Lovirea și Violențele</div>
-                            <div class="rule-li-body">Agresiunea nejustificată în afara cadrului sportiv atrage răspunderea penală individuală a celui care o comite.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot"></div>
-                        <div>
-                            <div class="rule-li-title">Consimțământul în Sală</div>
-                            <div class="rule-li-body">Vătămările accidentale sunt considerate „asumarea riscului sportiv", atâta timp cât se respectă regulile de siguranță și sparring-ul este controlat.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot"></div>
-                        <div>
-                            <div class="rule-li-title">Zero Toleranță la Violență Gratuită</div>
-                            <div class="rule-li-body">Sparring-ul este controlat. Intenția de a răni partenerul duce la excluderea imediată și definitivă din grup.</div>
-                        </div>
-                    </li>
+                    <li><div class="rule-dot"></div><div><div class="rule-li-title">Art. 193 — Lovirea și Violențele</div><div class="rule-li-body">Agresiunea nejustificată în afara cadrului sportiv atrage răspunderea penală individuală a celui care o comite.</div></div></li>
+                    <li><div class="rule-dot"></div><div><div class="rule-li-title">Consimțământul în Sală</div><div class="rule-li-body">Vătămările accidentale sunt considerate „asumarea riscului sportiv", atâta timp cât se respectă regulile de siguranță și sparring-ul este controlat.</div></div></li>
+                    <li><div class="rule-dot"></div><div><div class="rule-li-title">Zero Toleranță la Violență Gratuită</div><div class="rule-li-body">Sparring-ul este controlat. Intenția de a răni partenerul duce la excluderea imediată și definitivă din grup.</div></div></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- 3. SĂNĂTATE -->
+    <!-- 3 -->
     <div class="reg-section reveal">
         <div class="section-label">Articolul 03</div>
         <div class="rule-card">
@@ -540,33 +418,15 @@
             </div>
             <div class="rule-card-body">
                 <ul class="rule-list">
-                    <li>
-                        <div class="rule-dot yellow"></div>
-                        <div>
-                            <div class="rule-li-title">Apt pentru Efort</div>
-                            <div class="rule-li-body">Prin participare, declari pe proprie răspundere că ești apt medical. Recomandăm o adeverință de la medicul de familie.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot yellow"></div>
-                        <div>
-                            <div class="rule-li-title">Protecția Minorilor</div>
-                            <div class="rule-li-body">Cei sub 18 ani au nevoie <strong style="color:white;">obligatoriu</strong> de acordul scris al părinților sau tutorelui legal înainte de prima participare.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot yellow"></div>
-                        <div>
-                            <div class="rule-li-title">Asigurare Medicală</div>
-                            <div class="rule-li-body">Fiind o activitate gratuită, grupul nu oferă asigurare medicală. Recomandăm participanților să dețină o asigurare privată.</div>
-                        </div>
-                    </li>
+                    <li><div class="rule-dot yellow"></div><div><div class="rule-li-title">Apt pentru Efort</div><div class="rule-li-body">Prin participare, declari pe proprie răspundere că ești apt medical. Recomandăm o adeverință de la medicul de familie.</div></div></li>
+                    <li><div class="rule-dot yellow"></div><div><div class="rule-li-title">Protecția Minorilor</div><div class="rule-li-body">Cei sub 18 ani au nevoie <strong style="color:white;">obligatoriu</strong> de acordul scris al părinților sau tutorelui legal înainte de prima participare.</div></div></li>
+                    <li><div class="rule-dot yellow"></div><div><div class="rule-li-title">Asigurare Medicală</div><div class="rule-li-body">Fiind o activitate gratuită, grupul nu oferă asigurare medicală. Recomandăm participanților să dețină o asigurare privată.</div></div></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- 4. GDPR -->
+    <!-- 4 -->
     <div class="reg-section reveal">
         <div class="section-label">Articolul 04</div>
         <div class="rule-card">
@@ -581,26 +441,14 @@
             <div class="rule-card-body">
                 <p>Respectăm intimitatea membrilor conform legislației europene în vigoare privind protecția datelor cu caracter personal.</p>
                 <ul class="rule-list">
-                    <li>
-                        <div class="rule-dot purple"></div>
-                        <div>
-                            <div class="rule-li-title">Foto &amp; Video</div>
-                            <div class="rule-li-body">Antrenamentele pot fi filmate pentru analiză tehnică sau promovare (Social Media). Dacă nu dorești să apari, te rugăm să notifici coordonatorul înainte de ședință.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot purple"></div>
-                        <div>
-                            <div class="rule-li-title">Date Personale</div>
-                            <div class="rule-li-body">Datele colectate la înscriere sunt folosite strict pentru organizarea grupului și nu sunt vândute sau transmise terților.</div>
-                        </div>
-                    </li>
+                    <li><div class="rule-dot purple"></div><div><div class="rule-li-title">Foto &amp; Video</div><div class="rule-li-body">Antrenamentele pot fi filmate pentru analiză tehnică sau promovare (Social Media). Dacă nu dorești să apari, te rugăm să notifici coordonatorul înainte de ședință.</div></div></li>
+                    <li><div class="rule-dot purple"></div><div><div class="rule-li-title">Date Personale</div><div class="rule-li-body">Datele colectate la înscriere sunt folosite strict pentru organizarea grupului și nu sunt vândute sau transmise terților.</div></div></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- 5. RĂSPUNDERE CIVILĂ -->
+    <!-- 5 -->
     <div class="reg-section reveal">
         <div class="section-label">Articolul 05</div>
         <div class="rule-card">
@@ -615,40 +463,16 @@
             <div class="rule-card-body">
                 <p>Participarea implică o asumare conștientă a riscurilor inerente sporturilor de contact.</p>
                 <ul class="rule-list">
-                    <li>
-                        <div class="rule-dot white"></div>
-                        <div>
-                            <div class="rule-li-title">Asumarea Riscului</div>
-                            <div class="rule-li-body">Artele marțiale implică contact fizic. Vânătăile sau accidentările minore sunt posibile și reprezintă riscuri asumate prin participare.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot white"></div>
-                        <div>
-                            <div class="rule-li-title">Exonerarea Coordonatorilor</div>
-                            <div class="rule-li-body">Deoarece activitatea este gratuită și bazată pe voluntariat (peer-to-peer), coordonatorii nu pot fi trași la răspundere pentru accidentări, decât în caz de culpă gravă intenționată.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot white"></div>
-                        <div>
-                            <div class="rule-li-title">Echipament Deteriorat</div>
-                            <div class="rule-li-body">Orice echipament sau bun deteriorat din vina membrului va fi achitat integral de acesta, din fonduri proprii, nu din bugetul echipei BMC.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot white"></div>
-                        <div>
-                            <div class="rule-li-title">Lipsa Echipamentului de Protecție</div>
-                            <div class="rule-li-body">Participarea fără echipamentul de protecție recomandat anulează dreptul la orice reclamație privind accidentările survenite.</div>
-                        </div>
-                    </li>
+                    <li><div class="rule-dot white"></div><div><div class="rule-li-title">Asumarea Riscului</div><div class="rule-li-body">Artele marțiale implică contact fizic. Vânătăile sau accidentările minore sunt posibile și reprezintă riscuri asumate prin participare.</div></div></li>
+                    <li><div class="rule-dot white"></div><div><div class="rule-li-title">Exonerarea Coordonatorilor</div><div class="rule-li-body">Deoarece activitatea este gratuită și bazată pe voluntariat, coordonatorii nu pot fi trași la răspundere pentru accidentări, decât în caz de culpă gravă intenționată.</div></div></li>
+                    <li><div class="rule-dot white"></div><div><div class="rule-li-title">Echipament Deteriorat</div><div class="rule-li-body">Orice echipament sau bun deteriorat din vina membrului va fi achitat integral de acesta, din fonduri proprii, nu din bugetul echipei BMC.</div></div></li>
+                    <li><div class="rule-dot white"></div><div><div class="rule-li-title">Lipsa Echipamentului de Protecție</div><div class="rule-li-body">Participarea fără echipamentul de protecție recomandat anulează dreptul la orice reclamație privind accidentările survenite.</div></div></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- 6. ECHIPAMENT & CONDUITĂ -->
+    <!-- 6 -->
     <div class="reg-section reveal">
         <div class="section-label">Articolul 06</div>
         <div class="rule-card">
@@ -669,26 +493,14 @@
                     </div>
                 </div>
                 <ul class="rule-list">
-                    <li>
-                        <div class="rule-dot blue"></div>
-                        <div>
-                            <div class="rule-li-title">Respect Reciproc</div>
-                            <div class="rule-li-body">Lipsa de respect față de membri sau coordonatori, precum și prezența sub influența alcoolului sau a drogurilor, duc la excludere definitivă.</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="rule-dot blue"></div>
-                        <div>
-                            <div class="rule-li-title">Igienă Obligatorie</div>
-                            <div class="rule-li-body">Echipament curat, haine de schimb și unghii tăiate scurt — indispensabile pentru respectul față de partenerul de antrenament.</div>
-                        </div>
-                    </li>
+                    <li><div class="rule-dot blue"></div><div><div class="rule-li-title">Respect Reciproc</div><div class="rule-li-body">Lipsa de respect față de membri sau coordonatori, precum și prezența sub influența alcoolului sau a drogurilor, duc la excludere definitivă.</div></div></li>
+                    <li><div class="rule-dot blue"></div><div><div class="rule-li-title">Igienă Obligatorie</div><div class="rule-li-body">Echipament curat, haine de schimb și unghii tăiate scurt — indispensabile pentru respectul față de partenerul de antrenament.</div></div></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- DISCLAIMER -->
+    <!-- Disclaimer -->
     <div class="disclaimer-block reveal">
         <div class="disclaimer-header">
             <div class="disc-icon"><i class="fas fa-file-signature"></i></div>
@@ -712,14 +524,11 @@
             <h3>Ai înțeles regulile?</h3>
             <p>Acum e rândul tău să faci parte din echipă.</p>
         </div>
-        <a href="inscrie.html" class="btn btn-primary">
-            <i class="fas fa-user-plus"></i> Înscrie-te Acum
-        </a>
+        <a href="inscrie.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Înscrie-te Acum</a>
     </div>
 
 </div>
 
-<!-- ══ FOOTER ══ -->
 <footer>
     <div class="footer-logo">BMC <span>BOTOȘANI</span></div>
     <div class="footer-copy">© 2026 Botoșani Martial Combat</div>
@@ -727,10 +536,7 @@
 
 <script>
     const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 30);
-    });
-
+    window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 30); });
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     hamburger.addEventListener('click', () => {
@@ -743,13 +549,11 @@
         mobileMenu.classList.remove('open');
         document.body.style.overflow = '';
     }
-
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
     reveals.forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
