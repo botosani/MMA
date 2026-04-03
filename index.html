@@ -21,7 +21,6 @@
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -31,7 +30,6 @@
             overflow-x: hidden;
         }
 
-        /* ─── NOISE OVERLAY ─── */
         body::before {
             content: '';
             position: fixed;
@@ -42,7 +40,6 @@
             opacity: 0.4;
         }
 
-        /* ─── SCROLLBAR ─── */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
@@ -60,397 +57,224 @@
             transition: background 0.4s, border-color 0.4s;
             border-bottom: 1px solid transparent;
         }
-
         header.scrolled {
             background: rgba(8, 8, 8, 0.97);
             backdrop-filter: blur(20px);
             border-color: var(--border);
         }
-
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; color: white;
         }
-
         .logo-img {
-            height: 48px;
-            width: 48px;
-            object-fit: cover;
-            border-radius: 8px;
+            height: 48px; width: 48px;
+            object-fit: cover; border-radius: 8px;
             border: 1.5px solid var(--red);
         }
-
         .logo-name {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.6rem;
-            letter-spacing: 0.05em;
-            line-height: 1;
+            font-size: 1.6rem; letter-spacing: 0.05em; line-height: 1;
         }
-
         .logo-name em { color: var(--red); font-style: normal; }
-
         .logo-sub {
             font-family: 'Barlow', sans-serif;
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--muted);
-            display: block;
-            margin-top: 2px;
+            font-size: 0.6rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--muted);
+            display: block; margin-top: 2px;
         }
-
         nav { display: flex; align-items: center; gap: 8px; }
-
         .nav-link {
-            text-decoration: none;
-            color: #bbb;
+            text-decoration: none; color: #bbb;
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: 1px solid transparent;
-            transition: all 0.25s;
-            display: flex;
-            align-items: center;
-            gap: 7px;
+            font-size: 0.85rem; letter-spacing: 0.12em;
+            text-transform: uppercase; padding: 8px 16px;
+            border-radius: 6px; border: 1px solid transparent;
+            transition: all 0.25s; display: flex; align-items: center; gap: 7px;
         }
-
-        .nav-link:hover {
-            color: white;
-            border-color: var(--border);
-            background: rgba(255,255,255,0.04);
-        }
-
-        .nav-cta {
-            background: var(--red);
-            color: white !important;
-            border-color: var(--red) !important;
-            font-weight: 700;
-        }
-
-        .nav-cta:hover {
-            background: white !important;
-            color: var(--red) !important;
-            border-color: white !important;
-        }
+        .nav-link:hover { color: white; border-color: var(--border); background: rgba(255,255,255,0.04); }
+        .nav-cta { background: var(--red); color: white !important; border-color: var(--red) !important; font-weight: 700; }
+        .nav-cta:hover { background: white !important; color: var(--red) !important; border-color: white !important; }
 
         /* ─── HAMBURGER ─── */
         .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; padding: 8px; z-index: 1001;
         }
-
         .hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: white;
-            transition: 0.3s;
-            transform-origin: center;
+            display: block; width: 24px; height: 2px;
+            background: white; transition: 0.3s; transform-origin: center;
         }
-
         .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger.open span:nth-child(2) { opacity: 0; }
         .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
         .mobile-menu {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(8, 8, 8, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 999;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
+            display: none; position: fixed; inset: 0;
+            background: rgba(8,8,8,0.98); backdrop-filter: blur(20px);
+            z-index: 999; flex-direction: column;
+            align-items: center; justify-content: center; gap: 24px;
         }
-
         .mobile-menu.open { display: flex; }
         .mobile-menu .nav-link { font-size: 1.4rem; padding: 12px 32px; }
 
         /* ─── HERO ─── */
         .hero {
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            min-height: 100vh; position: relative;
+            display: flex; align-items: center; justify-content: center;
             overflow: hidden;
         }
-
         .hero-bg {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
             filter: brightness(0.18) saturate(0.6);
             transform: scale(1.05);
             animation: slowZoom 20s ease-in-out infinite alternate;
         }
-
         @keyframes slowZoom {
             from { transform: scale(1.05); }
             to   { transform: scale(1.12); }
         }
-
         .hero::after {
             content: '';
-            position: absolute;
-            bottom: -2px; left: 0; right: 0;
-            height: 120px;
-            background: var(--bg);
+            position: absolute; bottom: -2px; left: 0; right: 0;
+            height: 120px; background: var(--bg);
             clip-path: polygon(0 60%, 100% 0%, 100% 100%, 0% 100%);
         }
-
         .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 0 20px;
-            max-width: 1100px;
+            position: relative; z-index: 2;
+            text-align: center; padding: 0 20px; max-width: 1100px;
         }
-
         .hero-eyebrow {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: var(--red);
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            opacity: 0;
-            animation: fadeUp 0.8s 0.3s forwards;
+            font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase;
+            color: var(--red); margin-bottom: 24px;
+            display: flex; align-items: center; justify-content: center; gap: 16px;
+            opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
         }
-
-        .hero-eyebrow::before,
-        .hero-eyebrow::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 1px;
-            background: var(--red);
-            opacity: 0.6;
+        .hero-eyebrow::before, .hero-eyebrow::after {
+            content: ''; display: block; width: 40px; height: 1px;
+            background: var(--red); opacity: 0.6;
         }
-
         .hero-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(4.5rem, 14vw, 11rem);
-            line-height: 0.9;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-            margin-bottom: 28px;
-            overflow: hidden;
+            line-height: 0.9; letter-spacing: 0.02em;
+            text-transform: uppercase; margin-bottom: 28px; overflow: hidden;
         }
-
         .hero-title .line {
-            display: block;
-            opacity: 0;
-            transform: translateY(60px);
+            display: block; opacity: 0; transform: translateY(60px);
         }
-
         .hero-title .line:nth-child(1) { animation: slideUp 0.8s 0.5s  cubic-bezier(0.16,1,0.3,1) forwards; }
         .hero-title .line:nth-child(2) { animation: slideUp 0.8s 0.65s cubic-bezier(0.16,1,0.3,1) forwards; color: var(--red); }
         .hero-title .line:nth-child(3) { animation: slideUp 0.8s 0.8s  cubic-bezier(0.16,1,0.3,1) forwards; }
-
         .hero-sub {
-            font-size: clamp(1rem, 2.5vw, 1.25rem);
-            font-weight: 300;
-            color: #999;
-            letter-spacing: 0.05em;
-            max-width: 560px;
-            margin: 0 auto 44px;
-            opacity: 0;
-            animation: fadeUp 0.9s 1s forwards;
+            font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 300;
+            color: #999; letter-spacing: 0.05em;
+            max-width: 560px; margin: 0 auto 44px;
+            opacity: 0; animation: fadeUp 0.9s 1s forwards;
         }
-
         .hero-actions {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeUp 0.9s 1.2s forwards;
+            display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+            opacity: 0; animation: fadeUp 0.9s 1.2s forwards;
         }
 
         /* ─── BUTTONS ─── */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            display: inline-flex; align-items: center; gap: 10px;
             padding: 14px 36px;
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s;
-            border: 2px solid transparent;
+            font-size: 1rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            text-decoration: none; border-radius: 6px;
+            transition: all 0.3s; border: 2px solid transparent;
         }
-
         .btn-primary { background: var(--red); color: white; border-color: var(--red); }
         .btn-primary:hover { background: transparent; color: var(--red); box-shadow: 0 0 30px var(--red-glow); }
-
         .btn-ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.25); }
         .btn-ghost:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.5); }
 
         /* ─── SECTION COMMONS ─── */
         section { position: relative; }
-
         .section-label {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--red);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+            color: var(--red); margin-bottom: 16px;
+            display: flex; align-items: center; gap: 12px;
         }
-
         .section-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--red);
-            opacity: 0.3;
-            max-width: 80px;
+            content: ''; flex: 1; height: 1px;
+            background: var(--red); opacity: 0.3; max-width: 80px;
         }
-
         .section-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.8rem, 6vw, 5rem);
-            line-height: 0.95;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-            margin-bottom: 28px;
+            line-height: 0.95; letter-spacing: 0.02em;
+            text-transform: uppercase; margin-bottom: 28px;
         }
 
         /* ─── ABOUT ─── */
         .about {
             padding: 120px 5%;
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
+            max-width: 1300px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 80px; align-items: start;
         }
-
         .about-text {
-            font-size: 1.15rem;
-            font-weight: 300;
-            color: #aaa;
-            line-height: 1.85;
-            margin-bottom: 20px;
+            font-size: 1.15rem; font-weight: 300;
+            color: #aaa; line-height: 1.85; margin-bottom: 20px;
         }
-
         .about-text strong { color: white; font-weight: 600; }
         .about-text .accent { color: var(--red); font-weight: 600; }
-
         .callout {
-            margin: 32px 0;
-            padding: 24px 28px;
+            margin: 32px 0; padding: 24px 28px;
             border-left: 3px solid var(--red);
-            background: var(--red-dim);
-            border-radius: 0 10px 10px 0;
+            background: var(--red-dim); border-radius: 0 10px 10px 0;
         }
-
         .callout p { font-size: 1.1rem; font-style: italic; color: #ddd; line-height: 1.7; }
-
         .peer-note {
             padding: 20px 24px;
             border-left: 3px solid var(--blue);
             background: rgba(69,123,157,0.08);
-            border-radius: 0 10px 10px 0;
-            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0; margin-bottom: 20px;
         }
-
         .peer-note p { font-size: 1rem; color: #bbb; line-height: 1.7; }
         .peer-note strong { color: #7fc8e8; }
-
         .about-right {
-            position: sticky;
-            top: 100px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            position: sticky; top: 100px;
+            display: flex; flex-direction: column; gap: 20px;
         }
-
         .about-img-frame {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            background: var(--surface);
+            position: relative; border-radius: 16px;
+            overflow: hidden; aspect-ratio: 4/3; background: var(--surface);
         }
-
         .about-img-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100%; height: 100%; object-fit: cover;
             filter: brightness(0.8) saturate(0.9);
             transition: transform 0.6s ease;
         }
-
         .about-img-frame:hover img { transform: scale(1.04); }
-
         .about-img-overlay {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: linear-gradient(to top, rgba(8,8,8,0.7) 0%, transparent 60%);
         }
-
         .about-img-tag {
-            position: absolute;
-            bottom: 20px; left: 20px;
+            position: absolute; bottom: 20px; left: 20px;
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.7);
+            font-size: 0.75rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: rgba(255,255,255,0.7);
         }
-
         .about-badge-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
         .badge {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            transition: all 0.3s;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px;
+            display: flex; align-items: center; gap: 14px; transition: all 0.3s;
         }
-
         .badge:hover { border-color: var(--red); background: var(--red-dim); transform: translateY(-3px); }
-
         .badge-icon { font-size: 1.5rem; color: var(--red); width: 40px; flex-shrink: 0; text-align: center; }
-
         .badge-text {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: #ddd;
+            font-size: 0.9rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase; color: #ddd;
         }
-
         .badge-sub { font-size: 0.75rem; color: var(--muted); font-family: 'Barlow', sans-serif; font-weight: 300; margin-top: 2px; }
 
         /* ─── MISSION ─── */
@@ -462,167 +286,87 @@
             overflow: hidden;
             position: relative;
         }
-
-        .mission::before {
-            content: 'MISIUNE';
-            position: absolute;
-            top: -30px; right: -20px;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(8rem, 18vw, 18rem);
-            color: rgba(255,255,255,0.02);
-            line-height: 1;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
         .mission-inner { max-width: 1300px; margin: 0 auto; }
-
         .mission-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.4fr;
-            gap: 80px;
-            align-items: start;
-            margin-top: 60px;
+            display: grid; grid-template-columns: 1fr 1.4fr;
+            gap: 80px; align-items: start; margin-top: 60px;
         }
-
         .mission-quote {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            line-height: 1.15;
-            color: white;
-            border-left: 4px solid var(--red);
-            padding-left: 28px;
-            position: sticky;
-            top: 100px;
+            font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15;
+            color: white; border-left: 4px solid var(--red);
+            padding-left: 28px; position: sticky; top: 100px;
         }
-
         .mission-quote em { color: var(--red); font-style: normal; }
-
         .mission-body { display: flex; flex-direction: column; gap: 20px; }
-
         .mission-para { font-size: 1.1rem; font-weight: 300; color: #999; line-height: 1.9; }
         .mission-para strong { color: white; font-weight: 600; }
         .mission-para .red { color: var(--red); font-weight: 600; }
 
         /* ─── PILLARS ─── */
         .pillars { padding: 120px 5%; max-width: 1300px; margin: 0 auto; }
-
         .pillars-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 64px;
-            flex-wrap: wrap;
-            gap: 20px;
+            display: flex; justify-content: space-between;
+            align-items: flex-end; margin-bottom: 64px; flex-wrap: wrap; gap: 20px;
         }
-
         .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 2px; background: var(--border);
+            border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
         }
-
         .pillar {
-            background: var(--surface);
-            padding: 40px 28px;
-            position: relative;
-            transition: all 0.4s;
-            overflow: hidden;
+            background: var(--surface); padding: 40px 28px;
+            position: relative; transition: all 0.4s; overflow: hidden;
         }
-
         .pillar::before {
-            content: '';
-            position: absolute;
-            inset: 0;
+            content: ''; position: absolute; inset: 0;
             background: linear-gradient(135deg, var(--red-dim), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
+            opacity: 0; transition: opacity 0.4s;
         }
-
         .pillar:hover::before { opacity: 1; }
         .pillar:hover { background: #161616; }
-
         .pillar-number {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem;
-            line-height: 1;
+            font-size: 4rem; line-height: 1;
             color: rgba(255,255,255,0.05);
-            position: absolute;
-            top: 16px; right: 20px;
-            transition: color 0.4s;
+            position: absolute; top: 16px; right: 20px; transition: color 0.4s;
         }
-
         .pillar:hover .pillar-number { color: rgba(230,57,70,0.15); }
-
         .pillar-icon { font-size: 1.8rem; color: var(--red); margin-bottom: 20px; position: relative; }
-
         .pillar-title {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: white;
-            margin-bottom: 12px;
-            position: relative;
+            font-size: 1.2rem; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            color: white; margin-bottom: 12px; position: relative;
         }
-
         .pillar-body { font-size: 0.95rem; font-weight: 300; color: #777; line-height: 1.75; position: relative; }
 
         /* ─── TRAINING ─── */
         .training { padding: 100px 5%; background: var(--surface); border-top: 1px solid var(--border); }
         .training-inner { max-width: 1300px; margin: 0 auto; }
         .training-header { margin-bottom: 60px; }
-
         .training-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 2px; background: var(--border);
+            border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
         }
-
         .training-item {
-            background: var(--bg);
-            padding: 36px 40px;
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-            transition: background 0.3s;
+            background: var(--bg); padding: 36px 40px;
+            display: flex; gap: 24px; align-items: flex-start; transition: background 0.3s;
         }
-
         .training-item:hover { background: #101010; }
-
         .t-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            background: var(--red-dim);
-            border: 1px solid rgba(230,57,70,0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--red);
-            font-size: 1.1rem;
-            flex-shrink: 0;
+            width: 48px; height: 48px; border-radius: 10px;
+            background: var(--red-dim); border: 1px solid rgba(230,57,70,0.25);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--red); font-size: 1.1rem; flex-shrink: 0;
         }
-
         .t-title {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: white;
-            margin-bottom: 8px;
+            font-size: 1.05rem; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            color: white; margin-bottom: 8px;
         }
-
         .t-body { font-size: 0.95rem; font-weight: 300; color: #777; line-height: 1.7; }
 
         /* ─── CONTACT ─── */
@@ -630,49 +374,20 @@
             padding: 120px 5%;
             background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
             border-top: 1px solid var(--border);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            text-align: center; position: relative; overflow: hidden;
         }
-
-        .contact::before {
-            content: 'JOIN';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(10rem, 25vw, 22rem);
-            color: rgba(255,255,255,0.015);
-            line-height: 1;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
         .contact-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
-
         .contact-sub { font-size: 1.1rem; font-weight: 300; color: var(--muted); margin: 20px 0 56px; }
-
         .social-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 48px; }
-
         .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            border-radius: 10px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 28px; border-radius: 10px; text-decoration: none;
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: white;
-            border: 1px solid transparent;
-            transition: all 0.3s;
+            font-size: 1rem; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: white; border: 1px solid transparent; transition: all 0.3s;
         }
-
         .social-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
-
         .soc-insta { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
         .soc-fb    { background: #1877f2; }
         .soc-yt    { background: #ff0000; }
@@ -680,81 +395,62 @@
         .soc-tt:hover { border-color: #fe2c55; box-shadow: 0 12px 32px rgba(254,44,85,0.25) !important; }
         .soc-mail  { background: transparent; border-color: rgba(255,255,255,0.2); }
         .soc-mail:hover { background: rgba(255,255,255,0.05); }
-
         .contact-cta { padding-top: 40px; border-top: 1px solid var(--border); }
         .contact-cta p { font-size: 1rem; color: var(--muted); margin-bottom: 20px; }
 
         /* ─── FOOTER ─── */
         footer {
-            padding: 28px 5%;
-            display: flex;
-            align-items: center;
+            padding: 28px 5%; display: flex; align-items: center;
             justify-content: space-between;
-            border-top: 1px solid var(--border);
-            flex-wrap: wrap;
-            gap: 12px;
+            border-top: 1px solid var(--border); flex-wrap: wrap; gap: 12px;
         }
-
         .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.08em; color: var(--muted); }
         .footer-logo span { color: var(--red); }
         .footer-copy { font-size: 0.8rem; color: #444; letter-spacing: 0.04em; }
-        .footer-zero { font-size: 0.75rem; color: #333; font-style: italic; }
 
         /* ─── ANIMATIONS ─── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(60px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-
-        /* ─── REVEAL ON SCROLL ─── */
         .reveal {
-            opacity: 0;
-            transform: translateY(40px);
+            opacity: 0; transform: translateY(40px);
             transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
                         transform 0.9s cubic-bezier(0.16,1,0.3,1);
         }
-
         .reveal.visible  { opacity: 1; transform: translateY(0); }
         .reveal-delay-1  { transition-delay: 0.1s; }
         .reveal-delay-2  { transition-delay: 0.2s; }
         .reveal-delay-3  { transition-delay: 0.3s; }
         .reveal-delay-4  { transition-delay: 0.4s; }
-
         .divider { width: 60px; height: 3px; background: var(--red); border-radius: 2px; margin: 20px 0 32px; }
 
         /* ─── RESPONSIVE ─── */
-        @media (max-width: 1100px) {
-            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
+        @media (max-width: 1100px) { .pillars-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) {
-            .about         { grid-template-columns: 1fr; gap: 60px; }
-            .mission-grid  { grid-template-columns: 1fr; }
+            .about { grid-template-columns: 1fr; gap: 60px; }
+            .mission-grid { grid-template-columns: 1fr; }
             .mission-quote { position: relative; top: 0; }
             .training-list { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 768px) {
-            nav              { display: none; }
-            .hamburger       { display: flex; }
-            .pillars-grid    { grid-template-columns: 1fr; }
+            nav { display: none; }
+            .hamburger { display: flex; }
+            .pillars-grid { grid-template-columns: 1fr; }
             .about-badge-row { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 500px) {
             .hero-title { font-size: clamp(3.5rem, 18vw, 5rem); }
-            footer      { flex-direction: column; text-align: center; }
+            footer { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-<!-- ══════════════════════════ HEADER ══════════════════════════ -->
 <header id="header">
     <a href="index.html" class="logo">
         <img src="logo1.jpeg" alt="BMC Logo" class="logo-img">
@@ -763,20 +459,17 @@
             <span class="logo-sub">Martial Combat</span>
         </div>
     </a>
-
     <nav>
         <a href="p.html"       class="nav-link"><i class="fas fa-gavel"></i> Regulament</a>
         <a href="ghid.html"    class="nav-link"><i class="fas fa-shirt"></i> Ghid Echipament</a>
         <a href="time.html"    class="nav-link"><i class="fas fa-location-dot"></i> Locație &amp; Program</a>
         <a href="inscrie.html" class="nav-link nav-cta"><i class="fas fa-user-plus"></i> Înscrie-te</a>
     </nav>
-
     <div class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
     </div>
 </header>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="p.html"       class="nav-link" onclick="closeMobile()"><i class="fas fa-gavel"></i> Regulament</a>
     <a href="ghid.html"    class="nav-link" onclick="closeMobile()"><i class="fas fa-shirt"></i> Ghid Echipament</a>
@@ -784,94 +477,68 @@
     <a href="inscrie.html" class="nav-link nav-cta" onclick="closeMobile()"><i class="fas fa-user-plus"></i> Înscrie-te</a>
 </div>
 
-<!-- ══════════════════════════ HERO ══════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
     <div class="hero-bg"></div>
-
     <div class="hero-content">
         <div class="hero-eyebrow">Botoșani · 2026</div>
-
         <h1 class="hero-title">
             <span class="line">Botoșani</span>
             <span class="line">Martial</span>
             <span class="line">Combat</span>
         </h1>
-
         <p class="hero-sub">Grup de Dezvoltare Personală și Sportivă pentru tineret.</p>
-
         <div class="hero-actions">
-            <a href="inscrie.html" class="btn btn-primary">
-                <i class="fas fa-user-plus"></i> Hai în Echipă
-            </a>
-            <a href="time.html" class="btn btn-ghost">
-                <i class="fas fa-location-dot"></i> Locație &amp; Program
-            </a>
+            <a href="inscrie.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Hai în Echipă</a>
+            <a href="time.html"    class="btn btn-ghost"><i class="fas fa-location-dot"></i> Locație &amp; Program</a>
         </div>
     </div>
 </section>
 
-<!-- ══════════════════════════ ABOUT ══════════════════════════ -->
+<!-- ABOUT -->
 <section>
     <div class="about">
         <div class="about-left">
             <div class="section-label reveal">Cine suntem</div>
             <h2 class="section-title reveal reveal-delay-1">Doi tineri.<br>Un vis comun.</h2>
             <div class="divider reveal reveal-delay-2"></div>
-
             <div class="peer-note reveal reveal-delay-2">
                 <p>
                     <i class="fas fa-user-friends" style="color:#7fc8e8; margin-right:8px;"></i>
                     <strong>Shared Learning:</strong> Nu suntem antrenori certificați sau maeștri. Dăm mai departe din ce am învățat, ne antrenăm cot la cot și creștem împreună.
                 </p>
             </div>
-
             <p class="about-text reveal reveal-delay-3">
                 BMC Botoșani a luat naștere din inițiativa a <strong>doi tineri de 17 și 18 ani</strong> din județul Botoșani, conștienți de o problemă reală: <span class="accent">lipsa activităților sănătoase pentru tineret</span>.
             </p>
-
             <div class="callout reveal reveal-delay-3">
                 <p>
                     <i class="fas fa-shield-alt" style="color:var(--red); margin-right:10px;"></i>
                     <strong>ZERO TOLERANȚĂ:</strong> Suntem împotriva violenței și a bătăilor de stradă. Nu organizăm lupte — organizăm antrenamente.
                 </p>
             </div>
-
             <p class="about-text reveal reveal-delay-4">
                 Vrem să eliminăm barierele financiare și sociale, oferind o <strong>șansă egală</strong> tuturor tinerilor, indiferent de situația de acasă.
             </p>
-
             <div class="about-badge-row reveal reveal-delay-4" style="margin-top:32px;">
                 <div class="badge">
                     <div class="badge-icon"><i class="fas fa-heart"></i></div>
-                    <div>
-                        <div class="badge-text">100% Gratuit</div>
-                        <div class="badge-sub">Fără taxe sau abonament</div>
-                    </div>
+                    <div><div class="badge-text">100% Gratuit</div><div class="badge-sub">Fără taxe sau abonament</div></div>
                 </div>
                 <div class="badge">
                     <div class="badge-icon"><i class="fas fa-users"></i></div>
-                    <div>
-                        <div class="badge-text">Comunitate</div>
-                        <div class="badge-sub">Ne susținem reciproc</div>
-                    </div>
+                    <div><div class="badge-text">Comunitate</div><div class="badge-sub">Ne susținem reciproc</div></div>
                 </div>
                 <div class="badge">
                     <div class="badge-icon"><i class="fas fa-ban"></i></div>
-                    <div>
-                        <div class="badge-text">Anti-vicii</div>
-                        <div class="badge-sub">Sport în loc de droguri</div>
-                    </div>
+                    <div><div class="badge-text">Anti-vicii</div><div class="badge-sub">Sport în loc de droguri</div></div>
                 </div>
                 <div class="badge">
                     <div class="badge-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                    <div>
-                        <div class="badge-text">Donații voluntare</div>
-                        <div class="badge-sub">Nu condiționează participarea</div>
-                    </div>
+                    <div><div class="badge-text">Donații voluntare</div><div class="badge-sub">Nu condiționează participarea</div></div>
                 </div>
             </div>
         </div>
-
         <div class="about-right">
             <div class="about-img-frame reveal">
                 <img src="manusi.jpg" alt="BMC Training">
@@ -882,18 +549,16 @@
     </div>
 </section>
 
-<!-- ══════════════════════════ MISSION ══════════════════════════ -->
+<!-- MISSION -->
 <section class="mission">
     <div class="mission-inner">
         <div class="section-label reveal">Misiunea noastră</div>
-
         <div class="mission-grid">
             <div>
                 <div class="mission-quote reveal">
                     Niciun talent irosit din<br><em>lipsă de resurse.</em>
                 </div>
             </div>
-
             <div class="mission-body">
                 <p class="mission-para reveal">
                     Știm că viața de adolescent poate fi grea. Mulți tineri ajung să caute refugiul în <span class="red">vicii — alcool, țigări, substanțe interzise</span> — doar pentru a scăpa de presiune, de singurătate sau de problemele de acasă.
@@ -912,7 +577,7 @@
     </div>
 </section>
 
-<!-- ══════════════════════════ PILLARS ══════════════════════════ -->
+<!-- PILLARS -->
 <section>
     <div class="pillars">
         <div class="pillars-header">
@@ -921,7 +586,6 @@
                 <h2 class="section-title reveal reveal-delay-1">De ce<br>acest sport?</h2>
             </div>
         </div>
-
         <div class="pillars-grid">
             <div class="pillar reveal">
                 <div class="pillar-number">01</div>
@@ -951,7 +615,7 @@
     </div>
 </section>
 
-<!-- ══════════════════════════ TRAINING ══════════════════════════ -->
+<!-- TRAINING -->
 <section class="training">
     <div class="training-inner">
         <div class="training-header">
@@ -961,7 +625,6 @@
                 La noi <strong style="color:white;">tu alegi ritmul</strong>. Respectăm dorința fiecăruia. Mediul este unul de respect reciproc, fără judecată.
             </p>
         </div>
-
         <div class="training-list">
             <div class="training-item reveal">
                 <div class="t-icon"><i class="fas fa-users"></i></div>
@@ -995,31 +658,19 @@
     </div>
 </section>
 
-<!-- ══════════════════════════ CONTACT ══════════════════════════ -->
+<!-- CONTACT -->
 <section class="contact">
     <div class="contact-inner">
         <div class="section-label reveal" style="justify-content:center;">Urmărește-ne</div>
         <h2 class="section-title reveal reveal-delay-1" style="font-size:clamp(2.5rem,7vw,5rem);">Fii parte<br>din comunitate</h2>
         <p class="contact-sub reveal reveal-delay-2">Urmărește-ne parcursul pe rețelele sociale și fii primul care află noutăți.</p>
-
         <div class="social-grid reveal reveal-delay-3">
-            <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="social-btn soc-insta">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
-            <a href="https://www.facebook.com/share/1HV6CSWt2Y/" target="_blank" class="social-btn soc-fb">
-                <i class="fab fa-facebook"></i> Facebook
-            </a>
-            <a href="https://www.youtube.com/@mma.botosani" target="_blank" class="social-btn soc-yt">
-                <i class="fab fa-youtube"></i> YouTube
-            </a>
-            <a href="https://www.tiktok.com/@bmc.botosani" target="_blank" class="social-btn soc-tt">
-                <i class="fab fa-tiktok"></i> TikTok
-            </a>
-            <a href="mailto:botosanimma@gmail.com" class="social-btn soc-mail">
-                <i class="fas fa-envelope"></i> Scrie-ne
-            </a>
+            <a href="https://www.instagram.com/mma.botosani?igsh=OGdocmozZ3NjNjky" target="_blank" class="social-btn soc-insta"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.facebook.com/share/1HV6CSWt2Y/" target="_blank" class="social-btn soc-fb"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="https://www.youtube.com/@mma.botosani" target="_blank" class="social-btn soc-yt"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="https://www.tiktok.com/@bmc.botosani" target="_blank" class="social-btn soc-tt"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="mailto:botosanimma@gmail.com" class="social-btn soc-mail"><i class="fas fa-envelope"></i> Scrie-ne</a>
         </div>
-
         <div class="contact-cta reveal">
             <p>Gata să faci parte din echipă?</p>
             <a href="inscrie.html" class="btn btn-primary" style="font-size:1.1rem; padding:16px 48px;">
@@ -1029,46 +680,32 @@
     </div>
 </section>
 
-<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
 <footer>
     <div class="footer-logo">BMC <span>BOTOȘANI</span></div>
     <div class="footer-copy">© 2026 Botoșani Martial Combat</div>
 </footer>
 
 <script>
-    // ── Scroll header
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
         header.classList.toggle('scrolled', window.scrollY > 30);
     });
-
-    // ── Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('open');
         mobileMenu.classList.toggle('open');
         document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     });
-
     function closeMobile() {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
         document.body.style.overflow = '';
     }
-
-    // ── Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
-
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
     reveals.forEach(el => observer.observe(el));
 </script>
 
