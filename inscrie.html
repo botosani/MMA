@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Înscriere gratuită — BMC Botoșani</title>
+<meta name="description" content="Completează formularul și intră în echipa BMC Botoșani. Antrenamentele sunt gratuite și nu ai nevoie de experiență.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="logo1.jpeg">
+<meta property="og:type" content="website"><meta property="og:locale" content="ro_RO"><meta property="og:site_name" content="BMC Botoșani"><meta property="og:title" content="Înscriere gratuită — BMC Botoșani"><meta property="og:description" content="Completează formularul și intră în echipa BMC Botoșani. Antrenamentele sunt gratuite și nu ai nevoie de experiență.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Înscriere gratuită — BMC Botoșani"><meta name="twitter:description" content="Completează formularul și intră în echipa BMC Botoșani. Antrenamentele sunt gratuite și nu ai nevoie de experiență.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+<link rel="stylesheet" href="site.min.css"><link rel="stylesheet" href="bmc.min.css">
+<script src="site.min.js" defer></script><script src="bmc.min.js" defer></script>
+</head>
+<body>
+<header id="header"><a href="index.html" class="logo"><img src="logo1.jpeg" alt="Logo BMC Botoșani" class="logo-img" width="48" height="48"><div><div class="logo-name">BMC <em>BOTOȘANI</em></div><span class="logo-sub">Martial Combat</span></div></a><nav aria-label="Principal"><a href="p.html" class="nav-link"><i class="fas fa-gavel"></i> Regulament</a><a href="ghid.html" class="nav-link"><i class="fas fa-shirt"></i> Ghid Echipament</a><a href="time.html" class="nav-link"><i class="fas fa-location-dot"></i> Locație &amp; Program</a><a href="inscrie.html" class="nav-link nav-cta"><i class="fas fa-user-plus"></i> Înscrie-te</a></nav><button class="hamburger" id="hamburger" aria-label="Meniu"><span></span><span></span><span></span></button></header><div class="mobile-menu" id="mobileMenu"><a href="p.html" class="nav-link"><i class="fas fa-gavel"></i> Regulament</a><a href="ghid.html" class="nav-link"><i class="fas fa-shirt"></i> Ghid Echipament</a><a href="time.html" class="nav-link"><i class="fas fa-location-dot"></i> Locație &amp; Program</a><a href="inscrie.html" class="nav-link nav-cta"><i class="fas fa-user-plus"></i> Înscrie-te</a></div>
+<div class="overlay" id="popupOverlay"><div class="popup"><img src="logo1.jpeg" alt="Logo BMC" width="80" height="80"><h2>Bun venit în BMC</h2>
+<p>Vrei să vii în echipa BMC? Ne-ar plăcea să te avem alături! Te rugăm doar să arunci o privire peste regulament înainte de a începe, ca să fim siguri că suntem pe aceeași lungime de undă.</p>
+<div class="popup-actions"><a href="p.html" class="btn btn-ghost"><i class="fas fa-file-shield"></i> Citește Regulamentul</a><button class="btn btn-primary" type="button" onclick="closePopup()"><i class="fas fa-check"></i> Accept și continui</button></div></div></div>
+<main class="page-wrap" id="continut"><div class="form-outer"><div class="section-label">Înscrie-te</div><h1 class="page-title">Devino<em>Membru</em></h1>
+<p style="color:var(--ink2);margin-top:14px">Intră în echipa BMC Botoșani și începe antrenamentul. Gratuit, fără obligații.</p>
+<div class="form-card"><div class="form-card-header"><div class="t-icon"><i class="fas fa-user-plus"></i></div><div><h2>Formular de Înscriere</h2><p>Completează datele de mai jos</p></div></div><div class="form-body">
+<form id="registrationForm"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_subject" value="Înscriere Nouă - BMC Botoșani!"><input type="hidden" name="_template" value="table"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<div class="form-group"><label for="nume">Nume și Prenume</label><input type="text" name="Nume complet" id="nume" placeholder="Numele tău complet" autocomplete="name" required></div>
+<div class="form-grid"><div class="form-group" style="margin:0"><label for="varsta">Vârstă</label><input type="number" name="Varsta" id="varsta" min="5" max="99" placeholder="Vârsta ta" required></div>
+<div class="form-group" style="margin:0"><label for="experienta">Experiență</label><select name="Experienta" id="experienta"><option value="Incepator">Începător</option><option value="Mediu">Am mai practicat</option><option value="Avansat">Sportiv activ</option></select></div></div>
+<div class="form-group"><label for="email">Adresă Email</label><input type="email" name="Email" id="email" placeholder="email@exemplu.com" autocomplete="email" required></div>
+<div class="form-group"><label for="telefon">Număr Telefon (opțional)</label><input type="tel" name="Telefon" id="telefon" placeholder="07xxxxxxxx" autocomplete="tel"></div>
+<div class="form-group"><label for="mesaj">Motivația ta</label><textarea name="Mesaj" id="mesaj" rows="3" placeholder="De ce vrei să te alături echipei noastre?"></textarea></div>
+<div class="form-divider"></div>
+<div class="fisa-block"><div class="fisa-block-title"><i class="fas fa-file-signature"></i> Termenii și Condițiile BMC</div><ul><li>Completarea formularului reprezintă acordul tău cu <a href="p.html" target="_blank">Termenii și Condițiile BMC</a>.</li><li>Finalizează procedura completând și Fișa Digitală de mai jos.</li></ul>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSdZOIzMcuUNbahjI9xVaRNWa5Ny-XMbS5XguY6q_BJT60MftQ/viewform" target="_blank" rel="noopener" class="btn-fisa"><i class="fas fa-external-link-alt"></i> Completează Fișa Digitală</a></div>
+<div class="check-group green-check"><input type="checkbox" id="check_fisa_digitala" name="Fisa_Digitala_Completata" value="DA" required><label for="check_fisa_digitala">Confirm că am completat <strong>Fișa Digitală</strong>.</label></div>
+<div class="check-group"><input type="checkbox" id="termeni" name="Acord_Regulament" required><label for="termeni">Confirm că am citit regulamentul, înțeleg că antrenamentele se desfășoară pe propria răspundere și respect codul BMC.</label></div>
+<button type="submit" class="btn-submit" id="submitBtn"><i class="fas fa-paper-plane"></i> Trimite Înscrierea</button></form></div></div></div></main>
+<footer><div class="footer-logo">BMC <span>BOTOȘANI</span></div><div class="footer-copy">© 2026 Botoșani Martial Combat</div><nav class="foot-nav" aria-label="Linkuri utile"><a href="index.html">Acasă</a><a href="despre.html">Despre BMC</a><a href="p.html">Regulament</a><a href="ghid.html">Ghid echipament</a><a href="time.html">Locație și program</a><a href="inscrie.html">Înscrie-te</a><a href="confidentialitate.html">Confidențialitate</a></nav></footer>
+</body>
+</html>
