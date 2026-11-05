@@ -1,1 +1,137 @@
-404
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site În Mentenanță / Site Under Maintenance</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .lang-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .contact-box {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .contact-box a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">EN</button>
+        
+        <div class="icon">⚠️</div>
+
+        <h1 id="title">Site-ul este indisponibil</h1>
+        
+        <p id="message">
+            Site-ul este jos din motive necunoscute. Tehnicienii repară site-ul în momentul actual.
+        </p>
+
+        <div class="contact-box" id="contact">
+            Pentru mai multe informații, contactați: <a href="tel:+40759855350">+40 759 855 350</a>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'ro';
+
+        const content = {
+            ro: {
+                title: "Site-ul este indisponibil",
+                message: "Site-ul este jos din motive necunoscute. Tehnicienii repară site-ul în momentul actual.",
+                contact: 'Pentru mai multe informații, contactați: <a href="tel:+40759855350">+40 759 855 350</a>',
+                btnText: "EN"
+            },
+            en: {
+                title: "Website is Down",
+                message: "The website is currently down for unknown reasons. Technicians are working to fix the site right now.",
+                contact: 'For more information, please contact: <a href="tel:+40759855350">+40 759 855 350</a>',
+                btnText: "RO"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ro' ? 'en' : 'ro';
+            
+            document.getElementById('title').textContent = content[currentLang].title;
+            document.getElementById('message').textContent = content[currentLang].message;
+            document.getElementById('contact').innerHTML = content[currentLang].contact;
+            document.getElementById('langToggle').textContent = content[currentLang].btnText;
+            document.documentElement.lang = currentLang;
+        }
+    </script>
+
+</body>
+</html>
